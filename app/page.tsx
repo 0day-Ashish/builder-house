@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import dynamic from "next/dynamic";
@@ -8,7 +8,6 @@ import dynamic from "next/dynamic";
 const FaultyTerminal = dynamic(() => import("../components/FaultyTerminal"), {
   ssr: false,
 });
-
 
 const teamMembers = [
   {
@@ -52,13 +51,32 @@ const teamMembers = [
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const containerOffsetRef = useRef<number>(0);
 
-  useLenis(() => {
+  useEffect(() => {
+    const measure = () => {
+      if (containerRef.current) {
+        let el = containerRef.current;
+        let top = 0;
+        while (el) {
+          top += el.offsetTop;
+          el = el.offsetParent as HTMLDivElement;
+        }
+        containerOffsetRef.current = top;
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  useLenis((lenis) => {
     if (!imageRef.current || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
+    const scroll = lenis.scroll;
     const viewportHeight = window.innerHeight;
+    const rectTop = containerOffsetRef.current - scroll;
 
-    let progress = (viewportHeight - rect.top) / viewportHeight;
+    let progress = (viewportHeight - rectTop) / viewportHeight;
     progress = Math.max(0, Math.min(1, progress));
 
     const scale = 1.20 - progress * 0.20;
