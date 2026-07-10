@@ -304,16 +304,16 @@ export default function Home() {
 
         {/* Navigation Bar */}
         <div className="flex justify-between items-start w-full mt-4 text-[13px] md:text-[15px] text-[#8e8e93] font-normal px-1">
-          <a href="#" className="text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
+          <a href="#" className="hidden md:inline-block text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
             Home
           </a>
-          <a href="#" className="text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
+          <a href="#" className="hidden md:inline-block text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
             About
           </a>
-          <a href="#" className="text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
+          <a href="#" className="hidden md:inline-block text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
             Contact
           </a>
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-end ml-auto pr-2 md:pr-4">
             <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none">
               Bangalore, 16th July
             </span>
@@ -342,7 +342,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area - Left-aligned text block and buttons */}
-      <div className="flex-1 flex flex-col justify-end px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-24 md:pt-36 md:pb-4">
+      <div className="flex-1 flex flex-col justify-end px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-24 md:pt-46 md:pb-4">
         <div className="max-w-3xl mb-8 pl-1">
           <p className="text-[17px] sm:text-[20px] md:text-[23px] text-[#ededed] font-normal leading-[1.35] tracking-tight">
             Join a fully sponsored bootcamp here in Bangalore
@@ -354,7 +354,7 @@ export default function Home() {
         </div>
 
         {/* Buttons */}
-        <div className="flex flex-row items-center gap-3 pl-1">
+        <div className="flex flex-row items-center gap-3 pl-1 pb-3">
           <button className="bg-white text-black font-medium text-[15px] md:text-[16px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer">
             Apply
           </button>
