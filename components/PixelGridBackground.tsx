@@ -11,6 +11,7 @@ interface Shape {
   baseOpacity: number;
   pulseSpeed: number;
   pulsePhase: number;
+  color: string; // RGB Cool Grey
 }
 
 export default function PixelGridBackground() {
@@ -33,31 +34,39 @@ export default function PixelGridBackground() {
     let gridRows = 0;
     let shapes: Shape[] = [];
 
-    // Define pixel shapes using grid cell offsets
+    // Define pixel templates that form organic cell-like blob shapes (amoebas)
     const shapeTemplates: [number, number][][] = [
-      // 1. Plus shape
-      [
-        [0, 0], [0, -1], [0, -2], [0, 1], [0, 2],
-        [-1, 0], [-2, 0], [1, 0], [2, 0]
-      ],
-      // 2. Diagonal Cross shape
-      [
-        [0, 0], [-1, -1], [-2, -2], [1, -1], [2, -2],
-        [-1, 1], [-2, 2], [1, 1], [2, 2]
-      ],
-      // 3. Small Dot Grid (3x3 outlines)
+      // 1. Amoeba Blob A: Rounded irregular cell
       [
         [-1, -1], [0, -1], [1, -1],
-        [-1, 0],           [1, 0],
-        [-1, 1],  [0, 1],  [1, 1]
+        [-2, 0], [-1, 0], [0, 0], [1, 0],
+        [-1, 1], [0, 1], [1, 1]
       ],
-      // 4. Compact Cross
+      // 2. Amoeba Blob B: Cell with a tail protrusion
       [
-        [0, 0], [0, -1], [0, 1], [-1, 0], [1, 0]
+        [0, -2], [1, -2],
+        [-1, -1], [0, -1], [1, -1],
+        [-1, 0], [0, 0], [1, 0], [2, 0],
+        [0, 1], [1, 1]
       ],
-      // 5. Angle bracket / Corner
+      // 3. Amoeba Blob C: Irregular diagonal cell
       [
-        [0, 0], [0, 1], [0, 2], [1, 0], [2, 0]
+        [-2, -2], [-1, -2],
+        [-1, -1], [0, -1],
+        [0, 0], [1, 0], [2, 0],
+        [1, 1], [2, 1]
+      ],
+      // 4. Amoeba Blob D: Compact organic node
+      [
+        [0, -1], [1, -1],
+        [-1, 0], [0, 0], [1, 0],
+        [0, 1], [1, 1]
+      ],
+      // 5. Amoeba Blob E: Curved ribbon cell
+      [
+        [-2, -1], [-1, -1],
+        [-1, 0], [0, 0], [1, 0],
+        [1, 1], [2, 1], [3, 1]
       ]
     ];
 
@@ -80,20 +89,22 @@ export default function PixelGridBackground() {
 
     const initShapes = () => {
       shapes = [];
-      
       const area = gridCols * gridRows;
-      const numShapes = Math.max(8, Math.floor(area / 180)); // 1 shape per ~180 grid cells
-
+      
+      // Generate organic amoeba shapes drifting in random directions
+      const numShapes = Math.max(16, Math.floor(area / 75)); 
       for (let i = 0; i < numShapes; i++) {
         const template = shapeTemplates[Math.floor(Math.random() * shapeTemplates.length)];
         const gridX = Math.random() * gridCols;
         const gridY = Math.random() * gridRows;
         
-        // Random velocity in grid cells per frame (very slow, smooth drift)
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 0.008 + 0.003;
+        const speed = Math.random() * 0.02 + 0.01;
         const vx = Math.cos(angle) * speed;
         const vy = Math.sin(angle) * speed;
+
+        const greyShade = Math.floor(Math.random() * 115) + 140; // 140 to 255 cool greys
+        const color = `${greyShade}, ${greyShade}, ${Math.min(255, greyShade + 5)}`;
 
         shapes.push({
           gridX,
@@ -101,32 +112,10 @@ export default function PixelGridBackground() {
           vx,
           vy,
           offsets: template,
-          baseOpacity: Math.random() * 0.2 + 0.05, // Ambient base opacity
+          baseOpacity: Math.random() * 0.22 + 0.08,
           pulseSpeed: Math.random() * 0.015 + 0.005,
-          pulsePhase: Math.random() * Math.PI * 2
-        });
-      }
-
-      // Add scattered single dots that drift and blink
-      const numDots = Math.floor(area / 40);
-      for (let i = 0; i < numDots; i++) {
-        const gridX = Math.random() * gridCols;
-        const gridY = Math.random() * gridRows;
-        
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 0.015 + 0.005;
-        const vx = Math.cos(angle) * speed;
-        const vy = Math.sin(angle) * speed;
-
-        shapes.push({
-          gridX,
-          gridY,
-          vx,
-          vy,
-          offsets: [[0, 0]],
-          baseOpacity: Math.random() * 0.15 + 0.05,
-          pulseSpeed: Math.random() * 0.03 + 0.01,
-          pulsePhase: Math.random() * Math.PI * 2
+          pulsePhase: Math.random() * Math.PI * 2,
+          color
         });
       }
     };
@@ -146,7 +135,7 @@ export default function PixelGridBackground() {
         }
       }
 
-      // Render drifting shapes
+      // Render drifting organic amoeba shapes
       shapes.forEach((shape) => {
         // 1. Update position in grid space
         shape.gridX += shape.vx;
@@ -168,7 +157,7 @@ export default function PixelGridBackground() {
         const snapX = Math.floor(shape.gridX);
         const snapY = Math.floor(shape.gridY);
 
-        ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1.0, opacity)})`;
+        ctx.fillStyle = `rgba(${shape.color}, ${Math.min(1.0, opacity)})`;
         
         shape.offsets.forEach(([offsetX, offsetY]) => {
           const px = (snapX + offsetX) * cellSize;

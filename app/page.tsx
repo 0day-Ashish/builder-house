@@ -16,7 +16,8 @@ const teamMembers = [
     image: "/assets/team-1.avif",
     socials: {
       x: "#",
-      github: "#"
+      github: "https://github.com/0day-Ashish",
+      website: "https://realanshuman.com"
     }
   },
   {
@@ -25,7 +26,8 @@ const teamMembers = [
     image: "/assets/team-2.avif",
     socials: {
       github: "#",
-      linkedin: "#"
+      linkedin: "#",
+      website: "#"
     }
   },
   {
@@ -34,7 +36,8 @@ const teamMembers = [
     image: "/assets/team-3.avif",
     socials: {
       x: "#",
-      linkedin: "#"
+      linkedin: "#",
+      website: "#"
     }
   },
   {
@@ -43,7 +46,8 @@ const teamMembers = [
     image: "/assets/team-4.avif",
     socials: {
       x: "#",
-      linkedin: "#"
+      linkedin: "#",
+      website: "#"
     }
   }
 ];
@@ -207,7 +211,8 @@ export default function Home() {
   useEffect(() => {
     let currentProgress = 0;
     const interval = setInterval(() => {
-      const increment = Math.floor(Math.random() * 12) + 4;
+      // Slower increments (1% to 5%)
+      const increment = Math.floor(Math.random() * 5) + 1;
       currentProgress = Math.min(currentProgress + increment, 100);
       setProgress(currentProgress);
       
@@ -220,7 +225,7 @@ export default function Home() {
           }, 800);
         }, 200);
       }
-    }, 45);
+    }, 70); // Ticking every 70ms
 
     return () => clearInterval(interval);
   }, []);
@@ -522,16 +527,16 @@ export default function Home() {
 
         {/* Headline */}
         <h2 className="font-sans select-none mb-10 leading-[1.05] tracking-tight">
-          <span className="text-[7.5vw] md:text-[5.5vw] lg:text-[4.8vw] font-light block text-[#ededed]">
+          <span className="text-[8.5vw] md:text-[5.5vw] lg:text-[4.8vw] font-light block text-[#ededed]">
             The <span className="font-instrument-serif italic font-normal text-[#e2b857] pr-1 md:pr-2">Fellowship</span> Is
           </span>
-          <span className="text-[11vw] md:text-[6.5vw] lg:text-[4.5vw] font-bold block text-white tracking-tight">
+          <span className="text-[7vw] md:text-[6.5vw] lg:text-[4.5vw] font-bold block text-white tracking-tight">
             Assembling
           </span>
         </h2>
 
         {/* CTA Button */}
-        <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-widest">
+        <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-widest -mt-5">
           Apply Now
         </button>
       </div>
@@ -715,8 +720,8 @@ export default function Home() {
 
           {/* Right Column: Title */}
           <div className="md:col-span-8 flex flex-col items-start pl-1">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 tracking-tight">
-              The road to V1
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white mb-4 tracking-tight">
+              The Road to V1
             </h2>
             <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
               Six weeks. Seven workstreams. One shipped product.
@@ -779,7 +784,7 @@ export default function Home() {
 
           {/* Right Column: Title */}
           <div className="md:col-span-8 flex flex-col items-start pl-1 relative w-full">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 tracking-tight">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-4 tracking-tight">
               The Minds Behind Builder House
             </h2>
             <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
@@ -888,6 +893,15 @@ export default function Home() {
                       </svg>
                     </a>
                   )}
+                  {member.socials.website && (
+                    <a href={member.socials.website} target="_blank" rel="noopener noreferrer" className="transition">
+                      <svg className="w-4 h-4 text-zinc-500 hover:text-white transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -912,7 +926,7 @@ export default function Home() {
 
           {/* Right Column: Title & Accordions */}
           <div className="md:col-span-8 flex flex-col items-start pl-1 w-full">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-10 tracking-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-white mb-10 tracking-tight">
               Frequently Asked Questions
             </h2>
             
