@@ -481,7 +481,7 @@ export default function Home() {
             {/* Inline lo-fi FM player */}
             <div 
               id="inline-player"
-              className="flex items-center gap-2.5 select-none transition-opacity duration-300 mt-1.5 text-[#8e8e93] opacity-100 pointer-events-auto"
+              className="flex items-center gap-2.5 select-none transition-opacity duration-300 mt-6 text-[#8e8e93] opacity-100 pointer-events-auto"
             >
               <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-500">Lo-Fi FM</span>
               {/* Animated Sound Wave bars */}
@@ -505,30 +505,32 @@ export default function Home() {
       {/* Main Content Area - Centered Hero Section */}
       <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-48 pb-20 md:py-36 text-center">
         {/* Badge with Overlapping Avatars and Info Pill */}
-        <div className="flex items-center gap-3 mb-6 select-none bg-zinc-900/40 border border-zinc-800/60 rounded-full pl-2 pr-4 py-1.5 backdrop-blur-md">
-          {/* Overlapping circular avatars */}
+        <div className="flex items-center gap-3 mb-6 select-none">
+          {/* Overlapping circular avatars - separate */}
           <div className="flex -space-x-2">
-            <div className="relative w-6 h-6 rounded-full border border-black bg-zinc-800 overflow-hidden">
-              <Image src="/assets/team-1.avif" alt="Team Member 1" fill className="object-cover" />
+            <div className="relative w-10 h-10 rounded-full border-2 border-[#1c1d1f] bg-zinc-800 overflow-hidden">
+              <Image src="/assets/pile_1.webp" alt="Team Member 1" fill className="object-cover" />
             </div>
-            <div className="relative w-6 h-6 rounded-full border border-black bg-zinc-800 overflow-hidden">
-              <Image src="/assets/team-2.avif" alt="Team Member 2" fill className="object-cover" />
+            <div className="relative w-10 h-10 rounded-full border-2 border-[#1c1d1f] bg-zinc-800 overflow-hidden">
+              <Image src="/assets/pile_4.webp" alt="Team Member 2" fill className="object-cover" />
             </div>
-            <div className="relative w-6 h-6 rounded-full border border-black bg-zinc-800 overflow-hidden">
-              <Image src="/assets/team-3.avif" alt="Team Member 3" fill className="object-cover" />
+            <div className="relative w-10 h-10 rounded-full border-2 border-[#1c1d1f] bg-zinc-800 overflow-hidden">
+              <Image src="/assets/pile_7.webp" alt="Team Member 3" fill className="object-cover" />
             </div>
           </div>
           
-          {/* Badge text pill */}
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-mono text-zinc-300">
-            A Sponsored Residency for Cracked People
-          </span>
+          {/* Badge text in its own white box */}
+          <div className="bg-white px-4 py-1 shadow-lg border border-black">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-mono text-black font-semibold">
+              A Sponsored Residency for Cracked People
+            </span>
+          </div>
         </div>
 
         {/* Headline */}
         <h2 className="font-sans select-none mb-10 leading-[1.05] tracking-tight">
-          <span className="text-[8.5vw] md:text-[5.5vw] lg:text-[4.8vw] font-light block text-[#ededed]">
-            The <span className="font-instrument-serif italic font-normal text-[#e2b857] pr-1 md:pr-2">Fellowship</span> Is
+          <span className="text-[8.5vw] md:text-[5.5vw] lg:text-[5.8vw] font-light block text-[#ededed]">
+            The <span className="font-instrument-serif italic font-normal text-[#e2b857] pr-1 md:pr-2">Builders</span> Are
           </span>
           <span className="text-[7vw] md:text-[6.5vw] lg:text-[4.5vw] font-bold block text-white tracking-tight">
             Assembling
@@ -557,19 +559,19 @@ export default function Home() {
 
           {/* Right Column: Title, Headline, Body, Supporting Line, Button */}
           <div className="md:col-span-8 flex flex-col items-start pl-1">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-2 tracking-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-2 tracking-tight font-normal">
               About TokenSupply
             </h2>
             <h3 className="text-lg md:text-xl font-medium text-[#e2b857] mb-6 tracking-tight">
               Built for Digital Product Sellers
             </h3>
-            <p className="text-[#ededed] text-[16px] md:text-[18px] leading-[1.45] tracking-tight mb-6 max-w-[650px]">
-              Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
+            <p className="text-[#ededed] text-[20px] md:text-[24px] lg:text-[28px] font-serif leading-[1.3] tracking-normal mb-6 max-w-[650px] font-normal">
+              Token Supply is a unified platform that helps businesses selling <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
             </p>
-            <p className="text-[#8e8e93] border-l border-zinc-800 pl-4 text-[14px] md:text-[15px] leading-[1.45] tracking-tight mb-8 max-w-[650px]">
+            <p className="text-[#8e8e93] border-l border-zinc-800 pl-4 text-[16px] md:text-[18px] lg:text-[20px] font-serif leading-[1.35] tracking-normal mb-8 max-w-[650px] font-normal">
               One platform to manage products, inventory, orders, fulfillment, and sales channels so you can focus on growing your business, not managing spreadsheets.
             </p>
-            <button className="bg-white text-black font-semibold text-[15px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer">
+            <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-wider">
               Learn More
             </button>
           </div>
