@@ -58,49 +58,56 @@ const roadmapPhases = [
     date: "Week 01",
     title: "Product architecture",
     description: "System design, data models, and technical decisions that unlock the rest of V1.",
-    status: "upcoming"
+    status: "upcoming",
+    image: "/assets/architecture.png"
   },
   {
     id: "Phase 02",
     date: "Week 01–02",
     title: "Design system",
     description: "A cohesive visual and interaction language across the product surface.",
-    status: "upcoming"
+    status: "upcoming",
+    image: "/assets/design.png"
   },
   {
     id: "Phase 03",
     date: "Week 02–04",
     title: "Frontend",
     description: "Ship the user-facing product with performance and polish as first-class.",
-    status: "upcoming"
+    status: "upcoming",
+    image: ""
   },
   {
     id: "Phase 04",
     date: "Week 02–04",
     title: "Backend",
     description: "APIs, services, and business logic that power the Token Supply layer.",
-    status: "upcoming"
+    status: "upcoming",
+    image: ""
   },
   {
     id: "Phase 05",
     date: "Week 03–05",
     title: "Infrastructure",
     description: "Scalable, observable, and secure by default. The foundation V1 stands on.",
-    status: "upcoming"
+    status: "upcoming",
+    image: ""
   },
   {
     id: "Phase 06",
     date: "Week 04–05",
     title: "Testing & QA",
     description: "End-to-end coverage, load testing, and hardening for production traffic.",
-    status: "upcoming"
+    status: "upcoming",
+    image: ""
   },
   {
     id: "Phase 07",
     date: "Week 05–06",
     title: "Launch preparation",
     description: "Marketing, docs, onboarding, and the launch itself. Go time.",
-    status: "upcoming"
+    status: "upcoming",
+    image: ""
   }
 ];
 
@@ -198,10 +205,44 @@ const programDetails = [
   }
 ];
 
+const playlist = [
+  {
+    title: "Succession Theme",
+    src: "/songs/Succession (Main Title Theme) - Nicholas Britell _ Succession (HBO Original Series Soundtrack).mp3"
+  },
+  {
+    title: "End of Beginning",
+    src: "/songs/Djo_-_End_of_Beginning_(mp3.pm).mp3"
+  },
+  {
+    title: "In Motion",
+    src: "/songs/In Motion (HD) - From the Soundtrack to The Social Network.mp3"
+  }
+];
+
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
+
+  const handleNextSong = () => {
+    setCurrentSongIndex((prev) => (prev + 1) % playlist.length);
+  };
+
+  const handlePrevSong = () => {
+    setCurrentSongIndex((prev) => (prev - 1 + playlist.length) % playlist.length);
+  };
+
+  // Sync playback when song source updates
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.load();
+    if (isPlaying) {
+      audio.play().catch((err) => console.log("Autoplay on skip failed:", err));
+    }
+  }, [currentSongIndex]);
 
   // Preloader State
   const [showPreloader, setShowPreloader] = useState(true);
@@ -435,9 +476,11 @@ export default function Home() {
       {/* Floating Sticky Music Player (Corner Pill) */}
       <div 
         id="floating-player"
-        className="fixed top-6 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-2.5 select-none transition-[transform,opacity] duration-300 opacity-0 -translate-y-4 pointer-events-none"
+        className="fixed top-6 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 -translate-y-4 pointer-events-none"
       >
-        <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-500">Lo-Fi FM</span>
+        <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 max-w-[120px] truncate">
+          FM: {playlist[currentSongIndex].title}
+        </span>
         {/* Animated Sound Wave bars */}
         <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
           <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
@@ -445,19 +488,41 @@ export default function Home() {
           <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-3 h-3' : 'h-1.5'}`} />
           <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-4 h-3' : 'h-2'}`} />
         </div>
-        <button 
-          onClick={togglePlay}
-          className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-800 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer"
-        >
-          {isPlaying ? 'Pause' : 'Play'}
-        </button>
+
+        {/* Playlist Skip & Play Controls */}
+        <div className="flex items-center gap-1.5">
+          <button 
+            onClick={handlePrevSong}
+            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+            aria-label="Previous Song"
+          >
+            <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button 
+            onClick={togglePlay}
+            className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
+          >
+            {isPlaying ? 'Pause' : 'Play'}
+          </button>
+          <button 
+            onClick={handleNextSong}
+            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+            aria-label="Next Song"
+          >
+            <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Root audio element */}
       <audio 
         ref={audioRef} 
-        src="https://assets.codepen.io/4358584/Anitek_-_01_-_Kisses.mp3" 
-        loop
+        src={playlist[currentSongIndex].src}
+        onEnded={handleNextSong}
       />
 
       {/* Background Pixel Grid */}
@@ -483,7 +548,9 @@ export default function Home() {
               id="inline-player"
               className="flex items-center gap-2.5 select-none transition-opacity duration-300 mt-6 text-[#8e8e93] opacity-100 pointer-events-auto"
             >
-              <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-500">Lo-Fi FM</span>
+              <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 max-w-[120px] truncate">
+                FM: {playlist[currentSongIndex].title}
+              </span>
               {/* Animated Sound Wave bars */}
               <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
                 <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
@@ -491,12 +558,34 @@ export default function Home() {
                 <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-3 h-3' : 'h-1.5'}`} />
                 <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-4 h-3' : 'h-2'}`} />
               </div>
-              <button 
-                onClick={togglePlay}
-                className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-800 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer"
-              >
-                {isPlaying ? 'Pause' : 'Play'}
-              </button>
+
+              {/* Playlist Skip & Play Controls */}
+              <div className="flex items-center gap-1.5">
+                <button 
+                  onClick={handlePrevSong}
+                  className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                  aria-label="Previous Song"
+                >
+                  <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button 
+                  onClick={togglePlay}
+                  className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
+                >
+                  {isPlaying ? 'Pause' : 'Play'}
+                </button>
+                <button 
+                  onClick={handleNextSong}
+                  className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                  aria-label="Next Song"
+                >
+                  <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -545,53 +634,30 @@ export default function Home() {
 
       {/* About Section */}
       <div className="w-full pt-36 md:pt-48 pb-24 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col">
-        {/* Top grid: Left column (About label) and Right column (Content) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
-          {/* Left Column: Icon + About */}
-          <div className="md:col-span-4 flex items-start gap-1.5 text-[#8e8e93] text-sm md:text-base font-normal tracking-wide pl-1">
-            <svg className="w-4 h-4 mt-1 text-[#8e8e93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-              <line x1="9" y1="15" x2="17" y2="7" />
-              <polyline points="9 7 17 7 17 15" />
-            </svg>
-            <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">About</span>
-          </div>
-
-          {/* Right Column: Title, Headline, Body, Supporting Line, Button */}
-          <div className="md:col-span-8 flex flex-col items-start pl-1">
+        {/* Main Grid: Left = Text, Right = Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
+          {/* Left Column: Text Content */}
+          <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-2 tracking-tight font-normal">
               About TokenSupply
             </h2>
             <h3 className="text-lg md:text-xl font-medium text-[#e2b857] mb-6 tracking-tight">
               Built for Digital Product Sellers
             </h3>
-            <p className="text-[#ededed] text-[20px] md:text-[24px] lg:text-[28px] font-serif leading-[1.3] tracking-normal mb-6 max-w-[650px] font-normal">
+            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-serif leading-[1.35] tracking-normal mb-6 font-normal">
               Token Supply is a unified platform that helps businesses selling <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
             </p>
-            <p className="text-[#8e8e93] border-l border-zinc-800 pl-4 text-[16px] md:text-[18px] lg:text-[20px] font-serif leading-[1.35] tracking-normal mb-8 max-w-[650px] font-normal">
+            <p className="text-[#8e8e93] border-l border-zinc-800 pl-4 text-[15px] md:text-[17px] leading-[1.4] tracking-normal mb-8 font-normal">
               One platform to manage products, inventory, orders, fulfillment, and sales channels so you can focus on growing your business, not managing spreadsheets.
             </p>
             <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-wider">
               Learn More
             </button>
           </div>
-        </div>
 
-        {/* Plus Dividers */}
-        <div className="grid grid-cols-1 md:grid-cols-12 w-full text-[#3a3a3c] text-2xl md:text-3xl lg:text-4xl font-light py-8 pl-1 pr-1">
-          <div className="hidden md:block md:col-span-4"></div>
-          <div className="col-span-1 md:col-span-8 flex justify-between">
-            <span>+</span>
-            <span>+</span>
-            <span className="text-right">+</span>
-          </div>
-        </div>
-
-        {/* Image Section */}
-        <div className="grid grid-cols-1 md:grid-cols-12 w-full pl-1">
-          <div className="hidden md:block md:col-span-4"></div>
-          <div className="col-span-1 md:col-span-8">
-            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl">
+          {/* Right Column: Image Section */}
+          <div className="col-span-1 lg:col-span-6 w-full">
+            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-800/40 shadow-2xl">
               <Image
                 src="/assets/tokensupply.png"
                 alt="About TokenSupply Developer working"
@@ -605,52 +671,32 @@ export default function Home() {
 
       {/* About Builder House Section */}
       <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-24 md:pt-36">
-        {/* Row 1: Image (columns 1-8) and Tag (columns 9-12) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
-          {/* Left: Image (columns 1-8) */}
-          <div className="col-span-1 md:col-span-8 pl-1">
-            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl">
+        {/* Main Grid: Left = Image, Right = Text & Stats */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
+          {/* Left Column: Image */}
+          <div className="col-span-1 lg:col-span-6 w-full">
+            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-800/40 shadow-2xl">
               <Image
                 src="/assets/hero.gif"
                 alt="About Builder House Building Project"
                 fill
+                unoptimized
                 className="object-cover object-center"
               />
             </div>
           </div>
 
-          {/* Right: Tag (columns 9-12) */}
-          <div className="col-span-1 md:col-span-4 flex items-start md:justify-end gap-1.5 text-[#8e8e93] text-sm md:text-base font-normal tracking-wide pr-1 pt-2">
-            <svg className="w-4 h-4 mt-1 text-[#8e8e93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-            <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">Builder House</span>
-          </div>
-        </div>
-
-        {/* Row 2: Plus Dividers (below image, columns 1-8) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 w-full text-[#3a3a3c] text-2xl md:text-3xl lg:text-4xl font-light py-8 pl-1 pr-1">
-          <div className="col-span-1 md:col-span-8 flex justify-between">
-            <span>+</span>
-            <span>+</span>
-            <span className="text-right">+</span>
-          </div>
-          <div className="hidden md:block md:col-span-4"></div>
-        </div>
-
-        {/* Row 3: Details (columns 1-8) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 w-full pl-1">
-          <div className="col-span-1 md:col-span-8 flex flex-col items-start pr-0 md:pr-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-6 tracking-tight">
+          {/* Right Column: Text & Stats */}
+          <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-6 tracking-tight font-normal">
               What is Builder House?
             </h2>
-            <p className="text-[#ededed] text-[16px] md:text-[18px] leading-[1.45] tracking-tight mb-10 max-w-[620px]">
-              Builder House is all about developers, designers, and engineers with great past works who are absolutely cracked and have a crazy level of mind when it comes to building cool shit. In this residency, they will be collaborating with our core team to work on v1 of TokenSupply.
+            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-serif leading-[1.35] tracking-normal mb-10 font-normal">
+              Builder House is all about developers, designers, and engineers with great past works who are absolutely <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">cracked</span> and have a crazy level of mind when it comes to <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">building cool shit</span>. In this residency, they will be collaborating with our core team to work on v1 of TokenSupply.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-6 w-full max-w-[620px]">
+            <div className="grid grid-cols-3 gap-6 w-full">
               <div>
                 <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">3</div>
                 <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold">Cracked Minds</div>
@@ -665,12 +711,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="hidden md:block md:col-span-4"></div>
         </div>
       </div>
 
       {/* What happens in the Builder House Grid Section */}
-      <div className="w-full pb-24 flex flex-col max-w-[900px] mx-auto px-4 md:px-8">
+      <div className="w-full pb-24 flex flex-col max-w-[1400px] mx-auto px-4 md:px-8">
         {/* 6-Box Grid Layout: 3 boxes in one line, 3 in the next line, sticking to each other */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 w-full pl-1 border-t border-l border-white">
           {programDetails.map((activity, idx) => (
@@ -754,15 +799,25 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Status Badge */}
+              {/* Status Icon Image */}
               <div className="md:col-span-2 flex md:justify-end pt-1">
-                <span className={`text-[10px] uppercase font-mono tracking-wider px-2 py-1 rounded border ${
-                  phase.status === 'active' 
-                    ? 'text-[#e2b857] border-[#e2b857]/30 bg-[#e2b857]/5' 
-                    : 'text-zinc-600 border-zinc-900 bg-zinc-950/20'
-                }`}>
-                  {phase.status}
-                </span>
+                {phase.image ? (
+                  <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-zinc-800 bg-transparent select-none shadow-md">
+                    <Image
+                      src={phase.image}
+                      alt={phase.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  /* Elegant placeholder dashed box with plus icon */
+                  <div className="w-16 h-16 rounded-xl border border-dashed border-zinc-800 bg-transparent flex items-center justify-center text-zinc-500 shadow-sm select-none">
+                    <svg className="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9" />
+                    </svg>
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -1004,7 +1059,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <div className="w-full px-4 md:px-8 max-w-[1400px] mx-auto mb-24 mt-12">
-        <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-16 md:py-20 text-center flex flex-col items-center justify-center shadow-2xl">
+        <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 shadow-2xl">
           {/* Grid lines background overlay */}
           <div 
             className="absolute inset-0 opacity-[0.07] pointer-events-none"
@@ -1014,26 +1069,44 @@ export default function Home() {
             }}
           />
           
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-instrument-serif text-white mb-4 tracking-tight relative z-10 select-none">
-            Ready to ship?
-          </h2>
-          <p className="text-zinc-400 text-base md:text-lg mb-8 max-w-[500px] relative z-10 font-normal">
-            Let's build the incredible together, with TokenSupply
-          </p>
-          
-          <div className="flex flex-row gap-3.5 relative z-10">
-            <button className="bg-white text-black font-semibold text-[15px] px-6 py-3 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md">
-              Apply Now
-            </button>
-            <a 
-              href="mailto:hi@realanshuman.com"
-              className="bg-transparent text-white border border-white/60 font-medium text-[15px] px-6 py-3 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1"
-            >
-              Contact us
-              <svg className="w-3.5 h-3.5 text-zinc-300 mt-[1px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </a>
+          {/* Left Column: Animated CTA Graphic */}
+          <div className="relative w-40 h-40 md:w-64 md:h-64 shrink-0 z-10 select-none rounded-2xl overflow-hidden border border-zinc-800/40">
+            <Image
+              src="/assets/cta.gif"
+              alt="CTA loop animation"
+              fill
+              unoptimized
+              className="object-cover"
+            />
+          </div>
+
+          {/* Right Column: Text & Buttons */}
+          <div className="flex-1 flex flex-col md:flex-row items-center md:justify-between gap-6 w-full z-10">
+            {/* Text details */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-2 tracking-tight select-none">
+                Ready to ship?
+              </h2>
+              <p className="text-zinc-400 text-sm md:text-base max-w-[450px] font-normal">
+                Let's build the incredible together, with TokenSupply
+              </p>
+            </div>
+            
+            {/* Action buttons */}
+            <div className="flex flex-row gap-3.5 shrink-0">
+              <button className="bg-white text-black font-semibold text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md">
+                Apply Now
+              </button>
+              <a 
+                href="mailto:hi@realanshuman.com"
+                className="bg-transparent text-white border border-white/60 font-medium text-[14px] px-5 py-2.5 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1"
+              >
+                Contact us
+                <svg className="w-3.5 h-3.5 text-zinc-300 mt-[1px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
