@@ -25,7 +25,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black text-white">
+      <body className="min-h-full flex flex-col bg-[#1c1d1f] text-white">
         <LenisProvider>{children}</LenisProvider>
         <Analytics/>
       </body>

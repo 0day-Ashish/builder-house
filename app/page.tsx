@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import dynamic from "next/dynamic";
 
-const FaultyTerminal = dynamic(() => import("../components/FaultyTerminal"), {
+const PixelGridBackground = dynamic(() => import("../components/PixelGridBackground"), {
   ssr: false,
 });
 
@@ -199,6 +199,140 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
 
+  // Preloader State
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let currentProgress = 0;
+    const interval = setInterval(() => {
+      const increment = Math.floor(Math.random() * 12) + 4;
+      currentProgress = Math.min(currentProgress + increment, 100);
+      setProgress(currentProgress);
+      
+      if (currentProgress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          setIsFadingOut(true);
+          setTimeout(() => {
+            setShowPreloader(false);
+          }, 800);
+        }, 200);
+      }
+    }, 45);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Team slider state and scroll control
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isManualScrollingRef = useRef(false);
+  const manualScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // Initialize position to the second set to support infinite left scrolling
+    requestAnimationFrame(() => {
+      const item = container.children[0] as HTMLElement;
+      if (item) {
+        const itemWidth = item.offsetWidth + 24;
+        const setWidth = itemWidth * 4;
+        container.scrollLeft = setWidth;
+      }
+    });
+
+    let animId: number;
+    const scrollSpeed = (typeof window !== "undefined" && window.innerWidth < 768) ? 2.4 : 1.8; // Faster on mobile
+
+    const step = () => {
+      if (container && !isManualScrollingRef.current) {
+        container.scrollLeft += scrollSpeed;
+        
+        // Wrap around seamlessly using exact set width
+        const item = container.children[0] as HTMLElement;
+        if (item) {
+          const itemWidth = item.offsetWidth + 24;
+          const setWidth = itemWidth * 4;
+          if (container.scrollLeft >= setWidth * 2) {
+            container.scrollLeft -= setWidth;
+          }
+        }
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+    return () => {
+      cancelAnimationFrame(animId);
+      if (manualScrollTimeoutRef.current) clearTimeout(manualScrollTimeoutRef.current);
+    };
+  }, []);
+
+  const scrollNext = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    
+    // Pause auto-scroll temporarily
+    isManualScrollingRef.current = true;
+    if (manualScrollTimeoutRef.current) clearTimeout(manualScrollTimeoutRef.current);
+
+    const item = container.children[0] as HTMLElement;
+    if (item) {
+      const itemWidth = item.offsetWidth + 24;
+      const setWidth = itemWidth * 4;
+
+      // Jump back if we get too far right
+      if (container.scrollLeft >= setWidth * 2) {
+        container.scrollLeft -= setWidth;
+      }
+    }
+
+    const cardWidth = window.innerWidth < 768 ? 280 + 24 : 320 + 24;
+    container.scrollTo({
+      left: container.scrollLeft + cardWidth,
+      behavior: "smooth"
+    });
+
+    manualScrollTimeoutRef.current = setTimeout(() => {
+      // Resume auto-scroll marquee
+      isManualScrollingRef.current = false;
+    }, 1000);
+  };
+
+  const scrollPrev = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // Pause auto-scroll temporarily
+    isManualScrollingRef.current = true;
+    if (manualScrollTimeoutRef.current) clearTimeout(manualScrollTimeoutRef.current);
+
+    const item = container.children[0] as HTMLElement;
+    if (item) {
+      const itemWidth = item.offsetWidth + 24;
+      const setWidth = itemWidth * 4;
+
+      // Jump forward if we are too far left
+      if (container.scrollLeft < setWidth) {
+        container.scrollLeft += setWidth;
+      }
+    }
+
+    const cardWidth = window.innerWidth < 768 ? 280 + 24 : 320 + 24;
+    container.scrollTo({
+      left: container.scrollLeft - cardWidth,
+      behavior: "smooth"
+    });
+
+    manualScrollTimeoutRef.current = setTimeout(() => {
+      // Resume auto-scroll marquee
+      isManualScrollingRef.current = false;
+    }, 1000);
+  };
+
   const togglePlay = () => {
     if (!audioRef.current) return;
     if (isPlaying) {
@@ -241,6 +375,29 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-white flex flex-col font-sans overflow-x-hidden selection:bg-white selection:text-black relative">
+      {/* Preloader Overlay */}
+      {showPreloader && (
+        <div className={`fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center select-none pointer-events-auto transition-opacity duration-700 ease-in-out ${isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          {/* Logo / Heading */}
+          <h1 className="text-white font-coastersans text-[8vw] sm:text-[6vw] tracking-wider mb-8 uppercase">
+            Builder House
+          </h1>
+          
+          {/* Progress bar */}
+          <div className="w-48 h-[2px] bg-zinc-950 overflow-hidden relative mb-3 rounded-full border border-zinc-900">
+            <div 
+              className="absolute left-0 top-0 h-full bg-[#e2b857] transition-all duration-100 ease-out"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          
+          {/* Progress Percent */}
+          <span className="font-mono text-[10px] text-[#e2b857] tracking-widest uppercase">
+            Loading... {progress.toString().padStart(2, '0')}%
+          </span>
+        </div>
+      )}
+
       {/* Floating Sticky Music Player (Corner Pill) */}
       <div 
         id="floating-player"
@@ -269,26 +426,15 @@ export default function Home() {
         loop
       />
 
-      {/* Background Faulty Terminal */}
-      <div className="fixed inset-0 w-full h-full -z-10 opacity-30 pointer-events-none">
-        <FaultyTerminal
-          scale={0.8}
-          curvature={0.1}
-          scanlineIntensity={0.2}
-          glitchAmount={0.35}
-          flickerAmount={0.15}
-          brightness={0.7}
-          tint="#ffffff"
-          mouseReact={true}
-          mouseStrength={0.5}
-          className="w-full h-full"
-        />
+      {/* Background Pixel Grid */}
+      <div className="fixed inset-0 w-full h-full -z-10 opacity-80 pointer-events-none">
+        <PixelGridBackground />
       </div>
 
       {/* Header Container */}
       <div className="w-full pt-6 pb-2 px-4 md:px-8 max-w-[1800px] mx-auto">
         {/* BUILDER HOUSE giant heading */}
-        <h1 className="w-full text-center text-[12.7vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal">
+        <h1 className="w-full text-center text-[11vw] sm:text-[11.5vw] md:text-[12.7vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal">
           BUILDER HOUSE
         </h1>
 
@@ -323,7 +469,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area - Centered Hero Section */}
-      <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-20 pb-28 md:py-36 text-center">
+      <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-32 pb-20 md:py-36 text-center">
         {/* Badge with Overlapping Avatars and Info Pill */}
         <div className="flex items-center gap-3 mb-6 select-none bg-zinc-900/40 border border-zinc-800/60 rounded-full pl-2 pr-4 py-1.5 backdrop-blur-md">
           {/* Overlapping circular avatars */}
@@ -588,7 +734,7 @@ export default function Home() {
       </div>
 
       {/* Team Section */}
-      <div className="w-full pb-20 flex flex-col pt-24 md:pt-36 border-t border-zinc-900/60">
+      <div className="w-full pb-20 flex flex-col pt-14 md:pt-26">
         {/* Header grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16 max-w-[1400px] mx-auto px-4 md:px-8">
           {/* Left Column: Icon + Team label */}
@@ -603,76 +749,99 @@ export default function Home() {
           </div>
 
           {/* Right Column: Title */}
-          <div className="md:col-span-8 flex flex-col items-start pl-1">
+          <div className="md:col-span-8 flex flex-col items-start pl-1 relative w-full">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 tracking-tight">
               The Minds Behind Builder House
             </h2>
             <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
               A multidisciplinary group of developers, designers, and construction specialists building the future of residential design.
             </p>
+
+            {/* Slider Navigation Arrows */}
+            <div className="flex gap-2.5 mt-6 md:mt-0 md:absolute md:top-2 md:right-0">
+              <button 
+                onClick={scrollPrev}
+                className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
+                aria-label="Previous Slide"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button 
+                onClick={scrollNext}
+                className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
+                aria-label="Next Slide"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Marquee Slider */}
-        <div className="w-full overflow-hidden relative marquee-mask">
-          <div className="flex flex-row animate-marquee py-4">
-            {/* Duplicated set for infinite loop rendering */}
-            {[...teamMembers, ...teamMembers].map((member, idx) => (
-              <div
-                key={idx}
-                className="w-[280px] md:w-[320px] flex-shrink-0 bg-[#111] rounded-3xl p-5 flex flex-col group mr-6"
-              >
-                {/* Profile Image Box */}
-                <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-zinc-950 mb-5">
-                  <Image
-                    src={member.image}
-                    alt={`${member.name} - ${member.role}`}
-                    fill
-                    unoptimized
-                    className="object-cover object-center"
-                  />
+        {/* Slider Area */}
+        <div 
+          ref={scrollContainerRef}
+          className="w-full overflow-x-auto scroll-smooth scrollbar-none flex flex-row gap-6 py-4 px-4 md:px-8 marquee-mask"
+        >
+          {/* Duplicated sets for infinite-like wrapping */}
+          {[...teamMembers, ...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
+            <div
+              key={idx}
+              className="w-[280px] md:w-[320px] flex-shrink-0 bg-[#111]/30 border border-zinc-900/60 rounded-3xl p-5 flex flex-col group"
+            >
+              {/* Profile Image Box */}
+              <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-zinc-950 mb-5">
+                <Image
+                  src={member.image}
+                  alt={`${member.name} - ${member.role}`}
+                  fill
+                  unoptimized
+                  className="object-cover object-center"
+                />
+              </div>
+              {/* Info */}
+              <div className="flex justify-between items-start w-full">
+                <div>
+                  <h3 className="text-[17px] md:text-[19px] font-semibold text-white tracking-tight mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-zinc-500 text-xs md:text-sm tracking-wide">
+                    {member.role}
+                  </p>
                 </div>
-                {/* Info */}
-                <div className="flex justify-between items-start w-full">
-                  <div>
-                    <h3 className="text-[17px] md:text-[19px] font-semibold text-white tracking-tight mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-zinc-500 text-xs md:text-sm tracking-wide">
-                      {member.role}
-                    </p>
-                  </div>
-                  {/* Social links */}
-                  <div className="flex gap-2.5 pt-1.5">
-                    {member.socials.x && (
-                      <a href={member.socials.x} target="_blank" rel="noopener noreferrer" className="transition">
-                        <svg className="w-4 h-4 text-zinc-500 hover:text-white transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                        </svg>
-                      </a>
-                    )}
-                    {member.socials.github && (
-                      <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="transition">
-                        <svg className="w-4 h-4 text-zinc-500 hover:text-white transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                          <path d="M9 18c-4.51 2-5-2-7-2" />
-                        </svg>
-                      </a>
-                    )}
-                    {member.socials.linkedin && (
-                      <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="transition">
-                        <svg className="w-4 h-4 text-zinc-500 hover:text-white transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                          <rect x="2" y="9" width="4" height="12" />
-                          <circle cx="4" cy="4" r="2" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
+                {/* Social links */}
+                <div className="flex gap-2.5 pt-1.5">
+                  {member.socials.x && (
+                    <a href={member.socials.x} target="_blank" rel="noopener noreferrer" className="transition">
+                      <svg className="w-4 h-4 text-zinc-500 hover:text-white transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                      </svg>
+                    </a>
+                  )}
+                  {member.socials.github && (
+                    <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="transition">
+                      <svg className="w-4 h-4 text-zinc-500 hover:text-white transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                        <path d="M9 18c-4.51 2-5-2-7-2" />
+                      </svg>
+                    </a>
+                  )}
+                  {member.socials.linkedin && (
+                    <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="transition">
+                      <svg className="w-4 h-4 text-zinc-500 hover:text-white transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
