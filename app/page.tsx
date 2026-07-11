@@ -229,33 +229,41 @@ export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollingRef = useRef(false);
   const manualScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const interactionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isMarqueePaused, setIsMarqueePaused] = useState(false);
+  const isMarqueePausedRef = useRef(false);
+
+  // Sync state to Ref to prevent stale closures in the mount-only useEffect loop
+  useEffect(() => {
+    isMarqueePausedRef.current = isMarqueePaused;
+  }, [isMarqueePaused]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    // Initialize position to the second set to support infinite left scrolling
+    // Initialize position to the second set to support infinite left scrolling (runs once on mount)
     requestAnimationFrame(() => {
       const item = container.children[0] as HTMLElement;
       if (item) {
-        const itemWidth = item.offsetWidth + 24;
-        const setWidth = itemWidth * 4;
+        const itemWidth = item.offsetWidth || (typeof window !== "undefined" && window.innerWidth < 768 ? 280 : 320);
+        const setWidth = (itemWidth + 24) * 4;
         container.scrollLeft = setWidth;
       }
     });
 
     let animId: number;
-    const scrollSpeed = (typeof window !== "undefined" && window.innerWidth < 768) ? 2.4 : 1.8; // Faster on mobile
+    const scrollSpeed = (typeof window !== "undefined" && window.innerWidth < 768) ? 0.8 : 1.8; // Slower on mobile
 
     const step = () => {
-      if (container && !isManualScrollingRef.current) {
+      if (container && !isManualScrollingRef.current && !isMarqueePausedRef.current) {
         container.scrollLeft += scrollSpeed;
         
         // Wrap around seamlessly using exact set width
         const item = container.children[0] as HTMLElement;
         if (item) {
-          const itemWidth = item.offsetWidth + 24;
-          const setWidth = itemWidth * 4;
+          const itemWidth = item.offsetWidth || (typeof window !== "undefined" && window.innerWidth < 768 ? 280 : 320);
+          const setWidth = (itemWidth + 24) * 4;
           if (container.scrollLeft >= setWidth * 2) {
             container.scrollLeft -= setWidth;
           }
@@ -268,8 +276,29 @@ export default function Home() {
     return () => {
       cancelAnimationFrame(animId);
       if (manualScrollTimeoutRef.current) clearTimeout(manualScrollTimeoutRef.current);
+      if (interactionTimeoutRef.current) clearTimeout(interactionTimeoutRef.current);
     };
   }, []);
+
+  const handleTouchStart = () => {
+    isManualScrollingRef.current = true;
+    if (interactionTimeoutRef.current) clearTimeout(interactionTimeoutRef.current);
+  };
+
+  const handleTouchEnd = () => {
+    if (interactionTimeoutRef.current) clearTimeout(interactionTimeoutRef.current);
+    interactionTimeoutRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 1500); // 1.5s to let swipe momentum decelerate
+  };
+
+  const handleWheel = () => {
+    isManualScrollingRef.current = true;
+    if (interactionTimeoutRef.current) clearTimeout(interactionTimeoutRef.current);
+    interactionTimeoutRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 1000);
+  };
 
   const scrollNext = () => {
     const container = scrollContainerRef.current;
@@ -757,8 +786,8 @@ export default function Home() {
               A multidisciplinary group of developers, designers, and construction specialists building the future of residential design.
             </p>
 
-            {/* Slider Navigation Arrows */}
-            <div className="flex gap-2.5 mt-6 md:mt-0 md:absolute md:top-2 md:right-0">
+            {/* Slider Navigation Controls */}
+            <div className="flex items-center gap-2 mt-6 md:mt-0 md:absolute md:top-2 md:right-0">
               <button 
                 onClick={scrollPrev}
                 className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
@@ -768,6 +797,24 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
+
+              {/* Autoplay Play/Pause Toggle */}
+              <button 
+                onClick={() => setIsMarqueePaused(!isMarqueePaused)}
+                className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
+                aria-label={isMarqueePaused ? "Resume Autoplay" : "Pause Autoplay"}
+              >
+                {isMarqueePaused ? (
+                  <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                )}
+              </button>
+
               <button 
                 onClick={scrollNext}
                 className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
@@ -784,7 +831,10 @@ export default function Home() {
         {/* Slider Area */}
         <div 
           ref={scrollContainerRef}
-          className="w-full overflow-x-auto scroll-smooth scrollbar-none flex flex-row gap-6 py-4 px-4 md:px-8 marquee-mask"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onWheel={handleWheel}
+          className="w-full overflow-x-auto scrollbar-none flex flex-row gap-6 py-4 px-4 md:px-8 marquee-mask"
         >
           {/* Duplicated sets for infinite-like wrapping */}
           {[...teamMembers, ...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
@@ -993,7 +1043,7 @@ export default function Home() {
         </div>
 
         {/* Footer BUILDER HOUSE Giant Stamp */}
-        <h1 className="w-full text-center text-[12.7vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal pb-6 pr-4 md:pr-6">
+        <h1 className="w-full text-center text-[11.9vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal pb-6 pr-4 md:pr-6">
           BUILDER HOUSE
         </h1>
       </footer>
