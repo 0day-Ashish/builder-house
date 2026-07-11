@@ -503,7 +503,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area - Centered Hero Section */}
-      <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-32 pb-20 md:py-36 text-center">
+      <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-48 pb-20 md:py-36 text-center">
         {/* Badge with Overlapping Avatars and Info Pill */}
         <div className="flex items-center gap-3 mb-6 select-none bg-zinc-900/40 border border-zinc-800/60 rounded-full pl-2 pr-4 py-1.5 backdrop-blur-md">
           {/* Overlapping circular avatars */}
@@ -536,7 +536,7 @@ export default function Home() {
         </h2>
 
         {/* CTA Button */}
-        <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-widest -mt-5">
+        <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase -mt-5">
           Apply Now
         </button>
       </div>
