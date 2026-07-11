@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import dynamic from "next/dynamic";
@@ -51,30 +51,51 @@ const teamMembers = [
 const roadmapPhases = [
   {
     id: "Phase 01",
-    date: "July 16th, 2026",
-    title: "Applications Open",
-    description: "Submit your developer or designer profile. We review candidates on a rolling basis with focused portfolio checks.",
-    status: "active"
+    date: "Week 01",
+    title: "Product architecture",
+    description: "System design, data models, and technical decisions that unlock the rest of V1.",
+    status: "upcoming"
   },
   {
     id: "Phase 02",
-    date: "August 1st, 2026",
-    title: "Cohort Selection",
-    description: "Final shortlist announced. 15 selected builders are interviewed and coordinated for moving details.",
+    date: "Week 01–02",
+    title: "Design system",
+    description: "A cohesive visual and interaction language across the product surface.",
     status: "upcoming"
   },
   {
     id: "Phase 03",
-    date: "August 15th, 2026",
-    title: "Residency Kickoff",
-    description: "Move into the Bangalore space. Initiate collaborative sprints, hands-on building, and mentorship sessions.",
+    date: "Week 02–04",
+    title: "Frontend",
+    description: "Ship the user-facing product with performance and polish as first-class.",
     status: "upcoming"
   },
   {
     id: "Phase 04",
-    date: "September 10th, 2026",
-    title: "Demo Day & Week",
-    description: "Present completed integrations and residential systems to investors, design firms, and network partners.",
+    date: "Week 02–04",
+    title: "Backend",
+    description: "APIs, services, and business logic that power the Token Supply layer.",
+    status: "upcoming"
+  },
+  {
+    id: "Phase 05",
+    date: "Week 03–05",
+    title: "Infrastructure",
+    description: "Scalable, observable, and secure by default. The foundation V1 stands on.",
+    status: "upcoming"
+  },
+  {
+    id: "Phase 06",
+    date: "Week 04–05",
+    title: "Testing & QA",
+    description: "End-to-end coverage, load testing, and hardening for production traffic.",
+    status: "upcoming"
+  },
+  {
+    id: "Phase 07",
+    date: "Week 05–06",
+    title: "Launch preparation",
+    description: "Marketing, docs, onboarding, and the launch itself. Go time.",
     status: "upcoming"
   }
 ];
@@ -105,64 +126,53 @@ const faqItems = [
 const programDetails = [
   {
     step: "01",
-    title: "Drafting & Sprints",
-    description: "Hands-on collaborative design and development sessions iterating on real-world housing models.",
+    title: "Invite only",
+    description: "A vetted cohort of proven builders. No spectators — only shippers.",
     icon: (
       <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 20h9" />
-        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="m9 12 2 2 4-4" />
       </svg>
     )
   },
   {
     step: "02",
-    title: "Masterclasses",
-    description: "Intimate blueprint reviews, structural workshops, and engineering panels with industry leaders.",
+    title: "Live & work together",
+    description: "Housing, workspace, meals, and rhythm. Everything designed for flow.",
     icon: (
       <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-      </svg>
-    )
-  },
-  {
-    step: "03",
-    title: "Residency Living",
-    description: "Fully sponsored shared lodging in Bangalore, fostering organic debate and deep friendships.",
-    icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
-      </svg>
-    )
-  },
-  {
-    step: "04",
-    title: "Guest Lectures",
-    description: "Casual fireside chats, design Q&As, and portfolio critiques with visiting expert builders.",
-    icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     )
   },
   {
-    step: "05",
-    title: "Joint Sprints",
-    description: "Working in cross-disciplinary teams to execute concrete project prototypes and design layouts.",
+    step: "03",
+    title: "Engineers, designers, founders",
+    description: "Multidisciplinary teams operating as one product organism.",
     icon: (
       <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
       </svg>
     )
   },
   {
-    step: "06",
-    title: "Demo Day Pitching",
-    description: "Pitch final designs, architectural specs, and integrations to design groups, angels, and partners.",
+    step: "04",
+    title: "Focused execution",
+    description: "No distractions. One goal, one timeline, one team. Ship or iterate.",
+    icon: (
+      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    )
+  },
+  {
+    step: "05",
+    title: "Build → collaborate → launch",
+    description: "From architecture reviews to launch day. Every phase in one house.",
     icon: (
       <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="12 2 2 7 12 12 22 7 12 2" />
@@ -170,14 +180,21 @@ const programDetails = [
         <polyline points="2 12 12 17 22 12" />
       </svg>
     )
+  },
+  {
+    step: "06",
+    title: "Ship Token Supply V1",
+    description: "Contribute to real infrastructure powering the next commerce layer.",
+    icon: (
+      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5" />
+        <path d="M12 2C6.5 2 2 6.5 2 12c0 1.2.3 2.3.8 3.3L7 11c1-1 2.5-1 3.5 0l2.5 2.5c1 1 1 2.5 0 3.5l-4.3 4.2c1 .5 2.1.8 3.3.8 5.5 0 10-4.5 10-10S17.5 2 12 2z" />
+      </svg>
+    )
   }
 ];
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const containerOffsetRef = useRef<number>(0);
-
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
@@ -195,23 +212,6 @@ export default function Home() {
       });
     }
   };
-
-  useEffect(() => {
-    const measure = () => {
-      if (containerRef.current) {
-        let el = containerRef.current;
-        let top = 0;
-        while (el) {
-          top += el.offsetTop;
-          el = el.offsetParent as HTMLDivElement;
-        }
-        containerOffsetRef.current = top;
-      }
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
 
   useLenis((lenis) => {
     const scroll = lenis.scroll;
@@ -237,16 +237,6 @@ export default function Home() {
         floatingPlayer.style.pointerEvents = "none";
       }
     }
-
-    if (!imageRef.current || !containerRef.current) return;
-    const viewportHeight = window.innerHeight;
-    const rectTop = containerOffsetRef.current - scroll;
-
-    let progress = (viewportHeight - rectTop) / viewportHeight;
-    progress = Math.max(0, Math.min(1, progress));
-
-    const scale = 1.20 - progress * 0.20;
-    imageRef.current.style.transform = `scale(${scale})`;
   });
 
   return (
@@ -304,15 +294,6 @@ export default function Home() {
 
         {/* Navigation Bar */}
         <div className="flex justify-between items-start w-full mt-4 text-[13px] md:text-[15px] text-[#8e8e93] font-normal px-1">
-          <a href="#" className="hidden md:inline-block text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
-            Home
-          </a>
-          <a href="#" className="hidden md:inline-block text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
-            About
-          </a>
-          <a href="#" className="hidden md:inline-block text-[17px] md:text-[20px] hover:text-white transition duration-200 pt-[3px]">
-            Contact
-          </a>
           <div className="flex flex-col items-end ml-auto pr-2 md:pr-4">
             <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none">
               Bangalore, 16th July
@@ -341,46 +322,43 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Main Content Area - Left-aligned text block and buttons */}
-      <div className="flex-1 flex flex-col justify-end px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-24 md:pt-46 md:pb-4">
-        <div className="max-w-3xl mb-8 pl-1">
-          <p className="text-[17px] sm:text-[20px] md:text-[23px] text-[#ededed] font-normal leading-[1.35] tracking-tight">
-            Join a fully sponsored bootcamp here in Bangalore
-            <br />
-            For developers, designers, and engineers ready to
-            <br />
-            build, learn, and collaborate. Hosted by TokenSupply.
-          </p>
+      {/* Main Content Area - Centered Hero Section */}
+      <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-20 pb-28 md:py-36 text-center">
+        {/* Badge with Overlapping Avatars and Info Pill */}
+        <div className="flex items-center gap-3 mb-6 select-none bg-zinc-900/40 border border-zinc-800/60 rounded-full pl-2 pr-4 py-1.5 backdrop-blur-md">
+          {/* Overlapping circular avatars */}
+          <div className="flex -space-x-2">
+            <div className="relative w-6 h-6 rounded-full border border-black bg-zinc-800 overflow-hidden">
+              <Image src="/assets/team-1.avif" alt="Team Member 1" fill className="object-cover" />
+            </div>
+            <div className="relative w-6 h-6 rounded-full border border-black bg-zinc-800 overflow-hidden">
+              <Image src="/assets/team-2.avif" alt="Team Member 2" fill className="object-cover" />
+            </div>
+            <div className="relative w-6 h-6 rounded-full border border-black bg-zinc-800 overflow-hidden">
+              <Image src="/assets/team-3.avif" alt="Team Member 3" fill className="object-cover" />
+            </div>
+          </div>
+          
+          {/* Badge text pill */}
+          <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-mono text-zinc-300">
+            A Sponsored Residency for Cracked People
+          </span>
         </div>
 
-        {/* Buttons */}
-        <div className="flex flex-row items-center gap-3 pl-1 pb-3">
-          <button className="bg-white text-black font-medium text-[15px] md:text-[16px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer">
-            Apply
-          </button>
-          <button className="bg-[#1c1c1e] text-white font-medium text-[15px] md:text-[16px] px-6 py-2.5 rounded-full border border-zinc-800/20 hover:bg-[#2c2c2e] active:scale-95 transition duration-200 cursor-pointer">
-            Learn More
-          </button>
-        </div>
-      </div>
+        {/* Headline */}
+        <h2 className="font-sans select-none mb-10 leading-[1.05] tracking-tight">
+          <span className="text-[7.5vw] md:text-[5.5vw] lg:text-[4.8vw] font-light block text-[#ededed]">
+            The <span className="font-instrument-serif italic font-normal text-[#e2b857] pr-1 md:pr-2">Fellowship</span> Is
+          </span>
+          <span className="text-[11vw] md:text-[6.5vw] lg:text-[4.5vw] font-bold block text-white tracking-tight">
+            Assembling
+          </span>
+        </h2>
 
-      {/* Hero Image Section - Full Width */}
-      <div className="w-full border-t border-zinc-900">
-        <div
-          ref={containerRef}
-          className="relative w-full aspect-[16/10] md:aspect-[16/8] xl:aspect-[21/9] overflow-hidden"
-        >
-          <Image
-            ref={imageRef}
-            src="/assets/hero.gif"
-            alt="Builder House Hero Room"
-            fill
-            unoptimized
-            className="object-cover object-center will-change-transform"
-            style={{ transform: "scale(1.2)" }}
-            priority
-          />
-        </div>
+        {/* CTA Button */}
+        <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-widest">
+          Apply Now
+        </button>
       </div>
 
       {/* About Section */}
@@ -397,13 +375,19 @@ export default function Home() {
             <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">About</span>
           </div>
 
-          {/* Right Column: Title, Body, Button */}
+          {/* Right Column: Title, Headline, Body, Supporting Line, Button */}
           <div className="md:col-span-8 flex flex-col items-start pl-1">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-6 tracking-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-2 tracking-tight">
               About TokenSupply
             </h2>
-            <p className="text-[#ededed] text-[16px] md:text-[18px] leading-[1.45] tracking-tight mb-8 max-w-[550px]">
-              Manage digital product fulfillment, inventory, orders, and support across every platform from one unified dashboard. No more spreadsheets.
+            <h3 className="text-lg md:text-xl font-medium text-[#e2b857] mb-6 tracking-tight">
+              Built for Digital Product Sellers
+            </h3>
+            <p className="text-[#ededed] text-[16px] md:text-[18px] leading-[1.45] tracking-tight mb-6 max-w-[650px]">
+              Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
+            </p>
+            <p className="text-[#8e8e93] border-l border-zinc-800 pl-4 text-[14px] md:text-[15px] leading-[1.45] tracking-tight mb-8 max-w-[650px]">
+              One platform to manage products, inventory, orders, fulfillment, and sales channels so you can focus on growing your business, not managing spreadsheets.
             </p>
             <button className="bg-white text-black font-semibold text-[15px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer">
               Learn More
@@ -427,10 +411,10 @@ export default function Home() {
           <div className="col-span-1 md:col-span-8">
             <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl">
               <Image
-                src="/assets/token-supply.avif"
+                src="/assets/tokensupply.png"
                 alt="About TokenSupply Developer working"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center pointer-events-none"
               />
             </div>
           </div>
@@ -445,7 +429,7 @@ export default function Home() {
           <div className="col-span-1 md:col-span-8 pl-1">
             <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl">
               <Image
-                src="/assets/builder-house.avif"
+                src="/assets/hero.gif"
                 alt="About Builder House Building Project"
                 fill
                 className="object-cover object-center"
@@ -480,22 +464,22 @@ export default function Home() {
               What is Builder House?
             </h2>
             <p className="text-[#ededed] text-[16px] md:text-[18px] leading-[1.45] tracking-tight mb-10 max-w-[620px]">
-              Builder House is a Bangalore-based construction studio crafting homes that are designed to last. From the first sketch to the final handover, we manage design, engineering, and build under one roof — so you always know who’s accountable.
+              Builder House is all about developers, designers, and engineers with great past works who are absolutely cracked and have a crazy level of mind when it comes to building cool shit. In this residency, they will be collaborating with our core team to work on v1 of TokenSupply.
             </p>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-3 gap-6 w-full max-w-[620px]">
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">10+</div>
-                <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold">Minds</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">3</div>
+                <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold">Cracked Minds</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">15</div>
-                <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Years of building</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">45</div>
+                <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Days of shipping</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">10 yr</div>
-                <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Structural warranty</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">v1</div>
+                <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Launch target</div>
               </div>
             </div>
           </div>
@@ -529,10 +513,82 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        {/* Collaborative Callout */}
+        <div className="mt-12 w-full flex justify-center">
+          <div className="flex items-center gap-3 px-6 py-3.5 bg-[#0a0a0c]/40 border border-zinc-850 rounded-full max-w-[700px] backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-[#e2b857] animate-pulse shrink-0" />
+            <p className="text-xs sm:text-sm text-zinc-400 tracking-tight text-left">
+              Anyone building something can also just join us and work with other builders there to collaborate.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Roadmap Section */}
+      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
+        {/* Header grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16">
+          {/* Left Column: Icon + Roadmap label */}
+          <div className="md:col-span-4 flex items-start gap-1.5 text-[#8e8e93] text-sm md:text-base font-normal tracking-wide pl-1 pt-2">
+            <svg className="w-4 h-4 mt-1 text-[#8e8e93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">Roadmap</span>
+          </div>
+
+          {/* Right Column: Title */}
+          <div className="md:col-span-8 flex flex-col items-start pl-1">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 tracking-tight">
+              The road to V1
+            </h2>
+            <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
+              Six weeks. Seven workstreams. One shipped product.
+            </p>
+          </div>
+        </div>
+
+        {/* Timeline Grid */}
+        <div className="flex flex-col w-full pl-1 border-t border-zinc-900">
+          {roadmapPhases.map((phase, idx) => (
+            <div 
+              key={idx} 
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 py-8 border-b border-zinc-900 items-start group"
+            >
+              {/* Phase & Date */}
+              <div className="md:col-span-4 flex flex-col gap-1">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#e2b857]">{phase.id}</span>
+                <span className="text-white text-lg font-instrument-serif">{phase.date}</span>
+              </div>
+              
+              {/* Title & Body */}
+              <div className="md:col-span-6 flex flex-col gap-2">
+                <h3 className="text-[18px] md:text-[20px] font-semibold text-white tracking-tight">
+                  {phase.title}
+                </h3>
+                <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[500px]">
+                  {phase.description}
+                </p>
+              </div>
+
+              {/* Status Badge */}
+              <div className="md:col-span-2 flex md:justify-end pt-1">
+                <span className={`text-[10px] uppercase font-mono tracking-wider px-2 py-1 rounded border ${
+                  phase.status === 'active' 
+                    ? 'text-[#e2b857] border-[#e2b857]/30 bg-[#e2b857]/5' 
+                    : 'text-zinc-600 border-zinc-900 bg-zinc-950/20'
+                }`}>
+                  {phase.status}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Team Section */}
-      <div className="w-full pb-20 flex flex-col pt-24 md:pt-30">
+      <div className="w-full pb-20 flex flex-col pt-24 md:pt-36 border-t border-zinc-900/60">
         {/* Header grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16 max-w-[1400px] mx-auto px-4 md:px-8">
           {/* Left Column: Icon + Team label */}
@@ -617,68 +673,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Roadmap Section */}
-      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
-        {/* Header grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16">
-          {/* Left Column: Icon + Roadmap label */}
-          <div className="md:col-span-4 flex items-start gap-1.5 text-[#8e8e93] text-sm md:text-base font-normal tracking-wide pl-1 pt-2">
-            <svg className="w-4 h-4 mt-1 text-[#8e8e93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">Roadmap</span>
-          </div>
-
-          {/* Right Column: Title */}
-          <div className="md:col-span-8 flex flex-col items-start pl-1">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 tracking-tight">
-              Residency Timeline
-            </h2>
-            <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
-              Our structured roadmap outlining key steps leading up to the residency kickoff and demo day in Bangalore.
-            </p>
-          </div>
-        </div>
-
-        {/* Timeline Grid */}
-        <div className="flex flex-col w-full pl-1 border-t border-zinc-900">
-          {roadmapPhases.map((phase, idx) => (
-            <div 
-              key={idx} 
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 py-8 border-b border-zinc-900 items-start group"
-            >
-              {/* Phase & Date */}
-              <div className="md:col-span-4 flex flex-col gap-1">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#e2b857]">{phase.id}</span>
-                <span className="text-white text-lg font-instrument-serif">{phase.date}</span>
-              </div>
-              
-              {/* Title & Body */}
-              <div className="md:col-span-6 flex flex-col gap-2">
-                <h3 className="text-[18px] md:text-[20px] font-semibold text-white tracking-tight">
-                  {phase.title}
-                </h3>
-                <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[500px]">
-                  {phase.description}
-                </p>
-              </div>
-
-              {/* Status Badge */}
-              <div className="md:col-span-2 flex md:justify-end pt-1">
-                <span className={`text-[10px] uppercase font-mono tracking-wider px-2 py-1 rounded border ${
-                  phase.status === 'active' 
-                    ? 'text-[#e2b857] border-[#e2b857]/30 bg-[#e2b857]/5' 
-                    : 'text-zinc-600 border-zinc-900 bg-zinc-950/20'
-                }`}>
-                  {phase.status}
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
@@ -773,6 +767,42 @@ export default function Home() {
         </div>
       </div>
 
+      {/* CTA Section */}
+      <div className="w-full px-4 md:px-8 max-w-[1400px] mx-auto mb-24 mt-12">
+        <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-16 md:py-20 text-center flex flex-col items-center justify-center shadow-2xl">
+          {/* Grid lines background overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.07] pointer-events-none"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
+              backgroundSize: '20px 20px'
+            }}
+          />
+          
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-instrument-serif text-white mb-4 tracking-tight relative z-10 select-none">
+            Ready to ship?
+          </h2>
+          <p className="text-zinc-400 text-base md:text-lg mb-8 max-w-[500px] relative z-10 font-normal">
+            Let's build the incredible together, with TokenSupply
+          </p>
+          
+          <div className="flex flex-row gap-3.5 relative z-10">
+            <button className="bg-white text-black font-semibold text-[15px] px-6 py-3 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md">
+              Apply Now
+            </button>
+            <a 
+              href="mailto:hi@realanshuman.com"
+              className="bg-transparent text-white border border-white/60 font-medium text-[15px] px-6 py-3 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1"
+            >
+              Contact us
+              <svg className="w-3.5 h-3.5 text-zinc-300 mt-[1px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Footer Section */}
       <footer className="w-full border-t border-zinc-900/60 pt-16 pb-6 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-col">
         {/* Footer Top Links */}
@@ -782,12 +812,12 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-0.5 items-center justify-center">
             <span>Have more queries?</span>
-            <a href="mailto:contact@mail.com" className="hover:text-white transition duration-200">
-              contact@mail.com
+            <a href="mailto:admint@tokensupply.io" className="hover:text-white transition duration-200">
+              admin@tokensupply.io
             </a>
           </div>
           <div className="flex flex-col gap-0.5 items-center justify-center">
-            <a href="#" className="hover:text-white transition duration-200">Instagram</a>
+            <a href="https://www.instagram.com/tokensupplyhq" className="hover:text-white transition duration-200">Instagram</a>
             <a href="#" className="hover:text-white transition duration-200">X (Twitter)</a>
             <a href="#" className="hover:text-white transition duration-200">Youtube</a>
           </div>
