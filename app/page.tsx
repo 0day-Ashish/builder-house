@@ -49,6 +49,25 @@ const teamMembers = [
       linkedin: "#",
       website: "#"
     }
+  },
+  {
+    name: "Karthik Shanbhag",
+    role: "Backend Developer",
+    image: "/team/Kartik.jpeg",
+    socials: {
+      github: "http://github.com/karthikshanbhag/",
+      linkedin: "https://www.linkedin.com/in/karthik-shanbhag-9339631bb"
+    }
+  },
+  {
+    name: "Aman Maddeshiya",
+    role: "Full stack Developer",
+    image: "/team/Aman.jpeg",
+    socials: {
+      x: "https://x.com/aman_aura",
+      linkedin: "https://www.linkedin.com/in/aman-maddeshiya-b437581b1?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      website: "https://aman-dev.is-a.dev/"
+    }
   }
 ];
 
@@ -715,7 +734,7 @@ export default function Home() {
       </div>
 
       {/* About Section */}
-      <div className="w-full pt-36 md:pt-48 pb-24 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col">
+      <div className="w-full pt-64 md:pt-76 pb-24 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col">
         {/* Main Grid: Left = Text, Right = Image */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
           {/* Left Column: Text Content */}
@@ -867,7 +886,7 @@ export default function Home() {
                     src="/assets/bg-2.jpeg"
                     alt="Live & Work Together Background"
                     fill
-                    className="object-cover opacity-180 pointer-events-none"
+                    className="object-cover pointer-events-none"
                   />
                 </div>
               )}
@@ -918,11 +937,11 @@ export default function Home() {
                   {activity.icon}
                 </div>
               </div>
-              <div className="z-10 w-full bg-black/50 border border-white/10 backdrop-blur-md rounded-xl p-4 mt-auto">
+              <div className={`z-10 w-full backdrop-blur-md rounded-xl p-4 mt-auto border ${idx === 1 ? 'bg-black/60 border-white/10' : 'bg-white/10 border-white/20'}`}>
                 <h3 className="text-[19px] md:text-[22px] font-geist-pixel-circle text-white tracking-tight mb-1">
                   {activity.title}
                 </h3>
-                <p className="text-[12px] md:text-xs text-zinc-200 leading-relaxed font-normal">
+                <p className="text-[12px] md:text-xs text-white leading-relaxed font-normal">
                   {activity.description}
                 </p>
               </div>
@@ -1081,7 +1100,7 @@ export default function Home() {
           {[...teamMembers, ...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
             <div
               key={idx}
-              className="w-[280px] md:w-[320px] flex-shrink-0 bg-[#111]/30 border border-zinc-900/60 rounded-3xl p-5 flex flex-col group"
+              className="w-[280px] md:w-[320px] flex-shrink-0 bg-white/5 border border-white/10 backdrop-blur-md rounded-3xl p-5 flex flex-col group"
             >
               {/* Profile Image Box */}
               <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-zinc-950 mb-5">
@@ -1202,22 +1221,22 @@ export default function Home() {
       <div className="w-full pb-36 flex flex-col pt-24 md:pt-36 border-t border-zinc-900/60 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[850px] mx-auto px-4 md:px-8">
           {/* Live Box */}
-          <div className="aspect-square flex items-center justify-center border border-white rounded-sm group cursor-pointer transition duration-300">
-            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
+          <div className="aspect-square flex items-center justify-center bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-white/20 rounded-2xl group cursor-pointer transition-all duration-300">
+            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight transition duration-300 transform group-hover:scale-105">
               Live
             </span>
           </div>
 
           {/* Build Box */}
-          <div className="aspect-square flex items-center justify-center border border-white rounded-sm group cursor-pointer transition duration-300">
-            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
+          <div className="aspect-square flex items-center justify-center bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-white/20 rounded-2xl group cursor-pointer transition-all duration-300">
+            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight transition duration-300 transform group-hover:scale-105">
               Build
             </span>
           </div>
 
           {/* Network Box */}
-          <div className="aspect-square flex items-center justify-center border border-white rounded-sm group cursor-pointer transition duration-300">
-            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
+          <div className="aspect-square flex items-center justify-center bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-white/20 rounded-2xl group cursor-pointer transition-all duration-300">
+            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight transition duration-300 transform group-hover:scale-105">
               Network
             </span>
           </div>
@@ -1253,11 +1272,11 @@ export default function Home() {
           {/* Text & Buttons Container */}
           <div className="flex flex-col md:flex-row items-center md:justify-between gap-6 w-full z-10">
             {/* Text details */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl p-6 max-w-xl">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight select-none">
                 Ready to ship?
               </h2>
-              <p className="text-zinc-400 text-sm md:text-base max-w-[450px] font-normal">
+              <p className="text-zinc-300 text-sm md:text-base max-w-[450px] font-normal">
                 Let's build the incredible together, with TokenSupply
               </p>
             </div>
