@@ -370,6 +370,53 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  // Autoplay music when preloader starts fading out
+  useEffect(() => {
+    if (!isFadingOut) return;
+
+    let cleanupListeners: (() => void) | null = null;
+
+    const playAudio = () => {
+      if (!audioRef.current) return;
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.log("Autoplay blocked, waiting for user interaction:", err);
+          
+          const startPlayOnInteraction = () => {
+            if (audioRef.current) {
+              audioRef.current.play()
+                .then(() => {
+                  setIsPlaying(true);
+                  if (cleanupListeners) cleanupListeners();
+                })
+                .catch((e) => console.log("Play on interaction failed:", e));
+            }
+          };
+
+          const cleanup = () => {
+            window.removeEventListener("click", startPlayOnInteraction);
+            window.removeEventListener("touchstart", startPlayOnInteraction);
+            window.removeEventListener("keydown", startPlayOnInteraction);
+          };
+
+          cleanupListeners = cleanup;
+
+          window.addEventListener("click", startPlayOnInteraction);
+          window.addEventListener("touchstart", startPlayOnInteraction);
+          window.addEventListener("keydown", startPlayOnInteraction);
+        });
+    };
+
+    playAudio();
+
+    return () => {
+      if (cleanupListeners) cleanupListeners();
+    };
+  }, [isFadingOut]);
+
   // Team slider state and scroll control
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollingRef = useRef(false);
@@ -714,7 +761,7 @@ export default function Home() {
 
           {/* Badge text in its own white box */}
           <div className="bg-white px-4 py-1 shadow-lg border border-black">
-            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-instrument-sans text-black whitespace-nowrap">
+            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-instrument-sans font-semibold text-black whitespace-nowrap">
               A Sponsored Residency for Cracked People
             </span>
           </div>
