@@ -298,16 +298,16 @@ const programDetails = [
 
 const playlist = [
   {
-    title: "Succession Theme",
-    src: "/songs/Succession (Main Title Theme) - Nicholas Britell _ Succession (HBO Original Series Soundtrack).mp3"
+    title: "In Motion",
+    src: "/songs/In Motion (HD) - From the Soundtrack to The Social Network.mp3"
   },
   {
     title: "End of Beginning",
     src: "/songs/Djo_-_End_of_Beginning_(mp3.pm).mp3"
   },
   {
-    title: "In Motion",
-    src: "/songs/In Motion (HD) - From the Soundtrack to The Social Network.mp3"
+    title: "Succession Theme",
+    src: "/songs/Succession (Main Title Theme) - Nicholas Britell _ Succession (HBO Original Series Soundtrack).mp3"
   }
 ];
 
