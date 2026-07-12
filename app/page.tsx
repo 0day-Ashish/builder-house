@@ -900,6 +900,27 @@ export default function Home() {
                   />
                 </div>
               )}
+              {idx === 4 && (
+                <div className="absolute inset-0 select-none pointer-events-none">
+                  <Image
+                    src="/assets/bg-5.jpeg"
+                    alt="Build collaborate launch Background"
+                    fill
+                    className="object-cover opacity-60 pointer-events-none"
+                  />
+                </div>
+              )}
+              {idx === 5 && (
+                <div className="absolute inset-0 select-none pointer-events-none">
+                  <Image
+                    src="/assets/bg-6.gif"
+                    alt="Ship Token Supply V1 Background"
+                    fill
+                    unoptimized
+                    className="object-cover opacity-60 pointer-events-none"
+                  />
+                </div>
+              )}
               <div className="flex justify-between items-start w-full mb-6 z-10">
                 <span className="text-xs font-mono text-white uppercase tracking-widest">{activity.step}</span>
                 <div className="p-2 bg-transparent">
