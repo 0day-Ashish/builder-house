@@ -773,7 +773,7 @@ export default function Home() {
               {subprocessorLogos.map((logo, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-center p-5 bg-[#0d0d0f]/60 border border-zinc-850 hover:border-zinc-700/80 rounded-2xl h-24 transition-all duration-300 shadow-md group relative overflow-hidden"
+                  className="flex items-center justify-center p-5 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-md rounded-2xl h-24 transition-all duration-300 shadow-md group relative overflow-hidden"
                 >
                   {/* Grid overlay for texture */}
                   <div
@@ -849,7 +849,7 @@ export default function Home() {
           {programDetails.map((activity, idx) => (
             <div
               key={idx}
-              className="relative overflow-hidden bg-[#0d0d0f]/60 border border-zinc-850  rounded-2xl p-6 flex flex-col items-start justify-between min-h-[230px] transition-all duration-300 group"
+              className="relative overflow-hidden bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-md rounded-2xl p-6 flex flex-col items-start justify-between min-h-[230px] transition-all duration-300 group"
             >
               {idx === 0 && (
                 <div className="absolute inset-0 select-none pointer-events-none">
@@ -918,11 +918,11 @@ export default function Home() {
                   {activity.icon}
                 </div>
               </div>
-              <div className="z-10">
-                <h3 className="text-[19px] md:text-[22px] font-geist-pixel-circle text-white tracking-tight mb-1.5">
+              <div className="z-10 w-full bg-black/50 border border-white/10 backdrop-blur-md rounded-xl p-4 mt-auto">
+                <h3 className="text-[19px] md:text-[22px] font-geist-pixel-circle text-white tracking-tight mb-1">
                   {activity.title}
                 </h3>
-                <p className="text-xs md:text-sm text-white leading-relaxed">
+                <p className="text-[12px] md:text-xs text-zinc-200 leading-relaxed font-normal">
                   {activity.description}
                 </p>
               </div>
@@ -974,7 +974,7 @@ export default function Home() {
           {roadmapPhases.map((phase, idx) => (
             <div
               key={idx}
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-[#0d0d0f]/60 border border-zinc-850 hover:border-zinc-700/80 rounded-2xl items-center transition-all duration-300 group"
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-md rounded-2xl items-center transition-all duration-300 group"
             >
               {/* Phase & Date */}
               <div className="md:col-span-4 flex flex-col gap-1">
@@ -1231,7 +1231,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <div className="w-full px-4 md:px-8 max-w-[1400px] mx-auto mb-24 mt-12">
-        <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 shadow-2xl">
+        <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-10 md:px-12 md:py-12 flex flex-col items-center shadow-2xl">
           {/* Background Image overlay */}
           <div className="absolute inset-0 select-none pointer-events-none">
             <Image
@@ -1250,19 +1250,8 @@ export default function Home() {
             }}
           />
 
-          {/* Left Column: Animated CTA Graphic */}
-          <div className="relative w-40 h-40 md:w-64 md:h-64 shrink-0 z-10 select-none rounded-2xl overflow-hidden border border-zinc-800/40">
-            <Image
-              src="/assets/cta.gif"
-              alt="CTA loop animation"
-              fill
-              unoptimized
-              className="object-cover"
-            />
-          </div>
-
-          {/* Right Column: Text & Buttons */}
-          <div className="flex-1 flex flex-col md:flex-row items-center md:justify-between gap-6 w-full z-10">
+          {/* Text & Buttons Container */}
+          <div className="flex flex-col md:flex-row items-center md:justify-between gap-6 w-full z-10">
             {/* Text details */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight select-none">
