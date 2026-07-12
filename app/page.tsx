@@ -83,7 +83,7 @@ const roadmapPhases = [
     title: "Backend",
     description: "APIs, services, and business logic that power the Token Supply layer.",
     status: "upcoming",
-    image: ""
+    image: "/assets/backend.png"
   },
   {
     id: "Phase 05",
@@ -91,7 +91,7 @@ const roadmapPhases = [
     title: "Infrastructure",
     description: "Scalable, observable, and secure by default. The foundation V1 stands on.",
     status: "upcoming",
-    image: ""
+    image: "/assets/infrastructure.png"
   },
   {
     id: "Phase 06",
@@ -767,12 +767,24 @@ export default function Home() {
 
           {/* Right Column: Title */}
           <div className="md:col-span-8 flex flex-col items-start pl-1">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white mb-4 tracking-tight">
-              The Road to V1
-            </h2>
-            <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
-              Six weeks. Seven workstreams. One shipped product.
-            </p>
+            <div className="flex items-start gap-4 md:gap-5 w-full">
+              <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-xl overflow-hidden bg-transparent shrink-0 select-none mt-1">
+                <Image
+                  src="/assets/roadmap.png"
+                  alt="Roadmap Header Icon"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col items-start">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white mb-1 tracking-tight">
+                  The Road to V1
+                </h2>
+                <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
+                  Six weeks. Seven workstreams. One shipped product.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
