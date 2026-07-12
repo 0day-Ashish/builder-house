@@ -599,61 +599,59 @@ export default function Home() {
       </div>
 
       {/* Header Container */}
-      <div className="w-full pt-6 pb-2 px-4 md:px-8 max-w-[1800px] mx-auto">
-        {/* BUILDER HOUSE giant heading */}
-        <h1 className="w-full text-center text-[11vw] sm:text-[11.5vw] md:text-[12.7vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal">
+      <div className="w-full pt-8 pb-4 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-row justify-between items-start">
+        {/* Left Side: BUILDER HOUSE Brand Text */}
+        <h1 className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase select-none text-white font-normal pt-1 sticky">
           BUILDER HOUSE
         </h1>
 
-        {/* Navigation Bar */}
-        <div className="flex justify-between items-start w-full mt-4 text-[13px] md:text-[15px] text-[#8e8e93] font-normal px-1">
-          <div className="flex flex-col items-end ml-auto pr-2 md:pr-4">
-            <span className="text-white text-[17px] md:text-[25px] font-geist-pixel-circle tracking-tighter leading-none">
-              Bangalore, 16th July
+        {/* Right Side: Bangalore & FM Player */}
+        <div className="flex flex-col items-end pr-2 md:pr-4">
+          <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3">
+            Bangalore, 16th July
+          </span>
+          {/* Inline lo-fi FM player */}
+          <div
+            id="inline-player"
+            className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-[#8e8e93] opacity-100 pointer-events-auto"
+          >
+            <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 max-w-[120px] truncate">
+              FM: {playlist[currentSongIndex].title}
             </span>
-            {/* Inline lo-fi FM player */}
-            <div
-              id="inline-player"
-              className="flex items-center gap-2.5 select-none transition-opacity duration-300 mt-6 text-[#8e8e93] opacity-100 pointer-events-auto"
-            >
-              <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 max-w-[120px] truncate">
-                FM: {playlist[currentSongIndex].title}
-              </span>
-              {/* Animated Sound Wave bars */}
-              <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
-                <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
-                <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-2 h-3' : 'h-2.5'}`} />
-                <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-3 h-3' : 'h-1.5'}`} />
-                <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-4 h-3' : 'h-2'}`} />
-              </div>
+            {/* Animated Sound Wave bars */}
+            <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
+              <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
+              <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-2 h-3' : 'h-2.5'}`} />
+              <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-3 h-3' : 'h-1.5'}`} />
+              <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-4 h-3' : 'h-2'}`} />
+            </div>
 
-              {/* Playlist Skip & Play Controls */}
-              <div className="flex items-center gap-1.5">
-                <button
-                  onClick={handlePrevSong}
-                  className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
-                  aria-label="Previous Song"
-                >
-                  <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={togglePlay}
-                  className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
-                >
-                  {isPlaying ? 'Pause' : 'Play'}
-                </button>
-                <button
-                  onClick={handleNextSong}
-                  className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
-                  aria-label="Next Song"
-                >
-                  <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
+            {/* Playlist Skip & Play Controls */}
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={handlePrevSong}
+                className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                aria-label="Previous Song"
+              >
+                <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={togglePlay}
+                className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
+              >
+                {isPlaying ? 'Pause' : 'Play'}
+              </button>
+              <button
+                onClick={handleNextSong}
+                className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                aria-label="Next Song"
+              >
+                <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
