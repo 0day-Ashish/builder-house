@@ -75,7 +75,7 @@ const roadmapPhases = [
     title: "Frontend",
     description: "Ship the user-facing product with performance and polish as first-class.",
     status: "upcoming",
-    image: ""
+    image: "/assets/frontend.png"
   },
   {
     id: "Phase 04",
@@ -159,24 +159,24 @@ const subprocessors = [
 
 const faqItems = [
   {
-    question: "How long does it take to build a home?",
-    answer: "A typical residential build takes between 8 to 12 months, depending on the scale, complexity of the architectural footprint, and site conditions. We provide a detailed project schedule during our initial design alignment."
+    question: "What is the duration of the residency?",
+    answer: "The residency is a 45-day intensive program, running from July 16th to late August. Selected builders live and work together in Bangalore to co-build and launch V1 of TokenSupply."
   },
   {
-    question: "What does your pricing include?",
-    answer: "Our pricing is comprehensive and all-inclusive of design fees, structural engineering, council permits, procurement, site management, construction labor, and premium finishes. No hidden charges or unexpected variations."
+    question: "What does the sponsored stay cover?",
+    answer: "It covers 100% of your logistical costs. This includes premium accommodation in Bangalore, daily chef-prepared meals (breakfast, lunch, and dinner), a dedicated high-speed workstation setup, and your round-trip travel tickets to Bangalore."
   },
   {
-    question: "Do you handle permits and approvals?",
-    answer: "Yes, we manage the entire end-to-end municipal compliance, zoning approvals, structural certifications, and utility connection clearances required in Bangalore prior to site mobilization."
+    question: "Who is this residency for?",
+    answer: "It is for cracked developers, designers, and system engineers who have shipped impressive side projects or worked on high-growth products, and want to build real infrastructure in a high-density talent environment."
   },
   {
-    question: "Can I customise the design?",
-    answer: "Absolutely. Every project is fully bespoke. We work closely with you to draft custom architectural plans, interior specifications, and layout footprints tailored to your lifestyle and site orientation."
+    question: "Can I work on my own projects during the residency?",
+    answer: "The primary focus of this residency is collaborating together to ship V1 of TokenSupply. However, you will have plenty of opportunities to network, bounce ideas, and jam on side projects with other builders in the house."
   },
   {
-    question: "Do you offer a warranty on your builds?",
-    answer: "Yes, all our builds are backed by a comprehensive structural warranty of 10 years, alongside standard performance warranties on plumbing, waterproofing, and electrical systems."
+    question: "Is there a selection process?",
+    answer: "Yes. Since seats are highly limited (only 3 cracked builders), we run an interview and review process to select builders based on their technical skills, proof of work, and ability to ship rapidly."
   }
 ];
 
@@ -513,7 +513,7 @@ export default function Home() {
           </div>
 
           {/* Progress Percent */}
-          <span className="font-geist-pixel-circle text-[10px] text-[#e2b857] tracking-widest uppercase">
+          <span className="font-geist-pixel-circle text-[10px] text-[#e2b857] font-bold uppercase">
             Loading... {progress.toString().padStart(2, '0')}%
           </span>
         </div>
@@ -524,7 +524,7 @@ export default function Home() {
         id="floating-player"
         className="fixed top-6 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 -translate-y-4 pointer-events-none"
       >
-        <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 max-w-[120px] truncate">
+        <span className="font-geist-pixel-circle font-bold text-[9px] text-[#e2b857] tracking-wider text-zinc-400 max-w-[120px] truncate">
           FM: {playlist[currentSongIndex].title}
         </span>
         {/* Animated Sound Wave bars */}
@@ -696,7 +696,7 @@ export default function Home() {
             <p className="text-[#8e8e93] border-l border-zinc-400 pl-4 text-[15px] md:text-[17px] leading-[1.4] tracking-normal mb-8 font-bold font-geist-pixel-circle">
               One platform to manage products, inventory, orders, fulfillment, and sales channels so you can focus on growing your business, not managing spreadsheets.
             </p>
-            <button className="bg-white text-black font-geist-pixel-circle font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-wider">
+            <button className="bg-white text-black font-geist-pixel-circle font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer">
               Learn More
             </button>
           </div>
@@ -720,7 +720,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
           {/* Left Column: Title */}
           <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
-            <span className="text-[10px] uppercase font-mono tracking-widest text-[#e2b857] mb-3">
+            <span className="text-[10px] uppercase font-semibold font-geist-pixel-circle tracking-widest text-[#e2b857] mb-3">
               Infrastructure
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight leading-[1.1] mb-4">
@@ -916,7 +916,7 @@ export default function Home() {
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white mb-1 tracking-tight">
                   The Road to V1
                 </h2>
-                <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
+                <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] font-semibold font-geist-pixel-circle max-w-[550px]">
                   Six weeks. Seven workstreams. One shipped product.
                 </p>
               </div>
@@ -1130,7 +1130,7 @@ export default function Home() {
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                     className="w-full flex justify-between items-center px-6 py-5 text-left text-[#ededed] hover:text-white transition duration-200 cursor-pointer"
                   >
-                    <span className="text-sm md:text-base font-medium tracking-tight pr-4">
+                    <span className="text-sm md:text-base font-semibold font-geist-pixel-circle pr-4">
                       {item.question}
                     </span>
                     <span className={`text-xl font-light text-[#8e8e93] transition-transform duration-300 transform select-none ${isOpen ? "rotate-45 text-white" : ""
