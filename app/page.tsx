@@ -643,7 +643,7 @@ export default function Home() {
           {/* Inline lo-fi FM player */}
           <div
             id="inline-player"
-            className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-[#8e8e93] opacity-100 pointer-events-auto"
+            className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-[#8e8e93] opacity-100 pointer-events-auto pt-5"
           >
             <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 max-w-[120px] truncate">
               FM: {playlist[currentSongIndex].title}
