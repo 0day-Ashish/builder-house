@@ -586,7 +586,7 @@ export default function Home() {
         {/* Navigation Bar */}
         <div className="flex justify-between items-start w-full mt-4 text-[13px] md:text-[15px] text-[#8e8e93] font-normal px-1">
           <div className="flex flex-col items-end ml-auto pr-2 md:pr-4">
-            <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none">
+            <span className="text-white text-[17px] md:text-[25px] font-geist-pixel-circle tracking-tighter leading-none">
               Bangalore, 16th July
             </span>
             {/* Inline lo-fi FM player */}
@@ -656,24 +656,24 @@ export default function Home() {
 
           {/* Badge text in its own white box */}
           <div className="bg-white px-4 py-1 shadow-lg border border-black">
-            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-mono text-black font-semibold whitespace-nowrap">
+            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-mono text-black font-geist-pixel-circle whitespace-nowrap">
               A Sponsored Residency for Cracked People
             </span>
           </div>
         </div>
 
         {/* Headline */}
-        <h2 className="font-sans select-none mb-10 leading-[1.05] tracking-tight">
+        <h2 className="font-geist-pixel-circle select-none mb-10 leading-[1.05] tracking-tight">
           <span className="text-[10.5vw] md:text-[5.5vw] lg:text-[5.8vw] font-light block text-[#ededed]">
             The <span className="font-instrument-serif italic font-normal text-[#e2b857] pr-1 md:pr-2">Builders</span> Are
           </span>
-          <span className="text-[9vw] md:text-[6.5vw] lg:text-[4.5vw] font-bold block text-white tracking-tight">
+          <span className="text-[9vw] md:text-[6.5vw] lg:text-[4.5vw] font-geist-pixel-circle block text-white tracking-tight">
             Assembling
           </span>
         </h2>
 
         {/* CTA Button */}
-        <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase -mt-5">
+        <button className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase -mt-5">
           Apply Now
         </button>
       </div>
@@ -684,19 +684,19 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
           {/* Left Column: Text Content */}
           <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-2 tracking-tight font-normal">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight font-normal">
               About TokenSupply
             </h2>
-            <h3 className="text-lg md:text-xl font-medium text-[#e2b857] mb-6 tracking-tight">
+            <h3 className="text-lg md:text-xl font-bold font-geist-pixel-circle text-[#e2b857] mb-6 tracking-tight">
               Built for Digital Product Sellers
             </h3>
-            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-serif leading-[1.35] tracking-normal mb-6 font-normal">
+            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-geist-pixel-circle leading-[1.35] tracking-normal mb-6 font-normal">
               Token Supply is a unified platform that helps businesses selling <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
             </p>
-            <p className="text-[#8e8e93] border-l border-zinc-800 pl-4 text-[15px] md:text-[17px] leading-[1.4] tracking-normal mb-8 font-normal">
+            <p className="text-[#8e8e93] border-l border-zinc-400 pl-4 text-[15px] md:text-[17px] leading-[1.4] tracking-normal mb-8 font-bold font-geist-pixel-circle">
               One platform to manage products, inventory, orders, fulfillment, and sales channels so you can focus on growing your business, not managing spreadsheets.
             </p>
-            <button className="bg-white text-black font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-wider">
+            <button className="bg-white text-black font-geist-pixel-circle font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase tracking-wider">
               Learn More
             </button>
           </div>
@@ -723,7 +723,7 @@ export default function Home() {
             <span className="text-[10px] uppercase font-mono tracking-widest text-[#e2b857] mb-3">
               Infrastructure
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white tracking-tight leading-[1.1] mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight leading-[1.1] mb-4">
               TokenSupply <span className="italic">Subprocessors</span>
             </h2>
             <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[380px]">
@@ -793,25 +793,25 @@ export default function Home() {
 
           {/* Right Column: Text & Stats */}
           <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-6 tracking-tight font-normal">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-6 tracking-tight font-normal">
               What is Builder House?
             </h2>
-            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-serif leading-[1.35] tracking-normal mb-10 font-normal">
+            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-geist-pixel-circle leading-[1.35] tracking-normal mb-10 font-normal">
               Builder House is all about developers, designers, and engineers with great past works who are absolutely <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">cracked</span> and have a crazy level of mind when it comes to <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">building cool shit</span>. In this residency, they will be collaborating with our core team to work on v1 of TokenSupply.
             </p>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-3 gap-6 w-full">
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">3</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white tracking-tight mb-1">3</div>
                 <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold">Cracked Minds</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">45</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white tracking-tight mb-1">45</div>
                 <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Days of shipping</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">v1</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white tracking-tight mb-1">v1</div>
                 <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Launch target</div>
               </div>
             </div>
@@ -835,7 +835,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h3 className="text-[19px] md:text-[22px] font-instrument-serif text-white tracking-tight mb-1.5">
+                <h3 className="text-[19px] md:text-[22px] font-geist-pixel-circle text-white tracking-tight mb-1.5">
                   {activity.title}
                 </h3>
                 <p className="text-xs md:text-sm text-[#8e8e93] leading-relaxed">
@@ -865,7 +865,7 @@ export default function Home() {
             <span className="text-[10px] uppercase font-mono tracking-widest text-[#e2b857] mb-3">
               The Benefits
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white tracking-tight leading-[1.1] mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight leading-[1.1] mb-4">
               Perks of the <span className="italic">Residency</span>
             </h2>
             <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[380px]">
@@ -913,7 +913,7 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-col items-start">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white mb-1 tracking-tight">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white mb-1 tracking-tight">
                   The Road to V1
                 </h2>
                 <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
@@ -934,7 +934,7 @@ export default function Home() {
               {/* Phase & Date */}
               <div className="md:col-span-4 flex flex-col gap-1">
                 <span className="text-xs font-mono uppercase tracking-wider text-[#e2b857]">{phase.id}</span>
-                <span className="text-white text-lg font-instrument-serif">{phase.date}</span>
+                <span className="text-white text-lg font-geist-pixel-circle">{phase.date}</span>
               </div>
 
               {/* Title & Body */}
@@ -974,67 +974,53 @@ export default function Home() {
 
       {/* Team Section */}
       <div className="w-full pb-20 flex flex-col pt-14 md:pt-26">
-        {/* Header grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16 max-w-[1400px] mx-auto px-4 md:px-8">
-          {/* Left Column: Icon + Team label */}
-          <div className="md:col-span-4 flex items-start gap-1.5 text-[#8e8e93] text-sm md:text-base font-normal tracking-wide pl-1 pt-2">
-            <svg className="w-4 h-4 mt-1 text-[#8e8e93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">Team</span>
-          </div>
+        {/* Centered Header Block */}
+        <div className="w-full mb-16 max-w-[850px] mx-auto flex flex-col items-center text-center px-4 relative">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-4 tracking-tight">
+            The Minds Behind Builder House
+          </h2>
+          <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px] mb-6">
+            A multidisciplinary group of developers, designers, and construction specialists building the future of residential design.
+          </p>
 
-          {/* Right Column: Title */}
-          <div className="md:col-span-8 flex flex-col items-start pl-1 relative w-full">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-4 tracking-tight">
-              The Minds Behind Builder House
-            </h2>
-            <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[550px]">
-              A multidisciplinary group of developers, designers, and construction specialists building the future of residential design.
-            </p>
+          {/* Slider Navigation Controls */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={scrollPrev}
+              className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
+              aria-label="Previous Slide"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-            {/* Slider Navigation Controls */}
-            <div className="flex items-center gap-2 mt-6 md:mt-0 md:absolute md:top-2 md:right-0">
-              <button
-                onClick={scrollPrev}
-                className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
-                aria-label="Previous Slide"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            {/* Autoplay Play/Pause Toggle */}
+            <button
+              onClick={() => setIsMarqueePaused(!isMarqueePaused)}
+              className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
+              aria-label={isMarqueePaused ? "Resume Autoplay" : "Pause Autoplay"}
+            >
+              {isMarqueePaused ? (
+                <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
                 </svg>
-              </button>
-
-              {/* Autoplay Play/Pause Toggle */}
-              <button
-                onClick={() => setIsMarqueePaused(!isMarqueePaused)}
-                className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
-                aria-label={isMarqueePaused ? "Resume Autoplay" : "Pause Autoplay"}
-              >
-                {isMarqueePaused ? (
-                  <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                ) : (
-                  <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
-                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-                  </svg>
-                )}
-              </button>
-
-              <button
-                onClick={scrollNext}
-                className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
-                aria-label="Next Slide"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              ) : (
+                <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
                 </svg>
-              </button>
-            </div>
+              )}
+            </button>
+
+            <button
+              onClick={scrollNext}
+              className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
+              aria-label="Next Slide"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -1118,7 +1104,7 @@ export default function Home() {
       <div className="w-full pb-36 px-4 md:px-8 max-w-[850px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
         <div className="flex flex-col items-center w-full">
           <div className="flex items-center justify-center gap-3 md:gap-4 mb-10 select-none">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-white tracking-tight text-center">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight text-center">
               Frequently Asked Questions
             </h2>
             <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
@@ -1172,21 +1158,21 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[850px] mx-auto px-4 md:px-8">
           {/* Live Box */}
           <div className="aspect-square flex items-center justify-center border border-white rounded-sm group cursor-pointer transition duration-300">
-            <span className="font-instrument-serif italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
+            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
               Live
             </span>
           </div>
 
           {/* Build Box */}
           <div className="aspect-square flex items-center justify-center border border-white rounded-sm group cursor-pointer transition duration-300">
-            <span className="font-instrument-serif italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
+            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
               Build
             </span>
           </div>
 
           {/* Network Box */}
           <div className="aspect-square flex items-center justify-center border border-white rounded-sm group cursor-pointer transition duration-300">
-            <span className="font-instrument-serif italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
+            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
               Network
             </span>
           </div>
@@ -1194,7 +1180,7 @@ export default function Home() {
 
         {/* Footer Subtext */}
         <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-500">
-          Pick a pillar. <span className="font-instrument-serif text-white ml-0.5 text-lg">Step inside.</span>
+          Pick a pillar. <span className="font-geist-pixel-circle text-white ml-0.5 text-lg">Step inside.</span>
         </div>
       </div>
 
@@ -1225,7 +1211,7 @@ export default function Home() {
           <div className="flex-1 flex flex-col md:flex-row items-center md:justify-between gap-6 w-full z-10">
             {/* Text details */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-2 tracking-tight select-none">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight select-none">
                 Ready to ship?
               </h2>
               <p className="text-zinc-400 text-sm md:text-base max-w-[450px] font-normal">
@@ -1235,12 +1221,12 @@ export default function Home() {
 
             {/* Action buttons */}
             <div className="flex flex-row gap-3.5 shrink-0">
-              <button className="bg-white text-black font-semibold text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md">
+              <button className="bg-white text-black font-semibold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md">
                 Apply Now
               </button>
               <a
                 href="mailto:hi@realanshuman.com"
-                className="bg-transparent text-white border border-white/60 font-medium text-[14px] px-5 py-2.5 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1"
+                className="bg-transparent text-white border border-white/60 font-medium font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex font-bold items-center gap-1"
               >
                 Contact us
                 <svg className="w-3.5 h-3.5 text-zinc-300 mt-[1px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
