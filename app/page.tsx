@@ -68,6 +68,14 @@ const teamMembers = [
       linkedin: "https://www.linkedin.com/in/aman-maddeshiya-b437581b1?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       website: "https://aman-dev.is-a.dev/"
     }
+  },
+  {
+    name: "Soubhagya Chouhan",
+    role: "Test Engineer",
+    image: "/team/soubhagya.jpeg",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/soubhagya-chouhan-744368128"
+    }
   }
 ];
 
