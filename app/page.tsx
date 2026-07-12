@@ -99,7 +99,7 @@ const roadmapPhases = [
     title: "Testing & QA",
     description: "End-to-end coverage, load testing, and hardening for production traffic.",
     status: "upcoming",
-    image: ""
+    image: "/assets/testing.png"
   },
   {
     id: "Phase 07",
@@ -107,8 +107,54 @@ const roadmapPhases = [
     title: "Launch preparation",
     description: "Marketing, docs, onboarding, and the launch itself. Go time.",
     status: "upcoming",
-    image: ""
+    image: "/assets/launch.png"
   }
+];
+
+const perks = [
+  {
+    num: "01",
+    title: "Sponsored Stay",
+    description: "Fully covered housing in Bangalore for the entire 45 days. Private beds, cozy common rooms, zero rent."
+  },
+  {
+    num: "02",
+    title: "Chef-Prepared Meals",
+    description: "Daily chef-cooked breakfast, lunch, and dinner tailored to keep your energy high and brain fueled."
+  },
+  {
+    num: "03",
+    title: "Cracked Workspace",
+    description: "High-speed workspace with gigabit internet, backup power, 27-inch monitors, and hot desks."
+  },
+  {
+    num: "04",
+    title: "Founder Mentorship",
+    description: "Direct whiteboard sessions, code reviews, and feedback loops with TokenSupply founders and core engineers."
+  },
+  {
+    num: "05",
+    title: "Travel Stipend",
+    description: "We cover your flight or train tickets to and from Bangalore so you don't pay anything to get here."
+  },
+  {
+    num: "06",
+    title: "Seed Fund Access",
+    description: "Direct pipeline and pitch preparation for active tier-1 venture funds and prominent developer angels."
+  }
+];
+
+const subprocessors = [
+  { name: "AWS", purpose: "Cloud infrastructure and hosting services", location: "United States", website: "https://aws.amazon.com" },
+  { name: "Deepgram", purpose: "Speech-to-text and audio processing", location: "United States", website: "https://deepgram.com" },
+  { name: "OpenAI", purpose: "AI language model services", location: "United States", website: "https://openai.com" },
+  { name: "Grok", purpose: "AI language model services", location: "United States", website: "https://grok.x.ai" },
+  { name: "Stripe", purpose: "Payment processing and billing", location: "United States", website: "https://stripe.com" },
+  { name: "Intercom", purpose: "Customer support and messaging", location: "Ireland", website: "https://intercom.com" },
+  { name: "Cloudflare", purpose: "CDN and security services", location: "United States", website: "https://cloudflare.com" },
+  { name: "WorkOS", purpose: "Enterprise authentication and SSO", location: "United States", website: "https://workos.com" },
+  { name: "Anthropic", purpose: "AI language model services", location: "United States", website: "https://anthropic.com" },
+  { name: "Vercel", purpose: "Frontend hosting and deployment", location: "United States", website: "https://vercel.com" }
 ];
 
 const faqItems = [
@@ -256,7 +302,7 @@ export default function Home() {
       const increment = Math.floor(Math.random() * 5) + 1;
       currentProgress = Math.min(currentProgress + increment, 100);
       setProgress(currentProgress);
-      
+
       if (currentProgress >= 100) {
         clearInterval(interval);
         setTimeout(() => {
@@ -304,7 +350,7 @@ export default function Home() {
     const step = () => {
       if (container && !isManualScrollingRef.current && !isMarqueePausedRef.current) {
         container.scrollLeft += scrollSpeed;
-        
+
         // Wrap around seamlessly using exact set width
         const item = container.children[0] as HTMLElement;
         if (item) {
@@ -349,7 +395,7 @@ export default function Home() {
   const scrollNext = () => {
     const container = scrollContainerRef.current;
     if (!container) return;
-    
+
     // Pause auto-scroll temporarily
     isManualScrollingRef.current = true;
     if (manualScrollTimeoutRef.current) clearTimeout(manualScrollTimeoutRef.current);
@@ -433,14 +479,14 @@ export default function Home() {
       if (sticky) {
         inlinePlayer.style.opacity = "0";
         inlinePlayer.style.pointerEvents = "none";
-        
+
         floatingPlayer.style.opacity = "1";
         floatingPlayer.style.transform = "translateY(0)";
         floatingPlayer.style.pointerEvents = "auto";
       } else {
         inlinePlayer.style.opacity = "1";
         inlinePlayer.style.pointerEvents = "auto";
-        
+
         floatingPlayer.style.opacity = "0";
         floatingPlayer.style.transform = "translateY(-16px)";
         floatingPlayer.style.pointerEvents = "none";
@@ -457,15 +503,15 @@ export default function Home() {
           <h1 className="text-white font-coastersans text-[8vw] sm:text-[6vw] tracking-wider mb-8 uppercase">
             Builder House
           </h1>
-          
+
           {/* Progress bar */}
           <div className="w-48 h-[2px] bg-zinc-950 overflow-hidden relative mb-3 rounded-full border border-zinc-900">
-            <div 
+            <div
               className="absolute left-0 top-0 h-full bg-[#e2b857] transition-all duration-100 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
-          
+
           {/* Progress Percent */}
           <span className="font-mono text-[10px] text-[#e2b857] tracking-widest uppercase">
             Loading... {progress.toString().padStart(2, '0')}%
@@ -474,7 +520,7 @@ export default function Home() {
       )}
 
       {/* Floating Sticky Music Player (Corner Pill) */}
-      <div 
+      <div
         id="floating-player"
         className="fixed top-6 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 -translate-y-4 pointer-events-none"
       >
@@ -491,7 +537,7 @@ export default function Home() {
 
         {/* Playlist Skip & Play Controls */}
         <div className="flex items-center gap-1.5">
-          <button 
+          <button
             onClick={handlePrevSong}
             className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
             aria-label="Previous Song"
@@ -500,13 +546,13 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button 
+          <button
             onClick={togglePlay}
             className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
           >
             {isPlaying ? 'Pause' : 'Play'}
           </button>
-          <button 
+          <button
             onClick={handleNextSong}
             className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
             aria-label="Next Song"
@@ -519,8 +565,8 @@ export default function Home() {
       </div>
 
       {/* Root audio element */}
-      <audio 
-        ref={audioRef} 
+      <audio
+        ref={audioRef}
         src={playlist[currentSongIndex].src}
         onEnded={handleNextSong}
       />
@@ -544,7 +590,7 @@ export default function Home() {
               Bangalore, 16th July
             </span>
             {/* Inline lo-fi FM player */}
-            <div 
+            <div
               id="inline-player"
               className="flex items-center gap-2.5 select-none transition-opacity duration-300 mt-6 text-[#8e8e93] opacity-100 pointer-events-auto"
             >
@@ -561,7 +607,7 @@ export default function Home() {
 
               {/* Playlist Skip & Play Controls */}
               <div className="flex items-center gap-1.5">
-                <button 
+                <button
                   onClick={handlePrevSong}
                   className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
                   aria-label="Previous Song"
@@ -570,13 +616,13 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
-                <button 
+                <button
                   onClick={togglePlay}
                   className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
                 >
                   {isPlaying ? 'Pause' : 'Play'}
                 </button>
-                <button 
+                <button
                   onClick={handleNextSong}
                   className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
                   aria-label="Next Song"
@@ -607,10 +653,10 @@ export default function Home() {
               <Image src="/assets/pile_7.webp" alt="Team Member 3" fill className="object-cover" />
             </div>
           </div>
-          
+
           {/* Badge text in its own white box */}
           <div className="bg-white px-4 py-1 shadow-lg border border-black">
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-mono text-black font-semibold">
+            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-mono text-black font-semibold whitespace-nowrap">
               A Sponsored Residency for Cracked People
             </span>
           </div>
@@ -618,10 +664,10 @@ export default function Home() {
 
         {/* Headline */}
         <h2 className="font-sans select-none mb-10 leading-[1.05] tracking-tight">
-          <span className="text-[8.5vw] md:text-[5.5vw] lg:text-[5.8vw] font-light block text-[#ededed]">
+          <span className="text-[10.5vw] md:text-[5.5vw] lg:text-[5.8vw] font-light block text-[#ededed]">
             The <span className="font-instrument-serif italic font-normal text-[#e2b857] pr-1 md:pr-2">Builders</span> Are
           </span>
-          <span className="text-[7vw] md:text-[6.5vw] lg:text-[4.5vw] font-bold block text-white tracking-tight">
+          <span className="text-[9vw] md:text-[6.5vw] lg:text-[4.5vw] font-bold block text-white tracking-tight">
             Assembling
           </span>
         </h2>
@@ -664,6 +710,65 @@ export default function Home() {
                 fill
                 className="object-cover object-center pointer-events-none"
               />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Subprocessor Section */}
+      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
+          {/* Left Column: Title */}
+          <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
+            <span className="text-[10px] uppercase font-mono tracking-widest text-[#e2b857] mb-3">
+              Infrastructure
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white tracking-tight leading-[1.1] mb-4">
+              TokenSupply <span className="italic">Subprocessors</span>
+            </h2>
+            <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[380px]">
+              We partner with world-class security and hosting infrastructure providers to ensure high availability, data security, and seamless platform performance.
+            </p>
+          </div>
+
+          {/* Right Column: Subprocessors Table */}
+          <div className="lg:col-span-8 w-full overflow-hidden">
+            <div className="overflow-x-auto w-full scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+              <table className="w-full text-left border-collapse min-w-[600px] pl-1">
+                <thead>
+                  <tr className="border-b border-zinc-900">
+                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[20%]">Name</th>
+                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[45%]">Purpose</th>
+                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[15%]">Location</th>
+                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[20%]">Website</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {subprocessors.map((sub, idx) => (
+                    <tr key={idx} className="group border-b border-zinc-900/40 hover:bg-zinc-950/20 transition duration-150">
+                      <td className="py-4 font-semibold text-white tracking-tight text-sm group-hover:text-[#e2b857] transition-colors duration-150">
+                        {sub.name}
+                      </td>
+                      <td className="py-4 text-[#8e8e93] text-xs md:text-sm font-normal">
+                        {sub.purpose}
+                      </td>
+                      <td className="py-4 text-zinc-500 text-xs md:text-sm font-normal">
+                        {sub.location}
+                      </td>
+                      <td className="py-4">
+                        <a
+                          href={sub.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#e2b857]/80 hover:text-[#e2b857] hover:underline font-mono text-[11px] md:text-xs tracking-tight transition duration-150"
+                        >
+                          {sub.website.replace("https://", "")}
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -719,7 +824,7 @@ export default function Home() {
         {/* 6-Box Grid Layout: 3 boxes in one line, 3 in the next line, sticking to each other */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 w-full pl-1 border-t border-l border-white">
           {programDetails.map((activity, idx) => (
-            <div 
+            <div
               key={idx}
               className="bg-[#0a0a0c]/20 border-r border-b border-white p-6 flex flex-col items-start justify-between min-h-[220px]"
             >
@@ -752,23 +857,54 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Perks Section */}
+      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-12 border-t border-zinc-900/60">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
+          {/* Left Column: Heading */}
+          <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
+            <span className="text-[10px] uppercase font-mono tracking-widest text-[#e2b857] mb-3">
+              The Benefits
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white tracking-tight leading-[1.1] mb-4">
+              Perks of the <span className="italic">Residency</span>
+            </h2>
+            <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[380px]">
+              We cover all the logistical overhead so you can focus entirely on shipping high-fidelity product code and designs.
+            </p>
+          </div>
+
+          {/* Right Column: Perks Grid */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 pl-1">
+              {perks.map((perk, idx) => (
+                <div key={idx} className="flex flex-col items-start group">
+                  <div className="flex items-center gap-2.5 mb-3.5">
+                    <span className="font-mono text-[9px] text-[#e2b857] uppercase tracking-wider bg-transparent px-2 py-0.5 border border-zinc-800 rounded">
+                      {perk.num}
+                    </span>
+                    <h3 className="text-[18px] md:text-[20px] font-semibold text-white tracking-tight group-hover:text-[#e2b857] transition-colors duration-200">
+                      {perk.title}
+                    </h3>
+                  </div>
+                  <p className="text-[#8e8e93] text-xs md:text-sm leading-relaxed max-w-[340px]">
+                    {perk.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Roadmap Section */}
       <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
         {/* Header grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16">
-          {/* Left Column: Icon + Roadmap label */}
-          <div className="md:col-span-4 flex items-start gap-1.5 text-[#8e8e93] text-sm md:text-base font-normal tracking-wide pl-1 pt-2">
-            <svg className="w-4 h-4 mt-1 text-[#8e8e93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">Roadmap</span>
-          </div>
 
           {/* Right Column: Title */}
           <div className="md:col-span-8 flex flex-col items-start pl-1">
             <div className="flex items-start gap-4 md:gap-5 w-full">
-              <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-xl overflow-hidden bg-transparent shrink-0 select-none mt-1">
+              <div className="relative w-14 h-14 md:w-18 md:h-18 rounded-xl overflow-hidden bg-transparent shrink-0 select-none mt-1">
                 <Image
                   src="/assets/roadmap.png"
                   alt="Roadmap Header Icon"
@@ -791,8 +927,8 @@ export default function Home() {
         {/* Timeline Grid */}
         <div className="flex flex-col w-full pl-1 border-t border-zinc-900">
           {roadmapPhases.map((phase, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="grid grid-cols-1 md:grid-cols-12 gap-6 py-8 border-b border-zinc-900 items-start group"
             >
               {/* Phase & Date */}
@@ -800,7 +936,7 @@ export default function Home() {
                 <span className="text-xs font-mono uppercase tracking-wider text-[#e2b857]">{phase.id}</span>
                 <span className="text-white text-lg font-instrument-serif">{phase.date}</span>
               </div>
-              
+
               {/* Title & Body */}
               <div className="md:col-span-6 flex flex-col gap-2">
                 <h3 className="text-[18px] md:text-[20px] font-semibold text-white tracking-tight">
@@ -814,12 +950,12 @@ export default function Home() {
               {/* Status Icon Image */}
               <div className="md:col-span-2 flex md:justify-end pt-1">
                 {phase.image ? (
-                  <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-zinc-800 bg-transparent select-none shadow-md">
+                  <div className="relative w-17 h-17 rounded-xl overflow-hidden bg-transparent select-none shadow-md">
                     <Image
                       src={phase.image}
                       alt={phase.title}
                       fill
-                      className="object-cover"
+                      className="object-cover pointer-events-none"
                     />
                   </div>
                 ) : (
@@ -862,7 +998,7 @@ export default function Home() {
 
             {/* Slider Navigation Controls */}
             <div className="flex items-center gap-2 mt-6 md:mt-0 md:absolute md:top-2 md:right-0">
-              <button 
+              <button
                 onClick={scrollPrev}
                 className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
                 aria-label="Previous Slide"
@@ -873,7 +1009,7 @@ export default function Home() {
               </button>
 
               {/* Autoplay Play/Pause Toggle */}
-              <button 
+              <button
                 onClick={() => setIsMarqueePaused(!isMarqueePaused)}
                 className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
                 aria-label={isMarqueePaused ? "Resume Autoplay" : "Pause Autoplay"}
@@ -889,7 +1025,7 @@ export default function Home() {
                 )}
               </button>
 
-              <button 
+              <button
                 onClick={scrollNext}
                 className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
                 aria-label="Next Slide"
@@ -903,7 +1039,7 @@ export default function Home() {
         </div>
 
         {/* Slider Area */}
-        <div 
+        <div
           ref={scrollContainerRef}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
@@ -979,61 +1115,54 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
-          {/* Left Column: Trophy Icon + FAQ Tag */}
-          <div className="md:col-span-4 flex items-start gap-1.5 text-[#8e8e93] text-sm md:text-base font-normal tracking-wide pl-1 pt-2">
-            <svg className="w-4 h-4 mt-1 text-[#8e8e93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-              <path d="M4 22h16" />
-              <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
-              <path d="M12 2a4 4 0 0 1 4 4v8H8V6a4 4 0 0 1 4-4Z" />
-            </svg>
-            <span className="uppercase text-sm font-instrument-serif tracking-wider pt-[3px]">FAQ</span>
-          </div>
-
-          {/* Right Column: Title & Accordions */}
-          <div className="md:col-span-8 flex flex-col items-start pl-1 w-full">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-white mb-10 tracking-tight">
+      <div className="w-full pb-36 px-4 md:px-8 max-w-[850px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
+        <div className="flex flex-col items-center w-full">
+          <div className="flex items-center justify-center gap-3 md:gap-4 mb-10 select-none">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-white tracking-tight text-center">
               Frequently Asked Questions
             </h2>
-            
-            {/* Accordion Stack */}
-            <div className="flex flex-col gap-3 w-full">
-              {faqItems.map((item, idx) => {
-                const isOpen = openFaqIdx === idx;
-                return (
-                  <div 
-                    key={idx} 
-                    className="w-full bg-[#0a0a0c]/60 border border-zinc-900/60 rounded-xl overflow-hidden transition-all duration-300"
+            <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
+              <Image
+                src="/assets/pin.png"
+                alt="FAQ Pin Badge Icon"
+                fill
+                className="object-contain pointer-events-none"
+              />
+            </div>
+          </div>
+
+          {/* Accordion Stack */}
+          <div className="flex flex-col gap-3 w-full">
+            {faqItems.map((item, idx) => {
+              const isOpen = openFaqIdx === idx;
+              return (
+                <div
+                  key={idx}
+                  className="w-full bg-[#0a0a0c]/60 border border-zinc-900/60 rounded-xl overflow-hidden transition-all duration-300"
+                >
+                  <button
+                    onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
+                    className="w-full flex justify-between items-center px-6 py-5 text-left text-[#ededed] hover:text-white transition duration-200 cursor-pointer"
                   >
-                    <button
-                      onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                      className="w-full flex justify-between items-center px-6 py-5 text-left text-[#ededed] hover:text-white transition duration-200 cursor-pointer"
-                    >
-                      <span className="text-sm md:text-base font-medium tracking-tight pr-4">
-                        {item.question}
-                      </span>
-                      <span className={`text-xl font-light text-[#8e8e93] transition-transform duration-300 transform select-none ${
-                        isOpen ? "rotate-45 text-white" : ""
+                    <span className="text-sm md:text-base font-medium tracking-tight pr-4">
+                      {item.question}
+                    </span>
+                    <span className={`text-xl font-light text-[#8e8e93] transition-transform duration-300 transform select-none ${isOpen ? "rotate-45 text-white" : ""
                       }`}>
-                        +
-                      </span>
-                    </button>
-                    <div 
-                      className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                        isOpen ? "max-h-[300px] border-t border-zinc-900/40" : "max-h-0"
+                      +
+                    </span>
+                  </button>
+                  <div
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-[300px] border-t border-zinc-900/40" : "max-h-0"
                       }`}
-                    >
-                      <div className="px-6 py-4 text-xs md:text-sm text-[#8e8e93] leading-relaxed">
-                        {item.answer}
-                      </div>
+                  >
+                    <div className="px-6 py-4 text-xs md:text-sm text-[#8e8e93] leading-relaxed">
+                      {item.answer}
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -1073,14 +1202,14 @@ export default function Home() {
       <div className="w-full px-4 md:px-8 max-w-[1400px] mx-auto mb-24 mt-12">
         <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 shadow-2xl">
           {/* Grid lines background overlay */}
-          <div 
+          <div
             className="absolute inset-0 opacity-[0.07] pointer-events-none"
             style={{
               backgroundImage: 'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
               backgroundSize: '20px 20px'
             }}
           />
-          
+
           {/* Left Column: Animated CTA Graphic */}
           <div className="relative w-40 h-40 md:w-64 md:h-64 shrink-0 z-10 select-none rounded-2xl overflow-hidden border border-zinc-800/40">
             <Image
@@ -1103,13 +1232,13 @@ export default function Home() {
                 Let's build the incredible together, with TokenSupply
               </p>
             </div>
-            
+
             {/* Action buttons */}
             <div className="flex flex-row gap-3.5 shrink-0">
               <button className="bg-white text-black font-semibold text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md">
                 Apply Now
               </button>
-              <a 
+              <a
                 href="mailto:hi@realanshuman.com"
                 className="bg-transparent text-white border border-white/60 font-medium text-[14px] px-5 py-2.5 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1"
               >
