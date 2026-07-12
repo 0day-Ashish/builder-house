@@ -144,17 +144,21 @@ const perks = [
   }
 ];
 
-const subprocessors = [
-  { name: "AWS", purpose: "Cloud infrastructure and hosting services", location: "United States", website: "https://aws.amazon.com" },
-  { name: "Deepgram", purpose: "Speech-to-text and audio processing", location: "United States", website: "https://deepgram.com" },
-  { name: "OpenAI", purpose: "AI language model services", location: "United States", website: "https://openai.com" },
-  { name: "Grok", purpose: "AI language model services", location: "United States", website: "https://grok.x.ai" },
-  { name: "Stripe", purpose: "Payment processing and billing", location: "United States", website: "https://stripe.com" },
-  { name: "Intercom", purpose: "Customer support and messaging", location: "Ireland", website: "https://intercom.com" },
-  { name: "Cloudflare", purpose: "CDN and security services", location: "United States", website: "https://cloudflare.com" },
-  { name: "WorkOS", purpose: "Enterprise authentication and SSO", location: "United States", website: "https://workos.com" },
-  { name: "Anthropic", purpose: "AI language model services", location: "United States", website: "https://anthropic.com" },
-  { name: "Vercel", purpose: "Frontend hosting and deployment", location: "United States", website: "https://vercel.com" }
+const subprocessorLogos = [
+  { name: "Dodo Payments", path: "/assets/logos/dodopayments-com-logo.png" },
+  { name: "Mintlify", path: "/assets/logos/mintlify-com-logo.png" },
+  { name: "Sentry", path: "/assets/logos/sentry.png" },
+  { name: "Supabase", path: "/assets/logos/supabase.png" },
+  { name: "Resend", path: "/assets/logos/resend-com-logo.png" },
+  { name: "Cloudflare", path: "/assets/logos/cloudflare.png" },
+  { name: "Better Auth", path: "/assets/logos/betterauth.png" },
+  { name: "Stripe", path: "/assets/logos/stripe-com-logo.png" },
+  { name: "PostHog", path: "/assets/logos/posthog-com-eight-vercel-app-logo.png" },
+  { name: "Redis", path: "/assets/logos/redis-io-logo.png" },
+  { name: "DigitalOcean", path: "/assets/logos/digitalocean-com-logo.png" },
+  { name: "Better Stack", path: "/assets/logos/betterstack.png" },
+  { name: "BullMQ", path: "/assets/logos/bullmq-logo.png" },
+  { name: "GitHub", path: "/assets/logos/github-blog-logo.png" }
 ];
 
 const faqItems = [
@@ -544,7 +548,7 @@ export default function Home() {
       {/* Floating Sticky Music Player (Corner Pill) */}
       <div
         id="floating-player"
-        className="fixed top-12 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 -translate-y-4 pointer-events-none"
+        className="fixed bottom-6 sm:bottom-auto sm:top-12 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 translate-y-4 sm:-translate-y-4 pointer-events-none"
       >
         <span className="font-geist-pixel-circle font-bold text-[9px] text-[#e2b857] tracking-wider text-zinc-400 max-w-[120px] truncate">
           FM: {playlist[currentSongIndex].title}
@@ -763,44 +767,31 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Right Column: Subprocessors Table */}
-          <div className="lg:col-span-8 w-full overflow-hidden">
-            <div className="overflow-x-auto w-full scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-              <table className="w-full text-left border-collapse min-w-[600px] pl-1">
-                <thead>
-                  <tr className="border-b border-zinc-900">
-                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[20%]">Name</th>
-                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[45%]">Purpose</th>
-                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[15%]">Location</th>
-                    <th className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase pb-4 w-[20%]">Website</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {subprocessors.map((sub, idx) => (
-                    <tr key={idx} className="group border-b border-zinc-900/40 hover:bg-zinc-950/20 transition duration-150">
-                      <td className="py-4 font-semibold text-white tracking-tight text-sm group-hover:text-[#e2b857] transition-colors duration-150">
-                        {sub.name}
-                      </td>
-                      <td className="py-4 text-[#8e8e93] text-xs md:text-sm font-normal">
-                        {sub.purpose}
-                      </td>
-                      <td className="py-4 text-zinc-500 text-xs md:text-sm font-normal">
-                        {sub.location}
-                      </td>
-                      <td className="py-4">
-                        <a
-                          href={sub.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#e2b857]/80 hover:text-[#e2b857] hover:underline font-mono text-[11px] md:text-xs tracking-tight transition duration-150"
-                        >
-                          {sub.website.replace("https://", "")}
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          {/* Right Column: Subprocessors Logos Grid */}
+          <div className="lg:col-span-8 w-full pl-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full">
+              {subprocessorLogos.map((logo, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-center p-5 bg-[#0d0d0f]/60 border border-zinc-850 hover:border-zinc-700/80 rounded-2xl h-24 transition-all duration-300 shadow-md group relative overflow-hidden"
+                >
+                  {/* Grid overlay for texture */}
+                  <div
+                    className="absolute inset-0 opacity-[0.02] pointer-events-none group-hover:opacity-[0.05] transition-opacity duration-300"
+                    style={{
+                      backgroundImage: 'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
+                      backgroundSize: '15px 15px'
+                    }}
+                  />
+                  <div className="relative w-full h-full max-w-[85%] max-h-[75%] select-none pointer-events-none transition duration-300 transform group-hover:scale-105 flex items-center justify-center">
+                    <img
+                      src={logo.path}
+                      alt={`${logo.name} Logo`}
+                      className="max-w-full max-h-full object-contain filter brightness-95 opacity-80 group-hover:opacity-100 group-hover:brightness-100 transition duration-300 pointer-events-none select-none"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
