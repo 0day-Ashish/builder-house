@@ -760,8 +760,8 @@ export default function Home() {
           </div>
 
           {/* Badge text in its own white box */}
-          <div className="bg-white px-4 py-1 shadow-lg border border-black">
-            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-instrument-sans font-semibold text-black whitespace-nowrap">
+          <div className="bg-white px-4 py-1 shadow-lg border border-black flex items-center justify-center">
+            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-instrument-sans font-semibold text-black whitespace-nowrap leading-none">
               A Sponsored Residency for Cracked People
             </span>
           </div>
@@ -782,7 +782,7 @@ export default function Home() {
           href="https://luma.com/zc8zrg9g"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-6 py-3.5 rounded-full hover:bg-zinc-200 active:scale-105 transition duration-200 cursor-pointer uppercase -mt-6 block text-center"
+          className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-6 py-3.5 rounded-full hover:bg-zinc-200 active:scale-105 transition duration-200 cursor-pointer uppercase -mt-6 block text-center"
         >
           Apply Now
         </a>
@@ -879,7 +879,7 @@ export default function Home() {
           <div className="col-span-1 lg:col-span-6 w-full">
             <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-800/40 shadow-2xl">
               <Image
-                src="/assets/hero.gif"
+                src="/assets/builderhouse.gif"
                 alt="About Builder House Building Project"
                 fill
                 unoptimized
@@ -1274,26 +1274,74 @@ export default function Home() {
 
       {/* Pillars Section */}
       <div className="w-full pb-36 flex flex-col pt-24 md:pt-36 border-t border-zinc-900/60 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[850px] mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-[850px] mx-auto px-4 md:px-8">
           {/* Live Box */}
-          <div className="aspect-square flex items-center justify-center bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-white/20 rounded-2xl group cursor-pointer transition-all duration-300">
-            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight transition duration-300 transform group-hover:scale-105">
-              Live
-            </span>
+          <div className="col-span-2 md:col-span-2 min-h-[160px] md:min-h-[220px] flex flex-col justify-between bg-[#0a0a0c]/60 border border-zinc-900/60 backdrop-blur-md hover:bg-zinc-900/80 hover:border-zinc-800/80 p-5 md:p-6 rounded-2xl group cursor-pointer transition-all duration-300 shadow-xl">
+            <div className="flex justify-between items-start">
+              <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-[#e2b857] font-semibold">01 / Residency</span>
+              <span className="text-[10px] text-zinc-500 font-mono">Bangalore</span>
+            </div>
+            <div className="my-1.5 md:my-3">
+              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
+                Live
+              </span>
+            </div>
+            <p className="text-[11px] md:text-xs text-zinc-400 leading-relaxed max-w-md font-sans">
+              Fully sponsored stay in Bangalore. Private rooms, chef-prepared meals, and round-trip travel stipend. Zero rent, zero logistics.
+            </p>
           </div>
 
           {/* Build Box */}
-          <div className="aspect-square flex items-center justify-center bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-white/20 rounded-2xl group cursor-pointer transition-all duration-300">
-            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight transition duration-300 transform group-hover:scale-105">
-              Build
-            </span>
+          <div className="col-span-1 md:col-span-1 min-h-[160px] md:min-h-[220px] flex flex-col justify-between bg-[#0a0a0c]/60 border border-zinc-900/60 backdrop-blur-md hover:bg-zinc-900/80 hover:border-zinc-800/80 p-5 md:p-6 rounded-2xl group cursor-pointer transition-all duration-300 shadow-xl">
+            <div className="flex justify-between items-start">
+              <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-[#e2b857] font-semibold">02 / Mission</span>
+              <span className="text-[10px] text-zinc-500 font-mono">Build V1</span>
+            </div>
+            <div className="my-1.5 md:my-3">
+              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
+                Build
+              </span>
+            </div>
+            <p className="text-[11px] md:text-xs text-zinc-400 leading-relaxed font-sans">
+              Collaborate on whiteboard designs, daily review sessions, and elite speed to ship TokenSupply.
+            </p>
           </div>
 
           {/* Network Box */}
-          <div className="aspect-square flex items-center justify-center bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-white/20 rounded-2xl group cursor-pointer transition-all duration-300">
-            <span className="font-geist-pixel-circle italic text-4xl md:text-5xl lg:text-6xl text-white tracking-tight transition duration-300 transform group-hover:scale-105">
-              Network
-            </span>
+          <div className="col-span-1 md:col-span-1 min-h-[160px] md:min-h-[220px] flex flex-col justify-between bg-[#0a0a0c]/60 border border-zinc-900/60 backdrop-blur-md hover:bg-zinc-900/80 hover:border-zinc-800/80 p-5 md:p-6 rounded-2xl group cursor-pointer transition-all duration-300 shadow-xl">
+            <div className="flex justify-between items-start">
+              <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-[#e2b857] font-semibold">03 / Capital</span>
+              <span className="text-[10px] text-zinc-500 font-mono">Demo Day</span>
+            </div>
+            <div className="my-1.5 md:my-3">
+              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
+                Network
+              </span>
+            </div>
+            <p className="text-[11px] md:text-xs text-zinc-400 leading-relaxed font-sans">
+              Connect directly with tier-1 developer VCs, angel syndicates, and prominent dev founders.
+            </p>
+          </div>
+
+          {/* Visual/Description Box - spans 2 cols on desktop to complete the bento grid */}
+          <div className="hidden md:flex col-span-2 min-h-[220px] flex-col justify-between bg-[#0a0a0c]/40 border border-zinc-900/60 p-6 rounded-2xl relative overflow-hidden select-none">
+            {/* Subtle Grid overlay for that technical developer feel */}
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+              style={{
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
+                backgroundSize: '16px 16px'
+              }}
+            />
+            <div className="flex justify-between items-start z-10">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">04 / THE RHYTHM</span>
+              <span className="text-[10px] text-[#e2b857] font-mono">45 Days of Flow</span>
+            </div>
+            <div className="z-10 max-w-md my-auto">
+              <h4 className="text-white font-geist-pixel-circle text-md mb-1.5">No distractions. Just pure building.</h4>
+              <p className="text-xs text-zinc-500 leading-relaxed font-sans">
+                A vetted residency designed for flow state. We handle the chef-cooked food, premium housing, round-trip travel, and developer workspace so you can focus entirely on shipping token commerce infrastructure.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -1305,11 +1353,11 @@ export default function Home() {
 
       {/* CTA Section */}
       <div className="w-full px-4 md:px-8 max-w-[1400px] mx-auto mb-24 mt-12">
-        <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-10 md:px-12 md:py-12 flex flex-col items-center shadow-2xl">
+        <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-30 md:px-12 md:py-38 flex flex-col items-center shadow-2xl">
           {/* Background Image overlay */}
           <div className="absolute inset-0 select-none pointer-events-none">
             <Image
-              src="/assets/footer-bg.jpeg"
+              src="/assets/cta-gif.gif"
               alt="CTA Background"
               fill
               className="object-cover"
@@ -1331,7 +1379,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight select-none">
                 Ready to ship?
               </h2>
-              <p className="text-zinc-300 text-sm md:text-base max-w-[450px] font-normal">
+              <p className="text-white text-sm md:text-base max-w-[450px] font-normal">
                 Let's build the incredible together, with TokenSupply
               </p>
             </div>
@@ -1381,9 +1429,22 @@ export default function Home() {
         </div>
 
         {/* Footer BUILDER HOUSE Giant Stamp */}
-        <h1 className="w-full text-center text-[11.9vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal pb-6 pr-4 md:pr-6">
+        <h1 className="w-full text-center text-[11.9vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal pb-4 pr-4 md:pr-6">
           BUILDER HOUSE
         </h1>
+
+        {/* Designed & Developed by Credit */}
+        <div className="w-full text-center text-[10px] md:text-[11px] text-white font-mono tracking-widest  pb-4 select-none">
+          Designed and Developed by{" "}
+          <a
+            href="https://arddev.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-400 hover:text-white transition-colors duration-200 underline underline-offset-4 font-semibold"
+          >
+            ard.dev
+          </a>
+        </div>
       </footer>
     </main>
   );
