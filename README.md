@@ -1,5 +1,7 @@
 # Builder House '26 — ft. TokenSupply
 
+![Builder House '26](public/assets/image.png)
+
 A bespoke, high-contrast, premium landing page for **Builder House '26**, a fully sponsored 45-day residency in Bangalore, India for cracked engineers, designers, and founders collaborating to build and launch V1 of **TokenSupply**.
 
 ---
