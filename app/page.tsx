@@ -186,10 +186,14 @@ const programDetails = [
     title: "Invite only",
     description: "A vetted cohort of proven builders. No spectators — only shippers.",
     icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
+      <div className="relative w-10 h-10 select-none">
+        <Image
+          src="/assets/location.png"
+          alt="Pin Badge Icon"
+          fill
+          className="object-contain pointer-events-none"
+        />
+      </div>
     )
   },
   {
@@ -197,12 +201,14 @@ const programDetails = [
     title: "Live & work together",
     description: "Housing, workspace, meals, and rhythm. Everything designed for flow.",
     icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
+       <div className="relative w-12 h-12 select-none">
+        <Image
+          src="/assets/coke.png"
+          alt="Pin Badge Icon"
+          fill
+          className="object-contain pointer-events-none"
+        />
+      </div>
     )
   },
   {
@@ -210,10 +216,14 @@ const programDetails = [
     title: "Engineers, designers, founders",
     description: "Multidisciplinary teams operating as one product organism.",
     icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
+       <div className="relative w-10 h-10 select-none">
+        <Image
+          src="/assets/infrastructure.png"
+          alt="Pin Badge Icon"
+          fill
+          className="object-contain pointer-events-none"
+        />
+      </div>
     )
   },
   {
@@ -221,9 +231,14 @@ const programDetails = [
     title: "Focused execution",
     description: "No distractions. One goal, one timeline, one team. Ship or iterate.",
     icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
+       <div className="relative w-10 h-10 select-none">
+        <Image
+          src="/assets/focus.png"
+          alt="Pin Badge Icon"
+          fill
+          className="object-contain pointer-events-none"
+        />
+      </div>
     )
   },
   {
@@ -231,11 +246,14 @@ const programDetails = [
     title: "Build → collaborate → launch",
     description: "From architecture reviews to launch day. Every phase in one house.",
     icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-        <polyline points="2 17 12 22 22 17" />
-        <polyline points="2 12 12 17 22 12" />
-      </svg>
+       <div className="relative w-10 h-10 select-none">
+        <Image
+          src="/assets/collab.png"
+          alt="Pin Badge Icon"
+          fill
+          className="object-contain pointer-events-none"
+        />
+      </div>
     )
   },
   {
@@ -243,10 +261,14 @@ const programDetails = [
     title: "Ship Token Supply V1",
     description: "Contribute to real infrastructure powering the next commerce layer.",
     icon: (
-      <svg className="w-5 h-5 text-[#e2b857]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5" />
-        <path d="M12 2C6.5 2 2 6.5 2 12c0 1.2.3 2.3.8 3.3L7 11c1-1 2.5-1 3.5 0l2.5 2.5c1 1 1 2.5 0 3.5l-4.3 4.2c1 .5 2.1.8 3.3.8 5.5 0 10-4.5 10-10S17.5 2 12 2z" />
-      </svg>
+       <div className="relative w-10 h-10 select-none">
+        <Image
+          src="/assets/win.png"
+          alt="Pin Badge Icon"
+          fill
+          className="object-contain pointer-events-none"
+        />
+      </div>
     )
   }
 ];
@@ -673,9 +695,14 @@ export default function Home() {
         </h2>
 
         {/* CTA Button */}
-        <button className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase -mt-5">
+        <a 
+          href="https://luma.com/zc8zrg9g"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase -mt-5 block text-center"
+        >
           Apply Now
-        </button>
+        </a>
       </div>
 
       {/* About Section */}
@@ -830,7 +857,7 @@ export default function Home() {
             >
               <div className="flex justify-between items-start w-full mb-6">
                 <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">{activity.step}</span>
-                <div className="p-2 bg-zinc-950/80 rounded-lg border border-zinc-900">
+                <div className="p-2 bg-transparent">
                   {activity.icon}
                 </div>
               </div>
@@ -848,9 +875,9 @@ export default function Home() {
 
         {/* Collaborative Callout */}
         <div className="mt-12 w-full flex justify-center">
-          <div className="flex items-center gap-3 px-6 py-3.5 bg-[#0a0a0c]/40 border border-zinc-850 rounded-full max-w-[700px] backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-[#e2b857] animate-pulse shrink-0" />
-            <p className="text-xs sm:text-sm text-zinc-400 tracking-tight text-left">
+          <div className="flex items-center gap-3 px-6 py-3.5 bg-[#0a0a0c]/40 border border-zinc-850 rounded-full max-w-[800px] backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-[#e2b857] shrink-0" />
+            <p className="text-xs sm:text-sm text-zinc-400 tracking-tight font-geist-pixel-circle font-semibold text-left">
               Anyone building something can also just join us and work with other builders there to collaborate.
             </p>
           </div>
@@ -1221,9 +1248,14 @@ export default function Home() {
 
             {/* Action buttons */}
             <div className="flex flex-row gap-3.5 shrink-0">
-              <button className="bg-white text-black font-semibold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md">
+              <a 
+                href="https://luma.com/zc8zrg9g"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-black font-semibold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md flex items-center justify-center"
+              >
                 Apply Now
-              </button>
+              </a>
               <a
                 href="mailto:hi@realanshuman.com"
                 className="bg-transparent text-white border border-white/60 font-medium font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex font-bold items-center gap-1"
@@ -1239,19 +1271,19 @@ export default function Home() {
       </div>
 
       {/* Footer Section */}
-      <footer className="w-full border-t border-zinc-900/60 pt-16 pb-6 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-col">
+      <footer className="w-full pt-16 pb-6 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-col">
         {/* Footer Top Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 w-full max-w-[700px] mx-auto text-center text-[13px] md:text-[15px] text-[#8e8e93] mb-20">
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center font-geist-pixel-circle font-semibold">
             <span>©2026 TokenSupply</span>
           </div>
-          <div className="flex flex-col gap-0.5 items-center justify-center">
+          <div className="flex flex-col gap-0.5 items-center justify-center font-geist-pixel-circle font-semibold">
             <span>Have more queries?</span>
-            <a href="mailto:admint@tokensupply.io" className="hover:text-white transition duration-200">
+            <a href="mailto:admint@tokensupply.io" className="hover:text-white transition duration-200 font-geist-pixel-circle font-semibold">
               admin@tokensupply.io
             </a>
           </div>
-          <div className="flex flex-col gap-0.5 items-center justify-center">
+          <div className="flex flex-col gap-0.5 items-center justify-center font-geist-pixel-circle font-semibold">
             <a href="https://www.instagram.com/tokensupplyhq" className="hover:text-white transition duration-200">Instagram</a>
             <a href="#" className="hover:text-white transition duration-200">X (Twitter)</a>
             <a href="#" className="hover:text-white transition duration-200">Youtube</a>
