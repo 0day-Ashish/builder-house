@@ -513,7 +513,7 @@ export default function Home() {
           </div>
 
           {/* Progress Percent */}
-          <span className="font-mono text-[10px] text-[#e2b857] tracking-widest uppercase">
+          <span className="font-geist-pixel-circle text-[10px] text-[#e2b857] tracking-widest uppercase">
             Loading... {progress.toString().padStart(2, '0')}%
           </span>
         </div>
