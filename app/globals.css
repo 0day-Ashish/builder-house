@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -18,8 +17,9 @@
   --color-foreground: var(--foreground);
   --font-coastersans: coastersans, sans-serif;
   --font-inter: var(--font-inter-raw);
-  --font-sans: var(--font-sans);
-  --font-geist-pixel-circle: "Instrument Serif", Georgia, serif;
+  --font-instrument-sans: var(--font-instrument-sans), sans-serif;
+  --font-sans: var(--font-instrument-sans), system-ui, -apple-system, sans-serif;
+  --font-instrument-serif: var(--font-instrument-serif-raw), Georgia, serif;
   --font-geist-pixel-circle: var(--font-geist-pixel-circle), monospace;
 
   --animate-marquee: marquee 30s linear infinite;
@@ -169,7 +169,7 @@
 }
 
 body {
-  font-family: var(--font-inter-raw), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-instrument-sans), system-ui, -apple-system, sans-serif;
 }
 
 /* Lenis smooth scroll helper styles */

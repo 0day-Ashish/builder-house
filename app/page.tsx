@@ -201,7 +201,7 @@ const programDetails = [
     title: "Live & work together",
     description: "Housing, workspace, meals, and rhythm. Everything designed for flow.",
     icon: (
-       <div className="relative w-12 h-12 select-none">
+      <div className="relative w-12 h-12 select-none">
         <Image
           src="/assets/coke.png"
           alt="Pin Badge Icon"
@@ -216,7 +216,7 @@ const programDetails = [
     title: "Engineers, designers, founders",
     description: "Multidisciplinary teams operating as one product organism.",
     icon: (
-       <div className="relative w-10 h-10 select-none">
+      <div className="relative w-10 h-10 select-none">
         <Image
           src="/assets/infrastructure.png"
           alt="Pin Badge Icon"
@@ -231,7 +231,7 @@ const programDetails = [
     title: "Focused execution",
     description: "No distractions. One goal, one timeline, one team. Ship or iterate.",
     icon: (
-       <div className="relative w-10 h-10 select-none">
+      <div className="relative w-10 h-10 select-none">
         <Image
           src="/assets/focus.png"
           alt="Pin Badge Icon"
@@ -246,7 +246,7 @@ const programDetails = [
     title: "Build → collaborate → launch",
     description: "From architecture reviews to launch day. Every phase in one house.",
     icon: (
-       <div className="relative w-10 h-10 select-none">
+      <div className="relative w-10 h-10 select-none">
         <Image
           src="/assets/collab.png"
           alt="Pin Badge Icon"
@@ -261,7 +261,7 @@ const programDetails = [
     title: "Ship Token Supply V1",
     description: "Contribute to real infrastructure powering the next commerce layer.",
     icon: (
-       <div className="relative w-10 h-10 select-none">
+      <div className="relative w-10 h-10 select-none">
         <Image
           src="/assets/win.png"
           alt="Pin Badge Icon"
@@ -517,7 +517,7 @@ export default function Home() {
   });
 
   return (
-    <main className="min-h-screen text-white flex flex-col font-sans overflow-x-hidden selection:bg-white selection:text-black relative">
+    <main className="min-h-screen text-white flex flex-col font-sans selection:bg-white selection:text-black relative">
       {/* Preloader Overlay */}
       {showPreloader && (
         <div className={`fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center select-none pointer-events-auto transition-opacity duration-700 ease-in-out ${isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
@@ -544,7 +544,7 @@ export default function Home() {
       {/* Floating Sticky Music Player (Corner Pill) */}
       <div
         id="floating-player"
-        className="fixed top-6 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 -translate-y-4 pointer-events-none"
+        className="fixed top-12 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 -translate-y-4 pointer-events-none"
       >
         <span className="font-geist-pixel-circle font-bold text-[9px] text-[#e2b857] tracking-wider text-zinc-400 max-w-[120px] truncate">
           FM: {playlist[currentSongIndex].title}
@@ -598,12 +598,19 @@ export default function Home() {
         <PixelGridBackground />
       </div>
 
-      {/* Header Container */}
-      <div className="w-full pt-8 pb-4 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-row justify-between items-start">
-        {/* Left Side: BUILDER HOUSE Brand Text */}
-        <h1 className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase select-none text-white font-normal pt-1 sticky">
+      {/* Sticky BUILDER HOUSE logo in top-left */}
+      <div className="fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none">
+        <h1 className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase text-white font-normal pt-1">
           BUILDER HOUSE
         </h1>
+      </div>
+
+      {/* Header Container */}
+      <div className="relative w-full pt-8 pb-4 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-row justify-between items-start">
+        {/* Invisible Spacer logo to keep layout spacing balanced */}
+        <div className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase opacity-0 pointer-events-none select-none pt-1">
+          BUILDER HOUSE
+        </div>
 
         {/* Right Side: Bangalore & FM Player */}
         <div className="flex flex-col items-end pr-2 md:pr-4">
@@ -676,7 +683,7 @@ export default function Home() {
 
           {/* Badge text in its own white box */}
           <div className="bg-white px-4 py-1 shadow-lg border border-black">
-            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-mono text-black font-geist-pixel-circle whitespace-nowrap">
+            <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-instrument-sans text-black whitespace-nowrap">
               A Sponsored Residency for Cracked People
             </span>
           </div>
@@ -685,19 +692,19 @@ export default function Home() {
         {/* Headline */}
         <h2 className="font-geist-pixel-circle select-none mb-10 leading-[1.05] tracking-tight">
           <span className="text-[10.5vw] md:text-[5.5vw] lg:text-[5.8vw] font-light block text-[#ededed]">
-            The <span className="font-instrument-serif italic font-normal text-[#e2b857] pr-1 md:pr-2">Builders</span> Are
+            The <span className="font-instrument-serif italic  text-[#e2b857] pr-1 md:pr-2">Builders</span> Are
           </span>
-          <span className="text-[9vw] md:text-[6.5vw] lg:text-[4.5vw] font-geist-pixel-circle block text-white tracking-tight">
+          <span className="text-[9vw] md:text-[6.5vw] lg:text-[5.5vw] font-geist-pixel-circle block text-white tracking-tight">
             Assembling
           </span>
         </h2>
 
         {/* CTA Button */}
-        <a 
+        <a
           href="https://luma.com/zc8zrg9g"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer uppercase -mt-5 block text-center"
+          className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-6 py-3.5 rounded-full hover:bg-zinc-200 active:scale-105 transition duration-200 cursor-pointer uppercase -mt-6 block text-center"
         >
           Apply Now
         </a>
@@ -712,10 +719,10 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight font-normal">
               About TokenSupply
             </h2>
-            <h3 className="text-lg md:text-xl font-bold font-geist-pixel-circle text-[#e2b857] mb-6 tracking-tight">
+            <h3 className="text-lg md:text-xl font-semibold font-instrument-sans text-[#e2b857] mb-6 tracking-tight">
               Built for Digital Product Sellers
             </h3>
-            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-geist-pixel-circle leading-[1.35] tracking-normal mb-6 font-normal">
+            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-6 font-normal">
               Token Supply is a unified platform that helps businesses selling <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
             </p>
             <p className="text-[#8e8e93] border-l border-zinc-400 pl-4 text-[15px] md:text-[17px] leading-[1.4] tracking-normal mb-8 font-bold font-geist-pixel-circle">
@@ -800,7 +807,7 @@ export default function Home() {
       </div>
 
       {/* About Builder House Section */}
-      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-24 md:pt-36">
+      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-24 md:pt-26">
         {/* Main Grid: Left = Image, Right = Text & Stats */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
           {/* Left Column: Image */}
@@ -821,7 +828,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-6 tracking-tight font-normal">
               What is Builder House?
             </h2>
-            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-geist-pixel-circle leading-[1.35] tracking-normal mb-10 font-normal">
+            <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-10 font-normal">
               Builder House is all about developers, designers, and engineers with great past works who are absolutely <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">cracked</span> and have a crazy level of mind when it comes to <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">building cool shit</span>. In this residency, they will be collaborating with our core team to work on v1 of TokenSupply.
             </p>
 
@@ -847,23 +854,63 @@ export default function Home() {
       {/* What happens in the Builder House Grid Section */}
       <div className="w-full pb-24 flex flex-col max-w-[1400px] mx-auto px-4 md:px-8">
         {/* 6-Box Grid Layout: 3 boxes in one line, 3 in the next line, sticking to each other */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 w-full pl-1 border-t border-l border-white">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 w-full">
           {programDetails.map((activity, idx) => (
             <div
               key={idx}
-              className="bg-[#0a0a0c]/20 border-r border-b border-white p-6 flex flex-col items-start justify-between min-h-[220px]"
+              className="relative overflow-hidden bg-[#0d0d0f]/60 border border-zinc-850  rounded-2xl p-6 flex flex-col items-start justify-between min-h-[230px] transition-all duration-300 group"
             >
-              <div className="flex justify-between items-start w-full mb-6">
-                <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">{activity.step}</span>
+              {idx === 0 && (
+                <div className="absolute inset-0 select-none pointer-events-none">
+                  <Image
+                    src="/assets/bg-1.jpeg"
+                    alt="Invite Only Background"
+                    fill
+                    className="object-cover pointer-events-none"
+                  />
+                </div>
+              )}
+              {idx === 1 && (
+                <div className="absolute inset-0 -z-10 select-none pointer-events-none">
+                  <Image
+                    src="/assets/bg-2.jpeg"
+                    alt="Live & Work Together Background"
+                    fill
+                    className="object-cover opacity-180 pointer-events-none"
+                  />
+                </div>
+              )}
+              {idx === 2 && (
+                <div className="absolute inset-0 select-none pointer-events-none">
+                  <Image
+                    src="/assets/bg-3.jpeg"
+                    alt="Engineers, designers, founders Background"
+                    fill
+                    className="object-cover pointer-events-none"
+                  />
+                </div>
+              )}
+              {idx === 3 && (
+                <div className="absolute inset-0 select-none pointer-events-none">
+                  <Image
+                    src="/assets/bg-4.jpeg"
+                    alt="Focused execution Background"
+                    fill
+                    className="object-cover opacity-60 pointer-events-none"
+                  />
+                </div>
+              )}
+              <div className="flex justify-between items-start w-full mb-6 z-10">
+                <span className="text-xs font-mono text-white uppercase tracking-widest">{activity.step}</span>
                 <div className="p-2 bg-transparent">
                   {activity.icon}
                 </div>
               </div>
-              <div>
+              <div className="z-10">
                 <h3 className="text-[19px] md:text-[22px] font-geist-pixel-circle text-white tracking-tight mb-1.5">
                   {activity.title}
                 </h3>
-                <p className="text-xs md:text-sm text-[#8e8e93] leading-relaxed">
+                <p className="text-xs md:text-sm text-white leading-relaxed">
                   {activity.description}
                 </p>
               </div>
@@ -875,54 +922,15 @@ export default function Home() {
         <div className="mt-12 w-full flex justify-center">
           <div className="flex items-center gap-3 px-6 py-3.5 bg-[#0a0a0c]/40 border border-zinc-850 rounded-full max-w-[800px] backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#e2b857] shrink-0" />
-            <p className="text-xs sm:text-sm text-zinc-400 tracking-tight font-geist-pixel-circle font-semibold text-left">
+            <p className="text-xs sm:text-sm text-zinc-400 tracking-tight font-instrument-sans font-semibold text-left">
               Anyone building something can also just join us and work with other builders there to collaborate.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Perks Section */}
-      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-12 border-t border-zinc-900/60">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
-          {/* Left Column: Heading */}
-          <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
-            <span className="text-[10px] uppercase font-mono tracking-widest text-[#e2b857] mb-3">
-              The Benefits
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight leading-[1.1] mb-4">
-              Perks of the <span className="italic">Residency</span>
-            </h2>
-            <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[380px]">
-              We cover all the logistical overhead so you can focus entirely on shipping high-fidelity product code and designs.
-            </p>
-          </div>
-
-          {/* Right Column: Perks Grid */}
-          <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 pl-1">
-              {perks.map((perk, idx) => (
-                <div key={idx} className="flex flex-col items-start group">
-                  <div className="flex items-center gap-2.5 mb-3.5">
-                    <span className="font-mono text-[9px] text-[#e2b857] uppercase tracking-wider bg-transparent px-2 py-0.5 border border-zinc-800 rounded">
-                      {perk.num}
-                    </span>
-                    <h3 className="text-[18px] md:text-[20px] font-semibold text-white tracking-tight group-hover:text-[#e2b857] transition-colors duration-200">
-                      {perk.title}
-                    </h3>
-                  </div>
-                  <p className="text-[#8e8e93] text-xs md:text-sm leading-relaxed max-w-[340px]">
-                    {perk.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Roadmap Section */}
-      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
+      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-26">
         {/* Header grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16">
 
@@ -950,11 +958,11 @@ export default function Home() {
         </div>
 
         {/* Timeline Grid */}
-        <div className="flex flex-col w-full pl-1 border-t border-zinc-900">
+        <div className="flex flex-col gap-4 w-full">
           {roadmapPhases.map((phase, idx) => (
             <div
               key={idx}
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 py-8 border-b border-zinc-900 items-start group"
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-[#0d0d0f]/60 border border-zinc-850 hover:border-zinc-700/80 rounded-2xl items-center transition-all duration-300 group"
             >
               {/* Phase & Date */}
               <div className="md:col-span-4 flex flex-col gap-1">
@@ -964,7 +972,7 @@ export default function Home() {
 
               {/* Title & Body */}
               <div className="md:col-span-6 flex flex-col gap-2">
-                <h3 className="text-[18px] md:text-[20px] font-semibold text-white tracking-tight">
+                <h3 className="text-[18px] md:text-[20px] font-semibold font-geist-pixel-circle text-white tracking-tight">
                   {phase.title}
                 </h3>
                 <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[500px]">
@@ -1212,6 +1220,15 @@ export default function Home() {
       {/* CTA Section */}
       <div className="w-full px-4 md:px-8 max-w-[1400px] mx-auto mb-24 mt-12">
         <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-white px-8 py-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 shadow-2xl">
+          {/* Background Image overlay */}
+          <div className="absolute inset-0 select-none pointer-events-none">
+            <Image
+              src="/assets/footer-bg.jpeg"
+              alt="CTA Background"
+              fill
+              className="object-cover"
+            />
+          </div>
           {/* Grid lines background overlay */}
           <div
             className="absolute inset-0 opacity-[0.07] pointer-events-none"
@@ -1246,7 +1263,7 @@ export default function Home() {
 
             {/* Action buttons */}
             <div className="flex flex-row gap-3.5 shrink-0">
-              <a 
+              <a
                 href="https://luma.com/zc8zrg9g"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1256,10 +1273,10 @@ export default function Home() {
               </a>
               <a
                 href="mailto:hi@realanshuman.com"
-                className="bg-transparent text-white border border-white/60 font-medium font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-white/5 active:scale-95 transition duration-200 cursor-pointer flex font-bold items-center gap-1"
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md font-bold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1.5 shadow-lg"
               >
                 Contact us
-                <svg className="w-3.5 h-3.5 text-zinc-300 mt-[1px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="w-3.5 h-3.5 text-white mt-[0.5px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
               </a>

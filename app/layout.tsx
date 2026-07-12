@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { GeistPixelCircle } from "geist/font/pixel";
 import LenisProvider from "../components/LenisProvider";
 import { Analytics } from "@vercel/analytics/next";
@@ -8,6 +8,20 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter-raw",
+  display: "swap",
+});
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument-sans",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument-serif-raw",
+  weight: "400",
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -24,15 +38,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${GeistPixelCircle.variable} h-full antialiased`}
+      className={`${inter.variable} ${GeistPixelCircle.variable} ${instrumentSans.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#1c1d1f] text-white">
         <LenisProvider>{children}</LenisProvider>
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   );
 }
-
-
-
