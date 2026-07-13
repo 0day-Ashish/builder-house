@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/
 import "./globals.css";
 import { GeistPixelCircle } from "geist/font/pixel";
 import { Analytics } from "@vercel/analytics/next"
+import LenisProvider from "../components/LenisProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${GeistPixelCircle.variable} ${instrumentSerif.variable} ${instrumentSans.variable} h-full antialiased`}
     >
 
-      <body className="min-h-full flex flex-col">{children}
+      <body className="min-h-full flex flex-col bg-zinc-950 text-white">
+        <LenisProvider>{children}</LenisProvider>
         <Analytics/>
       </body>
     </html>
