@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: coastersans;
+  src: url('/fonts/coastersans-regular.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-coastersans: coastersans, sans-serif;
+  --font-instrument-sans: var(--font-instrument-sans), sans-serif;
+  --font-instrument-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-geist-pixel-circle: var(--font-geist-pixel-circle), monospace;
+
+  --animate-sound-bar-1: sound-bar-1 1.2s ease-in-out infinite alternate;
+  --animate-sound-bar-2: sound-bar-2 1.4s ease-in-out infinite alternate;
+  --animate-sound-bar-3: sound-bar-3 1.0s ease-in-out infinite alternate;
+  --animate-sound-bar-4: sound-bar-4 1.3s ease-in-out infinite alternate;
+
+  @keyframes sound-bar-1 {
+    0% {
+      height: 4px;
+    }
+    100% {
+      height: 12px;
+    }
+  }
+  @keyframes sound-bar-2 {
+    0% {
+      height: 2px;
+    }
+    100% {
+      height: 12px;
+    }
+  }
+  @keyframes sound-bar-3 {
+    0% {
+      height: 6px;
+    }
+    100% {
+      height: 12px;
+    }
+  }
+  @keyframes sound-bar-4 {
+    0% {
+      height: 3px;
+    }
+    100% {
+      height: 12px;
+    }
+  }
+}
