@@ -642,7 +642,7 @@ export default function Home() {
               href="https://luma.com/zc8zrg9g"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full hover:bg-zinc-200 active:scale-105 transition duration-200 cursor-pointer uppercase block text-center"
+              className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase block text-center"
             >
               Apply Now
             </a>
@@ -1228,7 +1228,7 @@ export default function Home() {
                 href="https://luma.com/zc8zrg9g"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black font-semibold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md flex items-center justify-center"
+                className="bg-white text-black font-bold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md flex items-center justify-center"
               >
                 Apply Now
               </a>
