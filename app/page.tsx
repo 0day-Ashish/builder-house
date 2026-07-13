@@ -1098,49 +1098,9 @@ export default function Home() {
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-4 tracking-tight">
             The Minds Behind Builder House
           </h2>
-          <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px] mb-6">
+          <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px]">
             A multidisciplinary group of developers, designers, and construction specialists building the future of residential design.
           </p>
-
-          {/* Slider Navigation Controls */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
-              aria-label="Previous Slide"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            {/* Autoplay Play/Pause Toggle */}
-            <button
-              onClick={() => setIsMarqueePaused(!isMarqueePaused)}
-              className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
-              aria-label={isMarqueePaused ? "Resume Autoplay" : "Pause Autoplay"}
-            >
-              {isMarqueePaused ? (
-                <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              ) : (
-                <svg className="w-4 h-4 fill-zinc-400" viewBox="0 0 24 24">
-                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-                </svg>
-              )}
-            </button>
-
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0c]/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 active:scale-95 transition duration-200 cursor-pointer shadow-md"
-              aria-label="Next Slide"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
         </div>
 
         {/* Slider Area */}
@@ -1220,24 +1180,39 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="w-full pb-36 px-4 md:px-8 max-w-[850px] mx-auto flex flex-col border-t border-zinc-900/60 pt-24 md:pt-36">
-        <div className="flex flex-col items-center w-full">
-          <div className="flex items-center justify-center gap-3 md:gap-4 mb-10 select-none">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight text-center">
-              Frequently Asked Questions
-            </h2>
-            <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
+      <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto border-t border-zinc-900/60 pt-24 md:pt-36">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start w-full">
+          
+          {/* Left Column: FAQ text on top, GIF below */}
+          <div className="lg:col-span-5 flex flex-col gap-5 w-full lg:-mt-6">
+            <div className="flex items-center gap-3 md:gap-4 select-none">
+              <h2 className="text-2xl md:text-3xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight text-left leading-tight">
+                Frequently Asked Questions
+              </h2>
+              <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
+                <Image
+                  src="/assets/pin.png"
+                  alt="FAQ Pin Badge Icon"
+                  fill
+                  className="object-contain pointer-events-none"
+                />
+              </div>
+            </div>
+
+            {/* FAQ GIF */}
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800/40 shadow-2xl">
               <Image
-                src="/assets/pin.png"
-                alt="FAQ Pin Badge Icon"
+                src="/assets/faq.gif"
+                alt="FAQ Animation"
                 fill
-                className="object-contain pointer-events-none"
+                unoptimized
+                className="object-cover object-center pointer-events-none"
               />
             </div>
           </div>
 
-          {/* Accordion Stack */}
-          <div className="flex flex-col gap-3 w-full">
+          {/* Right Column: Questions Accordion Stack */}
+          <div className="lg:col-span-7 flex flex-col gap-3 w-full lg:pt-29">
             {faqItems.map((item, idx) => {
               const isOpen = openFaqIdx === idx;
               return (
@@ -1269,12 +1244,13 @@ export default function Home() {
               );
             })}
           </div>
+
         </div>
       </div>
 
       {/* Pillars Section */}
       <div className="w-full pb-36 flex flex-col pt-24 md:pt-36 border-t border-zinc-900/60 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-[850px] mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full px-4 md:px-8">
           {/* Live Box */}
           <div className="col-span-2 md:col-span-2 min-h-[160px] md:min-h-[220px] flex flex-col justify-between bg-[#0a0a0c]/60 border border-zinc-900/60 backdrop-blur-md hover:bg-zinc-900/80 hover:border-zinc-800/80 p-5 md:p-6 rounded-2xl group cursor-pointer transition-all duration-300 shadow-xl">
             <div className="flex justify-between items-start">
