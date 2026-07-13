@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { useLenis } from "lenis/react";
 
 const playlist = [
   {
@@ -311,6 +312,38 @@ export default function Home() {
     }
   }, [currentSongIndex]);
 
+  // Sticky scroll player transition
+  useLenis((lenis) => {
+    const scroll = lenis.scroll;
+    const sticky = scroll > 120;
+
+    const inlinePlayer = document.getElementById("inline-player");
+    const floatingPlayer = document.getElementById("floating-player");
+
+    if (inlinePlayer && floatingPlayer) {
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+      const maxScroll = typeof document !== "undefined" ? document.documentElement.scrollHeight - window.innerHeight : 0;
+      // Hide player when entering the footer reveal section on mobile (within 420px of bottom to account for bounce/overscroll)
+      const isNearBottom = isMobile && maxScroll > 0 && (maxScroll - scroll) < 420;
+
+      if (sticky && !isNearBottom) {
+        inlinePlayer.style.opacity = "0";
+        inlinePlayer.style.pointerEvents = "none";
+
+        floatingPlayer.style.opacity = "1";
+        floatingPlayer.style.transform = "translateY(0)";
+        floatingPlayer.style.pointerEvents = "auto";
+      } else {
+        inlinePlayer.style.opacity = sticky ? "0" : "1";
+        inlinePlayer.style.pointerEvents = sticky ? "none" : "auto";
+
+        floatingPlayer.style.opacity = "0";
+        floatingPlayer.style.transform = isMobile ? "translateY(16px)" : "translateY(-16px)";
+        floatingPlayer.style.pointerEvents = "none";
+      }
+    }
+  });
+
   // Autoplay music when user lands on page
   useEffect(() => {
     let cleanupListeners: (() => void) | null = null;
@@ -487,6 +520,13 @@ export default function Home() {
 
   return (
     <main className="relative text-[#1c1d1f] font-sans selection:bg-black selection:text-white bg-zinc-900">
+      {/* Sticky BUILDER HOUSE logo in top-left */}
+      <div className="fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none text-white">
+        <h1 className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase font-normal pt-1">
+          BUILDER HOUSE
+        </h1>
+      </div>
+
       <div className="relative z-10 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
         {/* Hero Section Container (Full Viewport Screen, retains its dark styling wrapper) */}
         <div className="relative min-h-[750px] sm:min-h-screen flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
@@ -503,11 +543,9 @@ export default function Home() {
 
         {/* Header Container */}
         <div className="relative w-full pt-8 pb-4 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-row justify-between items-start z-10">
-          {/* Left Side: logo */}
-          <div className="select-none">
-            <h1 className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase text-white font-normal pt-1">
-              BUILDER HOUSE
-            </h1>
+          {/* Invisible Spacer logo to keep layout spacing balanced */}
+          <div className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase opacity-0 pointer-events-none select-none pt-1">
+            BUILDER HOUSE
           </div>
 
           {/* Right Side: Bangalore & FM Player */}
@@ -520,7 +558,7 @@ export default function Home() {
               id="inline-player"
               className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-400 opacity-100 pointer-events-auto pt-5"
             >
-              <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 max-w-[120px] truncate">
+              <span className="font-mono text-[9px] uppercase tracking-wider text-white max-w-[120px] truncate">
                 FM: {playlist[currentSongIndex].title}
               </span>
               {/* Animated Sound Wave bars */}
@@ -1274,6 +1312,51 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Sticky Music Player (Corner Pill) */}
+      <div
+        id="floating-player"
+        className="fixed bottom-6 sm:bottom-auto sm:top-12 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f]/90 border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 translate-y-4 sm:-translate-y-4 pointer-events-none backdrop-blur-md"
+      >
+        <span className="font-mono text-[9px] uppercase tracking-wider text-white max-w-[120px] truncate">
+          FM: {playlist[currentSongIndex].title}
+        </span>
+        {/* Animated Sound Wave bars */}
+        <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
+          <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
+          <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-2 h-3' : 'h-2.5'}`} />
+          <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-3 h-3' : 'h-1.5'}`} />
+          <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-4 h-3' : 'h-2'}`} />
+        </div>
+
+        {/* Playlist Skip & Play Controls */}
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={handlePrevSong}
+            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+            aria-label="Previous Song"
+          >
+            <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={togglePlay}
+            className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
+          >
+            {isPlaying ? 'Pause' : 'Play'}
+          </button>
+          <button
+            onClick={handleNextSong}
+            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+            aria-label="Next Song"
+          >
+            <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
 
       {/* Root audio element */}
       <audio
