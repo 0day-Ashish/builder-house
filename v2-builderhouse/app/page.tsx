@@ -489,7 +489,7 @@ export default function Home() {
     <main className="relative text-[#1c1d1f] font-sans selection:bg-black selection:text-white bg-zinc-900">
       <div className="relative z-10 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
         {/* Hero Section Container (Full Viewport Screen, retains its dark styling wrapper) */}
-        <div className="relative min-h-screen flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
+        <div className="relative min-h-[750px] sm:min-h-screen flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
         {/* Background Image */}
         <div className="absolute inset-0 select-none pointer-events-none z-0">
           <Image
@@ -497,7 +497,7 @@ export default function Home() {
             alt="Hero Background"
             fill
             priority
-            className=""
+            className="object-cover"
           />
         </div>
 
@@ -567,7 +567,7 @@ export default function Home() {
           {/* Glass Card Box */}
           <div className="backdrop-blur-xl bg-black/30 border border-white/10 rounded-[2rem] px-6 py-6 md:px-10 md:py-8 lg:px-12 lg:py-9 max-w-[640px] w-full shadow-2xl flex flex-col items-center">
             {/* Badge with Overlapping Avatars and Info Pill */}
-            <div className="flex items-center gap-3 mb-5 select-none">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-3 mb-5 select-none">
               {/* Overlapping circular avatars */}
               <div className="flex -space-x-2">
                 <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden">
@@ -582,8 +582,8 @@ export default function Home() {
               </div>
 
               {/* Badge text in its own white box */}
-              <div className="bg-white px-4 py-1.5 shadow-lg border border-black flex items-center justify-center">
-                <span className="text-[8px] min-[375px]:text-[7.5px] sm:text-[11px] uppercase tracking-widest font-instrument-sans font-semibold text-black whitespace-nowrap leading-none pt-[1px]">
+              <div className="bg-white px-3 py-1.5 sm:px-4 shadow-lg border border-black flex items-center justify-center max-w-full">
+                <span className="text-[8px] min-[320px]:text-[9px] sm:text-[11px] uppercase tracking-widest font-instrument-sans font-semibold text-black whitespace-nowrap leading-none pt-[1px]">
                   A Sponsored Residency for Cracked People
                 </span>
               </div>
