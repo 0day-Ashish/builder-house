@@ -943,7 +943,7 @@ export default function Home() {
               {/* Status Icon Image */}
               <div className="md:col-span-2 flex md:justify-end pt-1">
                 {phase.image ? (
-                  <div className="relative w-17 h-17 rounded-xl overflow-hidden bg-transparent select-none shadow-sm border border-zinc-200">
+                  <div className="relative w-17 h-17 overflow-hidden bg-transparent select-none">
                     <Image
                       src={phase.image}
                       alt={phase.title}
