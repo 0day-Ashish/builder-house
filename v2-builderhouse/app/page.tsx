@@ -555,7 +555,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 select-none pointer-events-none z-0">
           <Image
-            src="/assets/bg-1.png"
+            src="/assets/bg-11.png"
             alt="Hero Background"
             fill
             priority
@@ -664,7 +664,7 @@ export default function Home() {
               href="https://luma.com/zc8zrg9g"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-black font-geist-pixel-circle font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase block text-center"
+              className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase block text-center"
             >
               Apply Now
             </a>
