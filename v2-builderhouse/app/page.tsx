@@ -286,6 +286,7 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
+  const [isHeaderDark, setIsHeaderDark] = useState(false);
 
   // Team slider state and scroll control
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -316,6 +317,11 @@ export default function Home() {
   useLenis((lenis) => {
     const scroll = lenis.scroll;
     const sticky = scroll > 120;
+
+    // Transition header logo color
+    const heroHeight = typeof window !== "undefined" ? (window.innerWidth < 640 ? 750 : window.innerHeight) : 800;
+    const isPastHero = scroll > (heroHeight - 64);
+    setIsHeaderDark((prev) => (prev !== isPastHero ? isPastHero : prev));
 
     const inlinePlayer = document.getElementById("inline-player");
     const floatingPlayer = document.getElementById("floating-player");
@@ -521,7 +527,7 @@ export default function Home() {
   return (
     <main className="relative text-[#1c1d1f] font-sans selection:bg-black selection:text-white bg-zinc-900">
       {/* Sticky BUILDER HOUSE logo in top-left */}
-      <div className="fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none text-white">
+      <div className={`fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-colors duration-300 ${isHeaderDark ? 'text-black' : 'text-white'}`}>
         <h1 className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase font-normal pt-1">
           BUILDER HOUSE
         </h1>
