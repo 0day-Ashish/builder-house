@@ -97,10 +97,26 @@ const teamMembers = [
   },
   {
     name: "Soubhagya Chouhan",
-    role: "Test Engineer",
+    role: "Testing Engineer",
     image: "/team/soubhagya.jpeg",
     socials: {
       linkedin: "https://www.linkedin.com/in/soubhagya-chouhan-744368128"
+    }
+  },
+  {
+    name: "Devang Saklani",
+    role: "Software Engineer",
+    image: "/team/devang.jpeg",
+    socials: {
+      website: "https://saklani.dev"
+    }
+  },
+  {
+    name: "Ammogh Vedamurthy",
+    role: "Sr. Product Designer",
+    image: "/team/ammogh_portrait_1.png",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/ammogh/"
     }
   }
 ];
