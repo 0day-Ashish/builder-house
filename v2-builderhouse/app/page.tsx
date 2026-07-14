@@ -1316,7 +1316,7 @@ export default function Home() {
           </div>
 
           {/* Giant Stamp */}
-          <h1 className="w-full text-center text-[11.9vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-black font-normal pb-4 pr-4 md:pr-6">
+          <h1 className="w-full text-center text-[3.9vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-black font-normal pb-4 pr-4 md:pr-6">
             BUILDER HOUSE
           </h1>
 
