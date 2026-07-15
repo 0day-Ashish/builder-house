@@ -906,8 +906,8 @@ export default function Home() {
         {/* Collaborative Callout */}
         <div className="mt-12 w-full flex justify-center">
           <div className="flex items-center gap-3 px-6 py-3.5 bg-zinc-50 border border-zinc-200 rounded-full max-w-[800px] shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#a2770c] shrink-0" />
-            <p className="text-xs sm:text-sm text-zinc-600 tracking-tight font-instrument-sans font-semibold text-left">
+            <span className="w-2 h-2 rounded-full bg-[#a2770c] animate-pulse shrink-0" />
+            <p className="text-sm sm:text-sm text-zinc-600 tracking-tight font-instrument-sans font-semibold text-left">
               Anyone building something can also just join us and work with other builders there to collaborate.
             </p>
           </div>
