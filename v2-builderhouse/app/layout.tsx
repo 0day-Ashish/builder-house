@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Sans, Instrument_Serif, Inter } from "next/font/google";
 import "./globals.css";
 import { GeistPixelCircle } from "geist/font/pixel";
 import { Analytics } from "@vercel/analytics/next"
 import LenisProvider from "../components/LenisProvider";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${GeistPixelCircle.variable} ${instrumentSerif.variable} ${instrumentSans.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, GeistPixelCircle.variable, instrumentSerif.variable, instrumentSans.variable, "font-sans", inter.variable)}
     >
 
       <body className="min-h-full flex flex-col bg-zinc-950 text-white">

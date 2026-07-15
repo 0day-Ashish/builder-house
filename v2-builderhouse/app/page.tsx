@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
+import CurvedLoop from "@/components/CurvedLoop";
 
 const playlist = [
   {
@@ -1135,76 +1136,16 @@ export default function Home() {
       </section>
 
       {/* Pillars Section (White Background) */}
-      <section className="w-full bg-white text-zinc-950 pb-36 flex flex-col pt-24 md:pt-36 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full px-4 md:px-8">
-          {/* Live Box */}
-          <div className="col-span-2 md:col-span-2 min-h-[160px] md:min-h-[220px] flex flex-col justify-between bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 p-5 md:p-6 rounded-2xl group cursor-pointer transition-all duration-300 shadow-sm">
-            <div className="flex justify-between items-start">
-              <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-[#a2770c] font-semibold">01 / Residency</span>
-              <span className="text-[10px] text-zinc-400 font-mono">Bangalore</span>
-            </div>
-            <div className="my-1.5 md:my-3">
-              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-black tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
-                Live
-              </span>
-            </div>
-            <p className="text-[11px] md:text-xs text-zinc-600 leading-relaxed max-w-md font-sans">
-              Fully sponsored stay in Bangalore. Private rooms, chef-prepared meals, and round-trip travel stipend. Zero rent, zero logistics.
-            </p>
-          </div>
-
-          {/* Build Box */}
-          <div className="col-span-1 md:col-span-1 min-h-[160px] md:min-h-[220px] flex flex-col justify-between bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 p-5 md:p-6 rounded-2xl group cursor-pointer transition-all duration-300 shadow-sm">
-            <div className="flex justify-between items-start">
-              <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-[#a2770c] font-semibold">02 / Mission</span>
-              <span className="text-[10px] text-zinc-400 font-mono">Build V1</span>
-            </div>
-            <div className="my-1.5 md:my-3">
-              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-black tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
-                Build
-              </span>
-            </div>
-            <p className="text-[11px] md:text-xs text-zinc-600 leading-relaxed font-sans">
-              Collaborate on whiteboard designs, daily review sessions, and elite speed to ship TokenSupply.
-            </p>
-          </div>
-
-          {/* Network Box */}
-          <div className="col-span-1 md:col-span-1 min-h-[160px] md:min-h-[220px] flex flex-col justify-between bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 p-5 md:p-6 rounded-2xl group cursor-pointer transition-all duration-300 shadow-sm">
-            <div className="flex justify-between items-start">
-              <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-[#a2770c] font-semibold">03 / Capital</span>
-              <span className="text-[10px] text-zinc-400 font-mono">Demo Day</span>
-            </div>
-            <div className="my-1.5 md:my-3">
-              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-black tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
-                Network
-              </span>
-            </div>
-            <p className="text-[11px] md:text-xs text-zinc-600 leading-relaxed font-sans">
-              Connect directly with tier-1 developer VCs, angel syndicates, and prominent dev founders.
-            </p>
-          </div>
-
-          {/* Visual/Description Box */}
-          <div className="hidden md:flex col-span-2 min-h-[220px] flex-col justify-between bg-zinc-50/50 border border-zinc-200 p-6 rounded-2xl relative overflow-hidden select-none">
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-              style={{
-                backgroundImage: 'linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)',
-                backgroundSize: '16px 16px'
-              }}
-            />
-            <div className="flex justify-between items-start z-10">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">04 / THE RHYTHM</span>
-              <span className="text-[10px] text-[#a2770c] font-mono">45 Days of Flow</span>
-            </div>
-            <div className="z-10 max-w-md my-auto">
-              <h4 className="text-black font-geist-pixel-circle text-md mb-1.5">No distractions. Just pure building.</h4>
-              <p className="text-xs text-zinc-500 leading-relaxed font-sans">
-                A vetted residency designed for flow state. We handle the chef-cooked food, premium housing, round-trip travel, and developer workspace so you can focus entirely on shipping token commerce infrastructure.
-              </p>
-            </div>
-          </div>
-        </div>
+      <section className="w-full bg-white text-zinc-950 pb-36 flex flex-col md:pt-36 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
+        <CurvedLoop
+          marqueeText="✦ LIVE ✦ BUILD ✦ NETWORK "
+          speed={2.5}
+          curveAmount={150}
+          direction="left"
+          interactive
+          className="fill-zinc-950 font-geist-pixel-circle font-bold"
+          containerClassName="py-12 flex items-center justify-center w-full tracking-widest overflow-hidden"
+        />
 
         {/* Footer Subtext */}
         <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-600">
@@ -1316,7 +1257,7 @@ export default function Home() {
           </div>
 
           {/* Giant Stamp */}
-          <h1 className="w-full text-center text-[3.9vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-black font-normal pb-4 pr-4 md:pr-6">
+          <h1 className="w-full text-center text-[5.9vw] sm:text-[4vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-black font-normal pb-4 pr-4 md:pr-6">
             BUILDER HOUSE
           </h1>
 
