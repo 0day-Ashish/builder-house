@@ -894,8 +894,11 @@ export default function Home() {
               sizes="100vw"
               className="object-cover pointer-events-none brightness-95"
             />
-            <div className="relative z-10 bg-white/80 backdrop-blur-md px-6 py-4 rounded-xl border border-white/30 max-w-3xl shadow-sm text-center">
-              <p className="text-sm sm:text-base text-zinc-900 tracking-tight font-instrument-sans font-semibold">
+            <div className="relative z-10 bg-white/10 backdrop-blur-md px-8 py-6 rounded-xl border border-white/20 max-w-3xl shadow-sm text-center flex flex-col items-center">
+              <h3 className="text-xl md:text-3xl font-instrument-serif text-white mb-2">
+                Come Build with Us
+              </h3>
+              <p className="text-sm sm:text-base text-white/90 tracking-tight font-instrument-sans font-normal leading-relaxed">
                 Anyone building something can also just join us and work with other builders there to collaborate.
               </p>
             </div>
@@ -989,9 +992,9 @@ export default function Home() {
             {[...teamMembers, ...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
               <div
                 key={idx}
-                className="w-[280px] md:w-[320px] flex-shrink-0 bg-zinc-50 border border-zinc-200 backdrop-blur-sm rounded-3xl p-5 flex flex-col shadow-sm group hover:bg-zinc-100 hover:border-zinc-300 transition-all duration-300"
+                className="w-[280px] md:w-[320px] flex-shrink-0 bg-zinc-50 border-2 border-black rounded-2xl p-5 flex flex-col shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
               >
-                <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-zinc-200 mb-5">
+                <div className="relative w-full aspect-square overflow-hidden rounded-xl border-2 border-black mb-5 bg-zinc-200">
                   <Image
                     src={member.image}
                     alt={`${member.name} - ${member.role}`}

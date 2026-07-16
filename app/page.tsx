@@ -1014,8 +1014,11 @@ export default function Home() {
             sizes="100vw"
             className="object-cover pointer-events-none brightness-75"
           />
-          <div className="relative z-10 bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl border border-white/10 max-w-3xl shadow-lg text-center">
-            <p className="text-sm sm:text-base text-zinc-200 tracking-tight font-instrument-sans font-semibold">
+          <div className="relative z-10 bg-white/10 backdrop-blur-md px-8 py-6 rounded-xl border border-white/20 max-w-3xl shadow-lg text-center flex flex-col items-center">
+            <h3 className="text-xl md:text-3xl font-instrument-serif text-white mb-2 font-semibold">
+              Come Build with Us
+            </h3>
+            <p className="text-sm sm:text-base text-white/90 tracking-tight font-instrument-sans font-normal leading-relaxed">
               Anyone building something can also just join us and work with other builders there to collaborate.
             </p>
           </div>
@@ -1122,10 +1125,10 @@ export default function Home() {
           {[...teamMembers, ...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
             <div
               key={idx}
-              className="w-[280px] md:w-[320px] flex-shrink-0 bg-white/5 border border-white/10 backdrop-blur-md rounded-3xl p-5 flex flex-col group"
+              className="w-[280px] md:w-[320px] flex-shrink-0 bg-[#0c0c0e] border-2 border-white rounded-2xl p-5 flex flex-col shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] group hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] active:translate-x-0 active:translate-y-0 active:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-200"
             >
               {/* Profile Image Box */}
-              <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-zinc-950 mb-5">
+              <div className="relative w-full aspect-square overflow-hidden rounded-xl border-2 border-white bg-zinc-950 mb-5">
                 <Image
                   src={member.image}
                   alt={`${member.name} - ${member.role}`}
