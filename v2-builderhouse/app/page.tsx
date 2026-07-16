@@ -552,11 +552,11 @@ export default function Home() {
 
       <div className="relative z-10 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
         {/* Hero Section Container (Full Viewport Screen, retains its dark styling wrapper) */}
-        <div className="relative min-h-[750px] sm:min-h-screen flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
+        <div className="relative w-full aspect-[1536/1024] min-h-[750px] md:min-h-[1024px] flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
           {/* Background Image */}
           <div className="absolute inset-0 select-none pointer-events-none z-0">
             <Image
-              src="/assets/bg-11.png"
+              src="/assets/background.png"
               alt="Hero Background"
               fill
               priority
@@ -624,7 +624,7 @@ export default function Home() {
           </div>
 
           {/* Centered Hero Section */}
-          <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pt-10 pb-20 text-center z-10">
+          <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pb-60 md:pb-80 text-center z-10">
             {/* Glass Card Box */}
             <div className="backdrop-blur-xl bg-black/30 border border-white/10 rounded-[2rem] px-6 py-6 md:px-10 md:py-8 lg:px-12 lg:py-9 max-w-[640px] w-full shadow-2xl flex flex-col items-center">
               {/* Badge with Overlapping Avatars and Info Pill */}
@@ -1188,7 +1188,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 select-none pointer-events-none z-0">
           <img
-            src="/assets/footer_bg_4k-2.png"
+            src="/assets/footerbackground.png"
             alt="Footer Background"
             className="w-full h-full object-cover pointer-events-none"
           />
