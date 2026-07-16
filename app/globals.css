@@ -20,7 +20,7 @@
   --font-instrument-sans: var(--font-instrument-sans), sans-serif;
   --font-sans: var(--font-instrument-sans), system-ui, -apple-system, sans-serif;
   --font-instrument-serif: var(--font-instrument-serif-raw), Georgia, serif;
-  --font-geist-pixel-circle: var(--font-geist-pixel-circle), monospace;
+  --font-instrument-serif: var(--font-instrument-serif), monospace;
 
   --animate-marquee: marquee 30s linear infinite;
 

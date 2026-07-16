@@ -16,7 +16,7 @@
   --font-coastersans: coastersans, sans-serif;
   --font-instrument-sans: var(--font-instrument-sans), sans-serif;
   --font-instrument-serif: var(--font-instrument-serif), Georgia, serif;
-  --font-geist-pixel-circle: var(--font-geist-pixel-circle), monospace;
+  --font-instrument-serif: var(--font-instrument-serif), monospace;
 
   --animate-sound-bar-1: sound-bar-1 1.2s ease-in-out infinite alternate;
   --animate-sound-bar-2: sound-bar-2 1.4s ease-in-out infinite alternate;

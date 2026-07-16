@@ -651,11 +651,11 @@ export default function Home() {
               </div>
 
               {/* Headline */}
-              <h2 className="font-geist-pixel-circle select-none mb-6 leading-[1.05] tracking-tight">
+              <h2 className="font-instrument-serif select-none mb-6 leading-[1.05] tracking-tight">
                 <span className="text-4xl sm:text-5xl md:text-[66px] font-light block text-[#ededed]">
                   The <span className="font-instrument-serif italic text-[#e2b857] pr-1 md:pr-2">Builders</span> Are
                 </span>
-                <span className="text-4xl sm:text-6xl md:text-[66px] font-geist-pixel-circle block text-white tracking-tight">
+                <span className="text-4xl sm:text-6xl md:text-[66px] font-instrument-serif block text-white tracking-tight">
                   Assembling
                 </span>
               </h2>
@@ -680,13 +680,13 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
               {/* Left Column: Text Content */}
               <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-black mb-2 tracking-tight font-semibold">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
                   About TokenSupply
                 </h2>
                 <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-6 font-normal">
-                  Token Supply is a unified platform that helps businesses selling <span className="text-zinc-700 border-b border-zinc-300 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-zinc-700 border-b border-zinc-300 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
+                  Token Supply is a unified platform that helps businesses selling <span className="text-zinc-600 border-b border-zinc-300 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-zinc-600 border-b border-zinc-300 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
                 </p>
-                <button className="bg-zinc-900 text-white font-instrument-sans font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-850 active:scale-95 transition duration-200 cursor-pointer">
+                <button className="bg-zinc-900 text-white font-instrument-sans font-semibold text-[13px] md:text-[12px] uppercase px-8 py-3.5 rounded-full hover:bg-zinc-850 active:scale-105 transition duration-200 cursor-pointer">
                   Learn More
                 </button>
               </div>
@@ -712,13 +712,10 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
               {/* Left Column: Title */}
               <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
-                <span className="text-[12px] uppercase font-bold font-geist-pixel-circle tracking-widest text-[#a2770c] mb-3">
-                  Infrastructure
-                </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-black font-semibold tracking-tight leading-[1.1] mb-4">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black font-semibold tracking-tight leading-[1.1] mb-4">
                   TechStack
                 </h2>
-                <p className="text-zinc-500 text-sm md:text-base leading-relaxed max-w-[380px]">
+                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-relaxed max-w-[380px]">
                   We partner with world-class security and hosting infrastructure providers to ensure high availability, data security, and seamless platform performance.
                 </p>
               </div>
@@ -773,7 +770,7 @@ export default function Home() {
 
             {/* Right Column: Text & Stats */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-black mb-6 tracking-tight font-semibold">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-6 tracking-tight font-semibold">
                 What is Builder House?
               </h2>
               <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-10 font-normal">
@@ -783,15 +780,15 @@ export default function Home() {
               {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-6 w-full">
                 <div>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-black tracking-tight mb-1 font-semibold">3</div>
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black tracking-tight mb-1 font-semibold">3</div>
                   <div className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-wider font-semibold">Cracked Minds</div>
                 </div>
                 <div>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-black tracking-tight mb-1 font-semibold">45</div>
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black tracking-tight mb-1 font-semibold">45</div>
                   <div className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight animate-pulse">Days of shipping</div>
                 </div>
                 <div>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-black tracking-tight mb-1 font-semibold">v1</div>
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black tracking-tight mb-1 font-semibold">v1</div>
                   <div className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Launch target</div>
                 </div>
               </div>
@@ -876,7 +873,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className={`z-10 w-full backdrop-blur-md rounded-xl p-4 mt-auto border text-white ${idx === 1 ? 'bg-black/60 border-white/10 shadow-lg' : 'bg-white/10 border-white/20 shadow-sm'}`}>
-                  <h3 className="text-[19px] md:text-[22px] font-geist-pixel-circle tracking-tight font-semibold mb-1">
+                  <h3 className="text-[19px] md:text-[22px] font-instrument-serif mb-1">
                     {activity.title}
                   </h3>
                   <p className="text-[12px] md:text-sm leading-relaxed font-normal">
@@ -888,10 +885,17 @@ export default function Home() {
           </div>
 
           {/* Collaborative Callout */}
-          <div className="mt-12 w-full flex justify-center">
-            <div className="flex items-center gap-3 px-6 py-3.5 bg-zinc-50 border border-zinc-200 rounded-full max-w-[800px] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#a2770c] animate-pulse shrink-0" />
-              <p className="text-sm sm:text-sm text-zinc-600 tracking-tight font-instrument-sans font-semibold text-left">
+          <div className="mt-12 w-full relative overflow-hidden rounded-2xl border border-zinc-200 min-h-[290px] flex items-center justify-center p-6 md:p-8">
+            <Image
+              src="/assets/new-section.gif"
+              alt="Collaboration Background"
+              fill
+              unoptimized
+              sizes="100vw"
+              className="object-cover pointer-events-none brightness-95"
+            />
+            <div className="relative z-10 bg-white/80 backdrop-blur-md px-6 py-4 rounded-xl border border-white/30 max-w-3xl shadow-sm text-center">
+              <p className="text-sm sm:text-base text-zinc-900 tracking-tight font-instrument-sans font-semibold">
                 Anyone building something can also just join us and work with other builders there to collaborate.
               </p>
             </div>
@@ -905,7 +909,7 @@ export default function Home() {
             <div className="md:col-span-8 flex flex-col items-start pl-1">
               <div className="flex items-start gap-4 md:gap-5 w-full">
                 <div className="flex flex-col items-start">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-black mb-1 font-semibold tracking-tight">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black mb-1 font-semibold tracking-tight">
                     The Road to V1
                   </h2>
                   <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] font-semibold font-instrument-sans max-w-[550px]">
@@ -926,12 +930,12 @@ export default function Home() {
                 {/* Phase & Date */}
                 <div className="md:col-span-4 flex flex-col gap-1">
                   <span className="text-xs font-mono uppercase tracking-wider text-[#a2770c]">{phase.id}</span>
-                  <span className="text-black text-lg font-geist-pixel-circle">{phase.date}</span>
+                  <span className="text-black text-lg font-instrument-serif">{phase.date}</span>
                 </div>
 
                 {/* Title & Body */}
                 <div className="md:col-span-6 flex flex-col gap-2">
-                  <h3 className="text-[18px] md:text-[20px] font-semibold font-geist-pixel-circle text-black tracking-tight">
+                  <h3 className="text-[18px] md:text-[25px] font-instrument-serif text-black font-semibold">
                     {phase.title}
                   </h3>
                   <p className="text-zinc-500 text-sm md:text-base leading-relaxed max-w-[500px]">
@@ -966,7 +970,7 @@ export default function Home() {
         {/* Team Section (White Background) */}
         <section className="w-full bg-white text-zinc-950 pb-20 flex flex-col pt-14 md:pt-26 z-10 relative reveal-on-scroll">
           <div className="w-full mb-16 max-w-[850px] mx-auto flex flex-col items-center text-center px-4">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-black mb-4 tracking-tight font-semibold">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
               The Minds Behind Builder House
             </h2>
             <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px]">
@@ -1050,7 +1054,7 @@ export default function Home() {
         <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[900px] mx-auto pt-24 md:pt-36 z-10 relative reveal-on-scroll">
           {/* FAQ Title */}
           <div className="flex items-center justify-center gap-3 md:gap-4 select-none mb-10">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-geist-pixel-circle text-black tracking-tight text-center font-semibold leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-black tracking-tight text-center font-semibold leading-tight">
               Frequently Asked Questions
             </h2>
             <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
@@ -1076,7 +1080,7 @@ export default function Home() {
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                     className="w-full flex justify-between items-center px-6 py-5 text-left text-black hover:text-zinc-700 transition duration-200 cursor-pointer"
                   >
-                    <span className="text-sm md:text-base font-semibold font-geist-pixel-circle pr-4">
+                    <span className="text-lg font-semibold font-instrument-sans pr-4">
                       {item.question}
                     </span>
                     <span className={`text-xl font-light text-zinc-400 transition-transform duration-300 transform select-none ${isOpen ? "rotate-45 text-black" : ""}`}>
@@ -1104,13 +1108,13 @@ export default function Home() {
             curveAmount={150}
             direction="left"
             interactive
-            className="fill-zinc-950 font-geist-pixel-circle font-bold"
+            className="fill-zinc-950 font-instrument-serif font-bold"
             containerClassName="py-12 flex items-center justify-center w-full tracking-widest overflow-hidden"
           />
 
           {/* Footer Subtext */}
           <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-600">
-            Pick a pillar. <span className="font-geist-pixel-circle text-black font-bold ml-0.5 text-lg">Step inside.</span>
+            Pick a pillar. <span className="font-instrument-serif text-black font-bold ml-0.5 text-lg">Step inside.</span>
           </div>
         </section>
 
@@ -1138,7 +1142,7 @@ export default function Home() {
             {/* Text & Buttons Container */}
             <div className="flex flex-col md:flex-row items-center md:justify-between gap-6 w-full z-10">
               <div className="flex flex-col items-center md:items-start text-center md:text-left bg-white/10 border border-white/20 text-white backdrop-blur-md rounded-2xl p-6 max-w-xl shadow-lg">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight select-none">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-2 tracking-tight select-none">
                   Ready to ship?
                 </h2>
                 <p className="text-white text-sm md:text-base max-w-[450px] font-normal">
@@ -1191,16 +1195,16 @@ export default function Home() {
         <div className="relative w-full max-w-[1800px] mx-auto flex flex-col justify-end pt-12 pb-6 px-4 md:px-8 z-10 text-white">
           {/* Footer Top Links */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 w-full max-w-[700px] mx-auto text-center text-[13px] md:text-[15px] text-black mb-16">
-            <div className="flex flex-col items-center justify-center font-geist-pixel-circle font-semibold text-black">
+            <div className="flex flex-col items-center justify-center font-instrument-serif font-semibold text-black">
               <span>©2026 TokenSupply</span>
             </div>
-            <div className="flex flex-col gap-0.5 items-center justify-center font-geist-pixel-circle font-semibold text-black">
+            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-serif font-semibold text-black">
               <span>Have more queries?</span>
-              <a href="mailto:admint@tokensupply.io" className="hover:text-[#a2770c] transition duration-200 font-geist-pixel-circle font-semibold text-black">
+              <a href="mailto:admint@tokensupply.io" className="hover:text-[#a2770c] transition duration-200 font-instrument-serif font-semibold text-black">
                 admin@tokensupply.io
               </a>
             </div>
-            <div className="flex flex-col gap-0.5 items-center justify-center font-geist-pixel-circle font-semibold text-white animate-pulse-none">
+            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-serif font-semibold text-white animate-pulse-none">
               <a href="https://www.instagram.com/tokensupplyhq" className="hover:text-[#a2770c] transition duration-200 text-black">Instagram</a>
               <a href="#" className="hover:text-[#a2770c] transition duration-200 text-black">X (Twitter)</a>
               <a href="#" className="hover:text-[#a2770c] transition duration-200 text-black">Youtube</a>

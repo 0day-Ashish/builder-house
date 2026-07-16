@@ -384,7 +384,7 @@ export default function Home() {
         })
         .catch((err) => {
           console.log("Autoplay blocked, waiting for user interaction:", err);
-          
+
           const startPlayOnInteraction = () => {
             if (audioRef.current) {
               audioRef.current.play()
@@ -613,7 +613,7 @@ export default function Home() {
           </div>
 
           {/* Progress Percent */}
-          <span className="font-geist-pixel-circle text-[10px] text-[#e2b857] font-bold uppercase">
+          <span className="font-instrument-serif text-[10px] text-[#e2b857] font-bold uppercase">
             Loading... {progress.toString().padStart(2, '0')}%
           </span>
         </div>
@@ -624,7 +624,7 @@ export default function Home() {
         id="floating-player"
         className="fixed bottom-6 sm:bottom-auto sm:top-12 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f] border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 translate-y-4 sm:-translate-y-4 pointer-events-none"
       >
-        <span className="font-geist-pixel-circle font-bold text-[9px] text-[#e2b857] tracking-wider text-zinc-400 max-w-[120px] truncate">
+        <span className="font-instrument-serif font-bold text-[9px] text-[#e2b857] tracking-wider text-zinc-400 max-w-[120px] truncate">
           FM: {playlist[currentSongIndex].title}
         </span>
         {/* Animated Sound Wave bars */}
@@ -768,11 +768,11 @@ export default function Home() {
         </div>
 
         {/* Headline */}
-        <h2 className="font-geist-pixel-circle select-none mb-10 leading-[1.05] tracking-tight">
+        <h2 className="font-instrument-serif select-none mb-10 leading-[1.05] tracking-tight">
           <span className="text-[10.5vw] md:text-[5.5vw] lg:text-[5.8vw] font-light block text-[#ededed]">
             The <span className="font-instrument-serif italic  text-[#e2b857] pr-1 md:pr-2">Builders</span> Are
           </span>
-          <span className="text-[9vw] md:text-[6.5vw] lg:text-[5.5vw] font-geist-pixel-circle block text-white tracking-tight">
+          <span className="text-[9vw] md:text-[6.5vw] lg:text-[5.5vw] font-instrument-serif block text-white tracking-tight">
             Assembling
           </span>
         </h2>
@@ -794,7 +794,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
           {/* Left Column: Text Content */}
           <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight font-normal">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-2 tracking-tight font-normal">
               About TokenSupply
             </h2>
             <h3 className="text-lg md:text-xl font-semibold font-instrument-sans text-[#e2b857] mb-6 tracking-tight">
@@ -803,10 +803,10 @@ export default function Home() {
             <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-6 font-normal">
               Token Supply is a unified platform that helps businesses selling <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-[#8e8e93] border-b border-zinc-700/80 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
             </p>
-            <p className="text-[#8e8e93] border-l border-zinc-400 pl-4 text-[15px] md:text-[17px] leading-[1.4] tracking-normal mb-8 font-bold font-geist-pixel-circle">
+            <p className="text-[#8e8e93] border-l border-zinc-400 pl-4 text-[15px] md:text-[17px] leading-[1.4] tracking-normal mb-8 font-bold font-instrument-serif">
               One platform to manage products, inventory, orders, fulfillment, and sales channels so you can focus on growing your business, not managing spreadsheets.
             </p>
-            <button className="bg-white text-black font-geist-pixel-circle font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer">
+            <button className="bg-white text-black font-instrument-serif font-semibold text-[13px] md:text-[12px] px-6 py-2.5 rounded-full hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer">
               Learn More
             </button>
           </div>
@@ -830,10 +830,10 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
           {/* Left Column: Title */}
           <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
-            <span className="text-[10px] uppercase font-semibold font-geist-pixel-circle tracking-widest text-[#e2b857] mb-3">
+            <span className="text-[10px] uppercase font-semibold font-instrument-serif tracking-widest text-[#e2b857] mb-3">
               Infrastructure
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight leading-[1.1] mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white tracking-tight leading-[1.1] mb-4">
               TokenSupply <span className="italic">Subprocessors</span>
             </h2>
             <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[380px]">
@@ -890,7 +890,7 @@ export default function Home() {
 
           {/* Right Column: Text & Stats */}
           <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-6 tracking-tight font-normal">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-6 tracking-tight font-normal">
               What is Builder House?
             </h2>
             <p className="text-[#ededed] text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-10 font-normal">
@@ -900,15 +900,15 @@ export default function Home() {
             {/* Stats Grid */}
             <div className="grid grid-cols-3 gap-6 w-full">
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white tracking-tight mb-1">3</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">3</div>
                 <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold">Cracked Minds</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white tracking-tight mb-1">45</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">45</div>
                 <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Days of shipping</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white tracking-tight mb-1">v1</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1">v1</div>
                 <div className="text-[#8e8e93] text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Launch target</div>
               </div>
             </div>
@@ -993,7 +993,7 @@ export default function Home() {
                 </div>
               </div>
               <div className={`z-10 w-full backdrop-blur-md rounded-xl p-4 mt-auto border ${idx === 1 ? 'bg-black/60 border-white/10' : 'bg-white/10 border-white/20'}`}>
-                <h3 className="text-[19px] md:text-[22px] font-geist-pixel-circle text-white tracking-tight mb-1">
+                <h3 className="text-[19px] md:text-[22px] font-instrument-serif text-white tracking-tight mb-1">
                   {activity.title}
                 </h3>
                 <p className="text-[12px] md:text-xs text-white leading-relaxed font-normal">
@@ -1005,10 +1005,17 @@ export default function Home() {
         </div>
 
         {/* Collaborative Callout */}
-        <div className="mt-12 w-full flex justify-center">
-          <div className="flex items-center gap-3 px-6 py-3.5 bg-[#0a0a0c]/40 border border-zinc-850 rounded-full max-w-[800px] backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-[#e2b857] shrink-0" />
-            <p className="text-xs sm:text-sm text-zinc-400 tracking-tight font-instrument-sans font-semibold text-left">
+        <div className="mt-12 w-full relative overflow-hidden rounded-2xl border border-zinc-850 min-h-[290px] flex items-center justify-center p-6 md:p-8">
+          <Image
+            src="/assets/new-section.gif"
+            alt="Collaboration Background"
+            fill
+            unoptimized
+            sizes="100vw"
+            className="object-cover pointer-events-none brightness-75"
+          />
+          <div className="relative z-10 bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl border border-white/10 max-w-3xl shadow-lg text-center">
+            <p className="text-sm sm:text-base text-zinc-200 tracking-tight font-instrument-sans font-semibold">
               Anyone building something can also just join us and work with other builders there to collaborate.
             </p>
           </div>
@@ -1032,10 +1039,10 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-col items-start">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-geist-pixel-circle text-white mb-1 tracking-tight">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white mb-1 tracking-tight">
                   The Road to V1
                 </h2>
-                <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] font-semibold font-geist-pixel-circle max-w-[550px]">
+                <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] font-semibold font-instrument-serif max-w-[550px]">
                   Six weeks. Seven workstreams. One shipped product.
                 </p>
               </div>
@@ -1053,12 +1060,12 @@ export default function Home() {
               {/* Phase & Date */}
               <div className="md:col-span-4 flex flex-col gap-1">
                 <span className="text-xs font-mono uppercase tracking-wider text-[#e2b857]">{phase.id}</span>
-                <span className="text-white text-lg font-geist-pixel-circle">{phase.date}</span>
+                <span className="text-white text-lg font-instrument-serif">{phase.date}</span>
               </div>
 
               {/* Title & Body */}
               <div className="md:col-span-6 flex flex-col gap-2">
-                <h3 className="text-[18px] md:text-[20px] font-semibold font-geist-pixel-circle text-white tracking-tight">
+                <h3 className="text-[18px] md:text-[20px] font-semibold font-instrument-serif text-white tracking-tight">
                   {phase.title}
                 </h3>
                 <p className="text-[#8e8e93] text-sm md:text-base leading-relaxed max-w-[500px]">
@@ -1095,7 +1102,7 @@ export default function Home() {
       <div className="w-full pb-20 flex flex-col pt-14 md:pt-26">
         {/* Centered Header Block */}
         <div className="w-full mb-16 max-w-[850px] mx-auto flex flex-col items-center text-center px-4 relative">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-4 tracking-tight">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-4 tracking-tight">
             The Minds Behind Builder House
           </h2>
           <p className="text-[#8e8e93] text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px]">
@@ -1182,11 +1189,11 @@ export default function Home() {
       {/* FAQ Section */}
       <div className="w-full pb-36 px-4 md:px-8 max-w-[1400px] mx-auto border-t border-zinc-900/60 pt-24 md:pt-36">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start w-full">
-          
+
           {/* Left Column: FAQ text on top, GIF below */}
           <div className="lg:col-span-5 flex flex-col gap-5 w-full lg:-mt-6">
             <div className="flex items-center gap-3 md:gap-4 select-none">
-              <h2 className="text-2xl md:text-3xl lg:text-5xl font-geist-pixel-circle text-white tracking-tight text-left leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-white tracking-tight text-left leading-tight">
                 Frequently Asked Questions
               </h2>
               <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
@@ -1224,7 +1231,7 @@ export default function Home() {
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                     className="w-full flex justify-between items-center px-6 py-5 text-left text-[#ededed] hover:text-white transition duration-200 cursor-pointer"
                   >
-                    <span className="text-sm md:text-base font-semibold font-geist-pixel-circle pr-4">
+                    <span className="text-sm md:text-base font-semibold font-instrument-serif pr-4">
                       {item.question}
                     </span>
                     <span className={`text-xl font-light text-[#8e8e93] transition-transform duration-300 transform select-none ${isOpen ? "rotate-45 text-white" : ""
@@ -1258,7 +1265,7 @@ export default function Home() {
               <span className="text-[10px] text-zinc-500 font-mono">Bangalore</span>
             </div>
             <div className="my-1.5 md:my-3">
-              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
+              <span className="font-instrument-serif italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
                 Live
               </span>
             </div>
@@ -1274,7 +1281,7 @@ export default function Home() {
               <span className="text-[10px] text-zinc-500 font-mono">Build V1</span>
             </div>
             <div className="my-1.5 md:my-3">
-              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
+              <span className="font-instrument-serif italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
                 Build
               </span>
             </div>
@@ -1290,7 +1297,7 @@ export default function Home() {
               <span className="text-[10px] text-zinc-500 font-mono">Demo Day</span>
             </div>
             <div className="my-1.5 md:my-3">
-              <span className="font-geist-pixel-circle italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
+              <span className="font-instrument-serif italic text-3xl md:text-4xl lg:text-5xl text-white tracking-tight transition duration-300 transform group-hover:translate-x-1 block">
                 Network
               </span>
             </div>
@@ -1313,7 +1320,7 @@ export default function Home() {
               <span className="text-[10px] text-[#e2b857] font-mono">45 Days of Flow</span>
             </div>
             <div className="z-10 max-w-md my-auto">
-              <h4 className="text-white font-geist-pixel-circle text-md mb-1.5">No distractions. Just pure building.</h4>
+              <h4 className="text-white font-instrument-serif text-md mb-1.5">No distractions. Just pure building.</h4>
               <p className="text-xs text-zinc-500 leading-relaxed font-sans">
                 A vetted residency designed for flow state. We handle the chef-cooked food, premium housing, round-trip travel, and developer workspace so you can focus entirely on shipping token commerce infrastructure.
               </p>
@@ -1323,7 +1330,7 @@ export default function Home() {
 
         {/* Footer Subtext */}
         <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-500">
-          Pick a pillar. <span className="font-geist-pixel-circle text-white ml-0.5 text-lg">Step inside.</span>
+          Pick a pillar. <span className="font-instrument-serif text-white ml-0.5 text-lg">Step inside.</span>
         </div>
       </div>
 
@@ -1352,7 +1359,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center md:justify-between gap-6 w-full z-10">
             {/* Text details */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl p-6 max-w-xl">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-geist-pixel-circle text-white mb-2 tracking-tight select-none">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-2 tracking-tight select-none">
                 Ready to ship?
               </h2>
               <p className="text-white text-sm md:text-base max-w-[450px] font-normal">
@@ -1366,13 +1373,13 @@ export default function Home() {
                 href="https://luma.com/zc8zrg9g"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black font-semibold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md flex items-center justify-center"
+                className="bg-white text-black font-semibold font-instrument-serif text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md flex items-center justify-center"
               >
                 Apply Now
               </a>
               <a
                 href="mailto:hi@realanshuman.com"
-                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md font-bold font-geist-pixel-circle text-[14px] px-5 py-2.5 rounded-lg active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1.5 shadow-lg"
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md font-bold font-instrument-serif text-[14px] px-5 py-2.5 rounded-lg active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1.5 shadow-lg"
               >
                 Contact us
                 <svg className="w-3.5 h-3.5 text-white mt-[0.5px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1388,16 +1395,16 @@ export default function Home() {
       <footer className="w-full pt-16 pb-6 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-col">
         {/* Footer Top Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 w-full max-w-[700px] mx-auto text-center text-[13px] md:text-[15px] text-[#8e8e93] mb-20">
-          <div className="flex flex-col items-center justify-center font-geist-pixel-circle font-semibold">
+          <div className="flex flex-col items-center justify-center font-instrument-serif font-semibold">
             <span>©2026 TokenSupply</span>
           </div>
-          <div className="flex flex-col gap-0.5 items-center justify-center font-geist-pixel-circle font-semibold">
+          <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-serif font-semibold">
             <span>Have more queries?</span>
-            <a href="mailto:admint@tokensupply.io" className="hover:text-white transition duration-200 font-geist-pixel-circle font-semibold">
+            <a href="mailto:admint@tokensupply.io" className="hover:text-white transition duration-200 font-instrument-serif font-semibold">
               admin@tokensupply.io
             </a>
           </div>
-          <div className="flex flex-col gap-0.5 items-center justify-center font-geist-pixel-circle font-semibold">
+          <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-serif font-semibold">
             <a href="https://www.instagram.com/tokensupplyhq" className="hover:text-white transition duration-200">Instagram</a>
             <a href="#" className="hover:text-white transition duration-200">X (Twitter)</a>
             <a href="#" className="hover:text-white transition duration-200">Youtube</a>
