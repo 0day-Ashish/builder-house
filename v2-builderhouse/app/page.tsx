@@ -935,7 +935,6 @@ export default function Home() {
                   <span className="text-xs font-mono uppercase tracking-wider text-[#a2770c]">{phase.id}</span>
                   <span className="text-black text-lg font-instrument-serif">{phase.date}</span>
                 </div>
-
                 {/* Title & Body */}
                 <div className="md:col-span-6 flex flex-col gap-2">
                   <h3 className="text-[18px] md:text-[25px] font-instrument-serif text-black font-semibold">
