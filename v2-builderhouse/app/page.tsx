@@ -624,7 +624,7 @@ export default function Home() {
           </div>
 
           {/* Centered Hero Section */}
-          <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pb-60 md:pb-80 text-center z-10">
+          <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pb-20 md:pb-80 text-center z-10">
             {/* Glass Card Box */}
             <div className="backdrop-blur-xl bg-black/30 border border-white/10 rounded-[2rem] px-6 py-6 md:px-10 md:py-8 lg:px-12 lg:py-9 max-w-[640px] w-full shadow-2xl flex flex-col items-center">
               {/* Badge with Overlapping Avatars and Info Pill */}
