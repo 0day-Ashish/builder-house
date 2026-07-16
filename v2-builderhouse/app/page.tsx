@@ -1198,16 +1198,16 @@ export default function Home() {
         <div className="relative w-full max-w-[1800px] mx-auto flex flex-col justify-end pt-12 pb-6 px-4 md:px-8 z-10 text-white">
           {/* Footer Top Links */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 w-full max-w-[700px] mx-auto text-center text-[13px] md:text-[15px] text-black mb-16">
-            <div className="flex flex-col items-center justify-center font-instrument-serif font-semibold text-black">
+            <div className="flex flex-col items-center justify-center font-instrument-sans font-semibold text-black">
               <span>©2026 TokenSupply</span>
             </div>
-            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-serif font-semibold text-black">
+            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-sans font-semibold text-black">
               <span>Have more queries?</span>
-              <a href="mailto:admint@tokensupply.io" className="hover:text-[#a2770c] transition duration-200 font-instrument-serif font-semibold text-black">
+              <a href="mailto:admint@tokensupply.io" className="hover:text-[#a2770c] transition duration-200 font-instrument-sans font-semibold text-black">
                 admin@tokensupply.io
               </a>
             </div>
-            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-serif font-semibold text-white animate-pulse-none">
+            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-sans font-semibold text-white animate-pulse-none">
               <a href="https://www.instagram.com/tokensupplyhq" className="hover:text-[#a2770c] transition duration-200 text-black">Instagram</a>
               <a href="#" className="hover:text-[#a2770c] transition duration-200 text-black">X (Twitter)</a>
               <a href="#" className="hover:text-[#a2770c] transition duration-200 text-black">Youtube</a>
@@ -1220,7 +1220,7 @@ export default function Home() {
           </h1>
 
           {/* Designed & Developed by Credit */}
-          <div className="w-full text-center text-[10px] md:text-[11px] text-black font-mono tracking-widest pb-4 select-none">
+          <div className="w-full text-center text-[10px] md:text-[11px] text-black font-instrument-sans pb-4 select-none">
             Designed and Developed by{" "}
             <a
               href="https://arddev.in"
