@@ -23,6 +23,20 @@
   --font-instrument-serif: var(--font-instrument-serif), monospace;
 
   --animate-marquee: marquee 30s linear infinite;
+  --animate-logo-reveal: logo-reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes logo-reveal {
+    0% {
+      letter-spacing: 0.35em;
+      filter: blur(8px);
+      opacity: 0;
+    }
+    100% {
+      letter-spacing: normal;
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
 
   @keyframes marquee {
     from {

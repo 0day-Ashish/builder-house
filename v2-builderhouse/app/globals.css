@@ -22,6 +22,20 @@
   --animate-sound-bar-2: sound-bar-2 1.4s ease-in-out infinite alternate;
   --animate-sound-bar-3: sound-bar-3 1.0s ease-in-out infinite alternate;
   --animate-sound-bar-4: sound-bar-4 1.3s ease-in-out infinite alternate;
+  --animate-logo-reveal: logo-reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes logo-reveal {
+    0% {
+      letter-spacing: 0.35em;
+      filter: blur(8px);
+      opacity: 0;
+    }
+    100% {
+      letter-spacing: normal;
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
 
   @keyframes sound-bar-1 {
     0% {

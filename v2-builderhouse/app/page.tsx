@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import CurvedLoop from "@/components/CurvedLoop";
@@ -328,6 +328,73 @@ export default function Home() {
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [isHeaderDark, setIsHeaderDark] = useState(false);
 
+  const [logoText, setLogoText] = useState("BUILDER HOUSE");
+
+  useEffect(() => {
+    const target = "BUILDER HOUSE";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#%&*";
+    let iterations = 0;
+    
+    const interval = setInterval(() => {
+      setLogoText((prev) => {
+        return target
+          .split("")
+          .map((char, index) => {
+            if (char === " ") return " ";
+            if (index < iterations) {
+              return target[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("");
+      });
+      
+      if (iterations >= target.length) {
+        clearInterval(interval);
+      }
+      iterations += 1 / 3;
+    }, 30);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  const [footerText, setFooterText] = useState("BUILDER HOUSE");
+  const footerIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const triggerFooterScramble = useCallback(() => {
+    if (footerIntervalRef.current) clearInterval(footerIntervalRef.current);
+    
+    const target = "BUILDER HOUSE";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#%&*";
+    let iterations = 0;
+    
+    footerIntervalRef.current = setInterval(() => {
+      setFooterText((prev) => {
+        return target
+          .split("")
+          .map((char, index) => {
+            if (char === " ") return " ";
+            if (index < iterations) {
+              return target[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("");
+      });
+      
+      if (iterations >= target.length) {
+        if (footerIntervalRef.current) clearInterval(footerIntervalRef.current);
+      }
+      iterations += 1 / 3;
+    }, 30);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (footerIntervalRef.current) clearInterval(footerIntervalRef.current);
+    };
+  }, []);
+
   // Team slider state and scroll control
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollingRef = useRef(false);
@@ -480,6 +547,7 @@ export default function Home() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             footerElement.classList.add("revealed");
+            triggerFooterScramble();
           } else {
             footerElement.classList.remove("revealed");
           }
@@ -497,7 +565,7 @@ export default function Home() {
         footerObserver.unobserve(footerSentinel);
       }
     };
-  }, []);
+  }, [triggerFooterScramble]);
 
   // Marquee scroll loop
   useEffect(() => {
@@ -568,8 +636,11 @@ export default function Home() {
     <main className="relative text-[#1c1d1f] font-sans selection:bg-black selection:text-white bg-zinc-900">
       {/* Sticky BUILDER HOUSE logo in top-left */}
       <div className={`fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-colors duration-300 ${isHeaderDark ? 'text-black' : 'text-white'}`}>
-        <h1 className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase font-normal pt-1">
-          BUILDER HOUSE
+        <h1
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase font-normal pt-1 pointer-events-auto cursor-pointer animate-logo-reveal transition-all duration-500 ease-out hover:tracking-[0.1em] hover:text-[#e2b857] active:scale-95"
+        >
+          {logoText}
         </h1>
       </div>
 
@@ -1250,7 +1321,7 @@ export default function Home() {
 
           {/* Giant Stamp */}
           <h1 className="w-full text-center text-[5.9vw] sm:text-[4vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-black font-normal pb-4 pr-4 md:pr-6">
-            BUILDER HOUSE
+            {footerText}
           </h1>
 
           {/* Designed & Developed by Credit */}
