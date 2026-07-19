@@ -777,7 +777,7 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
                   About <span className="font-instrument-serif italic">TokenSupply</span>
                 </h2>
-                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-6 font-normal">
+                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.25] tracking-normal mb-6 font-normal">
                  Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
                 </p>
                 <button className="bg-black text-white font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center">
@@ -806,10 +806,10 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
               {/* Left Column: Title */}
               <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl italic font-instrument-serif text-black font-semibold tracking-tight leading-[1.1] mb-4">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl italic font-instrument-serif text-black font-semibold tracking-tight mb-4">
                   TechStack
                 </h2>
-                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-relaxed max-w-[380px]">
+                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-[1.25] max-w-[380px]">
                   Building TokenSupply with a great team of developers and designers. we’ve spent a lot of time designing the architecture so we can keep shipping new features without breaking things. if you’re into systems, take a look around.   
                 </p>
               </div>
@@ -870,7 +870,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-6 tracking-tight font-semibold">
                 About <span className="font-instrument-serif italic">BuilderHouse</span>
               </h2>
-              <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-10 font-normal">
+              <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.25] tracking-normal mb-10 font-normal">
                 Builder House is a residency by the TokenSupply team for developers, designers, and engineers who are obsessed with building. We invite a small group of exceptional builders to spend a few weeks living and working alongside our core team, shipping the first versions of TokenSupply together.
               </p>
 
