@@ -665,7 +665,7 @@ export default function Home() {
                 href="https://luma.com/zc8zrg9g"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase block text-center"
+                className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center"
               >
                 Apply Now
               </a>
@@ -686,7 +686,7 @@ export default function Home() {
                 <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-6 font-normal">
                  Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
                 </p>
-                <button className="bg-zinc-900 text-white font-instrument-sans font-semibold text-[13px] md:text-[12px] uppercase px-8 py-3.5 rounded-full hover:bg-zinc-850 active:scale-105 transition duration-200 cursor-pointer">
+                <button className="bg-black text-white font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center">
                   Learn More
                 </button>
               </div>
@@ -973,10 +973,10 @@ export default function Home() {
         <section className="w-full bg-white text-zinc-950 pb-20 flex flex-col pt-14 md:pt-26 z-10 relative reveal-on-scroll">
           <div className="w-full mb-16 max-w-[850px] mx-auto flex flex-col items-center text-center px-4">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
-              The Minds Behind Builder House
+              The People Building TokenSupply
             </h2>
             <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px]">
-              A multidisciplinary group of developers, designers, and construction specialists building the future of residential design.
+              Developers, Designers and Builders working together to create software for digital goods sellers.
             </p>
           </div>
 
@@ -1158,13 +1158,13 @@ export default function Home() {
                   href="https://luma.com/zc8zrg9g"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-black font-semibold font-instrument-sans text-[14px] px-5 py-2.5 rounded-lg hover:bg-zinc-200 active:scale-95 transition duration-200 cursor-pointer shadow-md flex items-center justify-center"
+                  className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center"
                 >
                   Apply Now
                 </a>
                 <a
                   href="mailto:hi@realanshuman.com"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md font-semibold font-instrument-sans text-[14px] px-5 py-2.5 rounded-lg active:scale-95 transition duration-200 cursor-pointer flex items-center gap-1.5 shadow-lg"
+                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md font-semibold font-instrument-sans text-[14px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer flex items-center gap-1.5 shadow-lg"
                 >
                   Contact us
                   <svg className="w-3.5 h-3.5 text-white mt-[0.5px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

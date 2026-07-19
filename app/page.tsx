@@ -782,7 +782,7 @@ export default function Home() {
           href="https://luma.com/zc8zrg9g"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-6 py-3.5 rounded-full hover:bg-zinc-200 active:scale-105 transition duration-200 cursor-pointer uppercase -mt-6 block text-center"
+          className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-6 py-3.5 rounded-full hover:bg-zinc-200 active:scale-105 transition duration-200 cursor-pointer uppercase -mt-6 flex items-center justify-center"
         >
           Apply Now
         </a>
