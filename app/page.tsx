@@ -847,7 +847,7 @@ export default function Home() {
               {subprocessorLogos.map((logo, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-center p-5 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-md rounded-2xl h-24 transition-all duration-300 shadow-md group relative overflow-hidden"
+                  className="flex items-center justify-center p-5 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-md rounded-2xl h-24 transition-all duration-300 shadow-md group relative overflow-hidden cursor-pointer"
                 >
                   {/* Grid overlay for texture */}
                   <div
@@ -857,12 +857,15 @@ export default function Home() {
                       backgroundSize: '15px 15px'
                     }}
                   />
-                  <div className="relative w-full h-full max-w-[85%] max-h-[75%] select-none pointer-events-none transition duration-300 transform group-hover:scale-105 flex items-center justify-center">
+                  <div className="relative w-full h-full max-w-[85%] max-h-[75%] select-none pointer-events-none transition-all duration-300 transform group-hover:-translate-y-2.5 group-hover:scale-[0.8] flex items-center justify-center">
                     <img
                       src={logo.path}
                       alt={`${logo.name} Logo`}
                       className="max-w-full max-h-full object-contain filter brightness-95 opacity-80 group-hover:opacity-100 group-hover:brightness-100 transition duration-300 pointer-events-none select-none"
                     />
+                  </div>
+                  <div className="absolute bottom-2.5 left-0 right-0 text-center text-[10px] font-mono uppercase tracking-wider text-zinc-400 opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none select-none">
+                    {logo.name}
                   </div>
                 </div>
               ))}

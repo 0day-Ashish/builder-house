@@ -704,7 +704,7 @@ export default function Home() {
               {/* Left Column: Text Content */}
               <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
-                  About TokenSupply
+                  About <span className="font-instrument-serif italic">TokenSupply</span>
                 </h2>
                 <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-6 font-normal">
                  Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
@@ -735,7 +735,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
               {/* Left Column: Title */}
               <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black font-semibold tracking-tight leading-[1.1] mb-4">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl italic font-instrument-serif text-black font-semibold tracking-tight leading-[1.1] mb-4">
                   TechStack
                 </h2>
                 <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-relaxed max-w-[380px]">
@@ -749,7 +749,7 @@ export default function Home() {
                   {subprocessorLogos.map((logo, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-center p-5 bg-zinc-50 border border-zinc-200 backdrop-blur-md rounded-2xl h-24 shadow-sm relative overflow-hidden"
+                      className="flex items-center justify-center p-5 bg-zinc-50 border border-zinc-200 backdrop-blur-md rounded-2xl h-24 shadow-sm relative overflow-hidden group cursor-pointer"
                     >
                       {/* Grid overlay for texture */}
                       <div
@@ -759,12 +759,15 @@ export default function Home() {
                           backgroundSize: '15px 15px'
                         }}
                       />
-                      <div className={`relative select-none pointer-events-none flex items-center justify-center ${logo.name === "Better Auth" ? "bg-black rounded-xl p-2.5 h-12 w-12" : "w-full h-full max-w-[85%] max-h-[75%]"}`}>
+                      <div className={`relative select-none pointer-events-none flex items-center justify-center transition-all duration-300 transform group-hover:-translate-y-2.5 group-hover:scale-[0.8] ${logo.name === "Better Auth" ? "bg-black rounded-xl p-2.5 h-12 w-12" : "w-full h-full max-w-[85%] max-h-[75%]"}`}>
                         <img
                           src={logo.path}
                           alt={`${logo.name} Logo`}
                           className="max-w-full max-h-full object-contain filter brightness-95 opacity-95 pointer-events-none select-none"
                         />
+                      </div>
+                      <div className="absolute bottom-2.5 left-0 right-0 text-center text-[10px] font-mono uppercase tracking-wider text-zinc-500 opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none select-none">
+                        {logo.name}
                       </div>
                     </div>
                   ))}
@@ -794,7 +797,7 @@ export default function Home() {
             {/* Right Column: Text & Stats */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-6 tracking-tight font-semibold">
-                About BuilderHouse
+                About <span className="font-instrument-serif italic">BuilderHouse</span>
               </h2>
               <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-10 font-normal">
                 Builder House is a residency by the TokenSupply team for developers, designers, and engineers who are obsessed with building. We invite a small group of exceptional builders to spend a few weeks living and working alongside our core team, shipping the first versions of TokenSupply together.
@@ -936,7 +939,7 @@ export default function Home() {
               <div className="flex items-start gap-4 md:gap-5 w-full">
                 <div className="flex flex-col items-start">
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black mb-1 font-semibold tracking-tight">
-                    The Road to V1
+                    The <span className="font-instrument-serif italic">Road</span> to V1
                   </h2>
                   <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] font-semibold font-instrument-sans max-w-[550px]">
                     Six weeks. Seven workstreams. One shipped product.
@@ -996,7 +999,7 @@ export default function Home() {
         <section className="w-full bg-white text-zinc-950 pb-20 flex flex-col pt-14 md:pt-26 z-10 relative reveal-on-scroll">
           <div className="w-full mb-16 max-w-[850px] mx-auto flex flex-col items-center text-center px-4">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
-              The People Building TokenSupply
+              The <span className="font-instrument-serif italic">People</span> Building <span className="font-instrument-serif italic">TokenSupply</span>
             </h2>
             <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px]">
               Developers, Designers and Builders working together to create software for digital goods sellers.
