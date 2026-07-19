@@ -183,24 +183,24 @@ const roadmapPhases = [
 
 const faqItems = [
   {
-    question: "What is the duration of the residency?",
-    answer: "The residency is a 45-day intensive program, running from July 16th to late August. Selected builders live and work together in Bangalore to co-build and launch V1 of TokenSupply."
+    question: "Who is Builder House for?",
+    answer: "Builder House is for developers, designers, and engineers with exceptional past work who genuinely enjoy building products. We’re looking for people who ship, not just talk about shipping."
   },
   {
-    question: "What does the sponsored stay cover?",
-    answer: "It covers 100% of your logistical costs. This includes premium accommodation in Bangalore, daily chef-prepared meals (breakfast, lunch, and dinner), a dedicated high-speed workstation setup, and your round-trip travel tickets to Bangalore."
+    question: "Is this a paid residency?",
+    answer: "Yes. Selected builders receive accommodation, meals, a workspace, and a stipend for the duration of the residency."
   },
   {
-    question: "Who is this residency for?",
-    answer: "It is for cracked developers, designers, and system engineers who have shipped impressive side projects or worked on high-growth products, and want to build real infrastructure in a high-density talent environment."
+    question: "What will I be working on?",
+    answer: "You’ll work alongside the TokenSupply team, helping build real features, improve the product architecture, and ship the first versions of the platform."
   },
   {
-    question: "Can I work on my own projects during the residency?",
-    answer: "The primary focus of this residency is collaborating together to ship V1 of TokenSupply. However, you will have plenty of opportunities to network, bounce ideas, and jam on side projects with other builders in the house."
+    question: "How long is the residency?",
+    answer: "The duration depends on the current batch and product roadmap. Most residencies run for a few weeks, with builders working full-time alongside the core team."
   },
   {
-    question: "Is there a selection process?",
-    answer: "Yes. Since seats are highly limited (only 3 cracked builders), we run an interview and review process to select builders based on their technical skills, proof of work, and ability to ship rapidly."
+    question: "How do I apply?",
+    answer: "Applications open periodically. Share your past work, GitHub, portfolio, or anything you’ve built. We care much more about what you’ve shipped than where you’ve worked or studied."
   }
 ];
 
@@ -208,7 +208,7 @@ const programDetails = [
   {
     step: "01",
     title: "Invite only",
-    description: "A vetted cohort of proven builders. No spectators — only shippers.",
+    description: "Past work matters more than resumes or a linkedin profile.",
     icon: (
       <div className="relative w-10 h-10 select-none">
         <Image
@@ -237,8 +237,8 @@ const programDetails = [
   },
   {
     step: "03",
-    title: "Engineers, designers, founders",
-    description: "Multidisciplinary teams operating as one product organism.",
+    title: "One team, one product",
+    description: "Everyone works alongside the TokenSupply team. No departments, just builders.",
     icon: (
       <div className="relative w-10 h-10 select-none">
         <Image
@@ -252,8 +252,8 @@ const programDetails = [
   },
   {
     step: "04",
-    title: "Focused execution",
-    description: "No distractions. One goal, one timeline, one team. Ship or iterate.",
+    title: "Build from day one",
+    description: "Solve real problems, and contribute to a product used by real customers.",
     icon: (
       <div className="relative w-10 h-10 select-none">
         <Image
@@ -267,7 +267,7 @@ const programDetails = [
   },
   {
     step: "05",
-    title: "Build → collaborate → launch",
+    title: "Learn together",
     description: "From architecture reviews to launch day. Every phase in one house.",
     icon: (
       <div className="relative w-10 h-10 select-none">
@@ -556,7 +556,7 @@ export default function Home() {
           {/* Background Image */}
           <div className="absolute inset-0 select-none pointer-events-none z-0">
             <Image
-              src="/assets/background.png"
+              src="/assets/background-image.png"
               alt="Hero Background"
               fill
               priority
@@ -684,7 +684,7 @@ export default function Home() {
                   About TokenSupply
                 </h2>
                 <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-6 font-normal">
-                  Token Supply is a unified platform that helps businesses selling <span className="text-zinc-600 border-b border-zinc-300 pb-[1px]">digital products</span> such as game keys, gift cards, and software licenses manage their <span className="text-zinc-600 border-b border-zinc-300 pb-[1px]">entire operation</span> from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
+                 Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
                 </p>
                 <button className="bg-zinc-900 text-white font-instrument-sans font-semibold text-[13px] md:text-[12px] uppercase px-8 py-3.5 rounded-full hover:bg-zinc-850 active:scale-105 transition duration-200 cursor-pointer">
                   Learn More
@@ -716,7 +716,7 @@ export default function Home() {
                   TechStack
                 </h2>
                 <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-relaxed max-w-[380px]">
-                  We partner with world-class security and hosting infrastructure providers to ensure high availability, data security, and seamless platform performance.
+                  Building TokenSupply with a great team of developers and designers. we’ve spent a lot of time designing the architecture so we can keep shipping new features without breaking things. if you’re into systems, take a look around.   
                 </p>
               </div>
 
@@ -771,10 +771,10 @@ export default function Home() {
             {/* Right Column: Text & Stats */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-6 tracking-tight font-semibold">
-                What is Builder House?
+                About BuilderHouse
               </h2>
               <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.35] tracking-normal mb-10 font-normal">
-                Builder House is all about developers, designers, and engineers with great past works who are absolutely <span className="text-zinc-700 border-b border-zinc-300 pb-[1px]">cracked</span> and have a crazy level of mind when it comes to <span className="text-zinc-700 border-b border-zinc-300 pb-[1px]">building cool shit</span>. In this residency, they will be collaborating with our core team to work on v1 of TokenSupply.
+                Builder House is a residency by the TokenSupply team for developers, designers, and engineers who are obsessed with building. We invite a small group of exceptional builders to spend a few weeks living and working alongside our core team, shipping the first versions of TokenSupply together.
               </p>
 
               {/* Stats Grid */}
@@ -801,7 +801,7 @@ export default function Home() {
           {/* 6-Box Grid Layout */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 w-full">
             {programDetails.map((activity, idx) => (
-              <div
+              <div    
                 key={idx}
                 className="relative overflow-hidden bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300/80 p-6 flex flex-col items-start justify-between min-h-[290px] rounded-2xl transition-all duration-300 shadow-sm group"
               >
