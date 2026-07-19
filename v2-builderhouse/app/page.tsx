@@ -801,18 +801,8 @@ export default function Home() {
         <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
           <div className="flex flex-col">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
-              {/* Left Column: Title */}
-              <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8 pt-2">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl italic font-instrument-serif text-black font-semibold tracking-tight mb-4">
-                  TechStack
-                </h2>
-                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-[1.25] max-w-[380px]">
-                  Building TokenSupply with a great team of developers and designers. we’ve spent a lot of time designing the architecture so we can keep shipping new features without breaking things. if you’re into systems, take a look around.   
-                </p>
-              </div>
-
-              {/* Right Column: Subprocessors Logos Grid */}
-              <div className="lg:col-span-8 w-full pl-1">
+              {/* Left Column: Subprocessors Logos Grid */}
+              <div className="lg:col-span-8 w-full pr-1">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full">
                   {subprocessorLogos.map((logo, idx) => (
                     <div
@@ -841,28 +831,25 @@ export default function Home() {
                   ))}
                 </div>
               </div>
+
+              {/* Right Column: Title & Paragraph */}
+              <div className="lg:col-span-4 flex flex-col items-start pl-0 lg:pl-8 pt-2">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl italic font-instrument-serif text-black font-semibold tracking-tight mb-4">
+                  TechStack
+                </h2>
+                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-[1.25] max-w-[380px]">
+                  Building TokenSupply with a great team of developers and designers. we’ve spent a lot of time designing the architecture so we can keep shipping new features without breaking things. if you’re into systems, take a look around.   
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* About Builder House Section (White Background) */}
         <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-24 md:pt-26 z-10 relative">
-          {/* Main Grid: Left = Image, Right = Text & Stats */}
+          {/* Main Grid: Left = Text & Stats, Right = Image */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
-            {/* Left Column: Image */}
-            <div className="col-span-1 lg:col-span-6 w-full">
-              <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-200 shadow-2xl">
-                <Image
-                  src="/assets/builderhouse.gif"
-                  alt="About Builder House Building Project"
-                  fill
-                  unoptimized
-                  className="object-cover object-center animate-fade-in"
-                />
-              </div>
-            </div>
-
-            {/* Right Column: Text & Stats */}
+            {/* Left Column: Text & Stats */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-6 tracking-tight font-semibold">
                 About <span className="font-instrument-serif italic">BuilderHouse</span>
@@ -885,6 +872,19 @@ export default function Home() {
                   <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black tracking-tight mb-1 font-semibold">v1</div>
                   <div className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Launch target</div>
                 </div>
+              </div>
+            </div>
+
+            {/* Right Column: Image */}
+            <div className="col-span-1 lg:col-span-6 w-full">
+              <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-200 shadow-2xl">
+                <Image
+                  src="/assets/builderhouse.gif"
+                  alt="About Builder House Building Project"
+                  fill
+                  unoptimized
+                  className="object-cover object-center animate-fade-in"
+                />
               </div>
             </div>
           </div>
@@ -1205,19 +1205,21 @@ export default function Home() {
         </section>
 
         {/* Pillars Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-36 flex flex-col md:pt-36 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
-          <CurvedLoop
-            marqueeText="✦ LIVE ✦ BUILD ✦ NETWORK "
-            speed={2.5}
-            curveAmount={150}
-            direction="left"
-            interactive
-            className="fill-zinc-950 font-instrument-serif font-bold"
-            containerClassName="py-12 flex items-center justify-center w-full tracking-widest overflow-hidden"
-          />
+        <section className="w-full bg-white text-zinc-950 pb-36 flex flex-col md:pt-36 z-10 relative reveal-on-scroll">
+          <div className="w-full overflow-hidden">
+            <CurvedLoop
+              marqueeText="✦ LIVE ✦ BUILD ✦ NETWORK "
+              speed={2.5}
+              curveAmount={150}
+              direction="left"
+              interactive
+              className="fill-zinc-950 font-instrument-serif font-bold"
+              containerClassName="py-12 flex items-center justify-center w-full tracking-widest overflow-hidden"
+            />
+          </div>
 
           {/* Footer Subtext */}
-          <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-600">
+          <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-600 max-w-[1400px] mx-auto px-4 md:px-8 w-full">
             Pick a pillar. <span className="font-instrument-serif text-black font-bold ml-0.5 text-lg">Step inside.</span>
           </div>
         </section>
