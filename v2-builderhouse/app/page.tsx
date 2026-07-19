@@ -1003,66 +1003,65 @@ export default function Home() {
         </section>
 
         {/* Roadmap Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-24 md:pt-26 z-10 relative reveal-on-scroll">
-          {/* Header grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16">
-            <div className="md:col-span-8 flex flex-col items-start pl-1">
-              <div className="flex items-start gap-4 md:gap-5 w-full">
-                <div className="flex flex-col items-start">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black mb-1 font-semibold tracking-tight">
-                    The <span className="font-instrument-serif italic">Road</span> to V1
-                  </h2>
-                  <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] font-semibold font-instrument-sans max-w-[550px]">
-                    Six weeks. Seven workstreams. One shipped product.
-                  </p>
-                </div>
-              </div>
+        <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Sticky Header Column */}
+            <div className="md:col-span-4 md:sticky md:top-[120px] flex flex-col items-start pl-1 self-start mb-10 md:mb-0">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-2 font-semibold tracking-tight">
+                The <span className="font-instrument-serif italic">Road</span> to V1
+              </h2>
+              <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] font-semibold font-instrument-sans max-w-[320px]">
+                Six weeks. Seven workstreams. One shipped product.
+              </p>
             </div>
-          </div>
 
-          {/* Timeline Grid */}
-          <div className="flex flex-col gap-4 w-full">
-            {roadmapPhases.map((phase, idx) => (
-              <div
-                key={idx}
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 backdrop-blur-sm rounded-2xl items-center transition-all duration-300 shadow-sm group"
-              >
-                {/* Phase & Date */}
-                <div className="md:col-span-4 flex flex-col gap-1">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[#a2770c]">{phase.id}</span>
-                  <span className="text-black text-lg font-instrument-serif">{phase.date}</span>
-                </div>
-                {/* Title & Body */}
-                <div className="md:col-span-6 flex flex-col gap-2">
-                  <h3 className="text-[18px] md:text-[25px] font-instrument-serif text-black font-semibold">
-                    {phase.title}
-                  </h3>
-                  <p className="text-zinc-500 text-sm md:text-base leading-relaxed max-w-[500px]">
-                    {phase.description}
-                  </p>
-                </div>
+            {/* Timeline Cards Stack Column */}
+            <div className="md:col-span-8 flex flex-col gap-6 relative">
+              {roadmapPhases.map((phase, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    ["--card-index" as any]: idx,
+                  }}
+                  className="roadmap-card grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 backdrop-blur-sm rounded-2xl items-center transition-all duration-300 shadow-[0_-4px_20px_-2px_rgba(0,0,0,0.05),0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:shadow-[0_-8px_30px_rgba(0,0,0,0.08),0_10px_15px_-3px_rgba(0,0,0,0.08)] group"
+                >
+                  {/* Phase & Date */}
+                  <div className="md:col-span-4 flex flex-col gap-1">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#a2770c]">{phase.id}</span>
+                    <span className="text-black text-lg font-instrument-serif">{phase.date}</span>
+                  </div>
+                  {/* Title & Body */}
+                  <div className="md:col-span-6 flex flex-col gap-2">
+                    <h3 className="text-[18px] md:text-[25px] font-instrument-serif text-black font-semibold">
+                      {phase.title}
+                    </h3>
+                    <p className="text-zinc-500 text-sm md:text-base leading-relaxed max-w-[500px]">
+                      {phase.description}
+                    </p>
+                  </div>
 
-                {/* Status Icon Image */}
-                <div className="md:col-span-2 flex md:justify-end pt-1">
-                  {phase.image ? (
-                    <div className="relative w-17 h-17 overflow-hidden bg-transparent select-none">
-                      <Image
-                        src={phase.image}
-                        alt={phase.title}
-                        fill
-                        className="object-cover pointer-events-none"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-16 h-16 rounded-xl border border-dashed border-zinc-300 bg-transparent flex items-center justify-center text-zinc-400 shadow-sm select-none">
-                      <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9" />
-                      </svg>
-                    </div>
-                  )}
+                  {/* Status Icon Image */}
+                  <div className="md:col-span-2 flex md:justify-end pt-1">
+                    {phase.image ? (
+                      <div className="relative w-17 h-17 overflow-hidden bg-transparent select-none">
+                        <Image
+                          src={phase.image}
+                          alt={phase.title}
+                          fill
+                          className="object-cover pointer-events-none"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-16 h-16 rounded-xl border border-dashed border-zinc-300 bg-transparent flex items-center justify-center text-zinc-400 shadow-sm select-none">
+                        <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 

@@ -224,3 +224,20 @@
     @apply font-sans;
   }
 }
+
+/* Roadmap Section Stacking Cards */
+.roadmap-card {
+  position: sticky;
+  /* Mobile/Tablet top offset to stack slightly */
+  top: calc(90px + var(--card-index) * 20px);
+  z-index: calc(var(--card-index) + 1);
+  transform-origin: top center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .roadmap-card {
+    /* Desktop top offset to show more of the card headers */
+    top: calc(120px + var(--card-index) * 36px);
+  }
+}
