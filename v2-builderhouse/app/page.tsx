@@ -36,7 +36,20 @@ const subprocessorLogos = [
   { name: "GitHub", path: "/assets/logos/github-blog-logo.png" }
 ];
 
-const teamMembers = [
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  socials: {
+    x?: string;
+    github?: string;
+    website?: string;
+    linkedin?: string;
+    instagram?: string;
+  };
+}
+
+const teamMembers: TeamMember[] = [
   {
     name: "Ashish Ranjan Das",
     role: "Founder & Lead Designer",
@@ -118,6 +131,16 @@ const teamMembers = [
     image: "/team/ammogh_portrait_1.png",
     socials: {
       linkedin: "https://www.linkedin.com/in/ammogh/"
+    }
+  },
+  {
+    name: "Ashish Ranjan Das",
+    role: "DevRel Engineer",
+    image: "/team/Ashish.jpeg",
+    socials: {
+      website: "https://arddev.in",
+      instagram: "https://instagram.com/ashishhikr",
+      linkedin: "https://www.linkedin.com/in/arddev/"
     }
   }
 ];
@@ -1033,6 +1056,15 @@ export default function Home() {
                           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                           <rect x="2" y="9" width="4" height="12" />
                           <circle cx="4" cy="4" r="2" />
+                        </svg>
+                      </a>
+                    )}
+                    {member.socials.instagram && (
+                      <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="transition">
+                        <svg className="w-4 h-4 text-zinc-400 hover:text-black transition duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                         </svg>
                       </a>
                     )}
