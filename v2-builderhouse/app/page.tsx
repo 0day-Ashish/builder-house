@@ -675,9 +675,6 @@ export default function Home() {
                 id="inline-player"
                 className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-400 opacity-100 pointer-events-auto pt-5"
               >
-                <span className="font-mono text-[9px] uppercase tracking-wider text-white max-w-[120px] truncate">
-                  FM: {playlist[currentSongIndex].title}
-                </span>
                 {/* Animated Sound Wave bars */}
                 <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
                   <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
@@ -1343,9 +1340,6 @@ export default function Home() {
         id="floating-player"
         className="fixed bottom-6 sm:bottom-auto sm:top-12 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f]/90 border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 translate-y-4 sm:-translate-y-4 pointer-events-none backdrop-blur-md"
       >
-        <span className="font-mono text-[9px] uppercase tracking-wider text-white max-w-[120px] truncate">
-          FM: {playlist[currentSongIndex].title}
-        </span>
         {/* Animated Sound Wave bars */}
         <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
           <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
