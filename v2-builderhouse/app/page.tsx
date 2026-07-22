@@ -1231,7 +1231,7 @@ export default function Home() {
                   href="https://luma.com/zc8zrg9g"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center whitespace-nowrap"
+                  className="bg-white text-black font-instrument-sans font-bold text-[14px] md:text-[14px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer flex items-center justify-center whitespace-nowrap"
                 >
                   Apply Now
                 </a>
