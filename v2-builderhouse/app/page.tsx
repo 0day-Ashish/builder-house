@@ -51,46 +51,6 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Ashish Ranjan Das",
-    role: "Founder & Lead Designer",
-    image: "/assets/team-1.avif",
-    socials: {
-      x: "#",
-      github: "https://github.com/0day-Ashish",
-      website: "https://realanshuman.com"
-    }
-  },
-  {
-    name: "Sarah K.",
-    role: "Lead Engineer",
-    image: "/assets/team-2.avif",
-    socials: {
-      github: "#",
-      linkedin: "#",
-      website: "#"
-    }
-  },
-  {
-    name: "Vikram R.",
-    role: "Construction Lead",
-    image: "/assets/team-3.avif",
-    socials: {
-      x: "#",
-      linkedin: "#",
-      website: "#"
-    }
-  },
-  {
-    name: "Ananya S.",
-    role: "Interior Architect",
-    image: "/assets/team-4.avif",
-    socials: {
-      x: "#",
-      linkedin: "#",
-      website: "#"
-    }
-  },
-  {
     name: "Karthik Shanbhag",
     role: "Backend Developer",
     image: "/team/Kartik.jpeg",
@@ -141,6 +101,15 @@ const teamMembers: TeamMember[] = [
       website: "https://arddev.in",
       instagram: "https://instagram.com/ashishhikr",
       linkedin: "https://www.linkedin.com/in/arddev/"
+    }
+  },
+  {
+    name: "Vansh Goyal",
+    role: "AI and Backend Engineer",
+    image: "/team/vansh.jpeg",
+    socials: {
+      github: "https://github.com/vanshcodeworks",
+      website: "https://vanshcodeworks.com"
     }
   }
 ];
@@ -646,11 +615,11 @@ export default function Home() {
 
       <div className="relative z-10 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
         {/* Hero Section Container (Full Viewport Screen, retains its dark styling wrapper) */}
-        <div className="relative w-full aspect-[1536/1024] min-h-[750px] md:min-h-[1024px] flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
+        <div className="relative w-full aspect-[1536/900] min-h-[750px] md:min-h-[924px] flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
           {/* Background Image */}
           <div className="absolute inset-0 select-none pointer-events-none z-0">
             <Image
-              src="/assets/background-image.png"
+              src="/assets/background-image-1.png"
               alt="Hero Background"
               fill
               priority
