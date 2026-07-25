@@ -647,7 +647,7 @@ export default function Home() {
             {/* Right Side: Bangalore & FM Player */}
             <div className="flex flex-col items-end pr-2 md:pr-4">
               <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
-                Bangalore, 16th July
+                Bangalore, 29th July
               </span>
               {/* Inline lo-fi FM player */}
               <div
