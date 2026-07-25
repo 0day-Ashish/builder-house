@@ -51,6 +51,16 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
+    name: "Anshuman Kumar",
+    role: "Founder",
+    image: "/team/Anshuman.jpeg",
+    socials: {
+      instagram: "https://www.instagram.com/realanshumxn/",
+      website: "https://realanshuman.com/",
+      github: "https://github.com/realanshuman"
+    }
+  },
+  {
     name: "Karthik Shanbhag",
     role: "Backend Developer",
     image: "/team/Kartik.jpeg",
