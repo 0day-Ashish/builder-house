@@ -56,8 +56,7 @@ const teamMembers: TeamMember[] = [
     image: "/team/Anshuman.jpeg",
     socials: {
       instagram: "https://www.instagram.com/realanshumxn/",
-      website: "https://realanshuman.com/",
-      github: "https://github.com/realanshuman"
+      website: "https://realanshuman.com/"
     }
   },
   {
