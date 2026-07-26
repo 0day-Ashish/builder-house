@@ -64,7 +64,6 @@ const teamMembers: TeamMember[] = [
     role: "Co-Founder",
     image: "/team/yash.jpeg",
     socials: {
-      instagram: "https://www.instagram.com/yashxsah/",
       linkedin: "https://www.linkedin.com/in/yash-raj-51545b259/"
     }
   },
