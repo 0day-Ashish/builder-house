@@ -60,6 +60,15 @@ const teamMembers: TeamMember[] = [
     }
   },
   {
+    name: "Yash Raj",
+    role: "Co-Founder",
+    image: "/team/yash.jpeg",
+    socials: {
+      instagram: "https://www.instagram.com/yashxsah/",
+      linkedin: "https://www.linkedin.com/in/yash-raj-51545b259/"
+    }
+  },
+  {
     name: "Karthik Shanbhag",
     role: "Backend Developer",
     image: "/team/Kartik.jpeg",
@@ -304,7 +313,6 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
-  const [isHeaderDark, setIsHeaderDark] = useState(false);
 
   const [logoText, setLogoText] = useState("BUILDER HOUSE");
 
@@ -402,11 +410,6 @@ export default function Home() {
   useLenis((lenis) => {
     const scroll = lenis.scroll;
     const sticky = scroll > 120;
-
-    // Transition header logo color
-    const heroHeight = typeof window !== "undefined" ? (window.innerWidth < 640 ? 750 : window.innerHeight) : 800;
-    const isPastHero = scroll > (heroHeight - 64);
-    setIsHeaderDark((prev) => (prev !== isPastHero ? isPastHero : prev));
 
     const inlinePlayer = document.getElementById("inline-player");
     const floatingPlayer = document.getElementById("floating-player");
@@ -613,7 +616,7 @@ export default function Home() {
   return (
     <main className="relative text-[#1c1d1f] font-sans selection:bg-black selection:text-white bg-zinc-900">
       {/* Sticky BUILDER HOUSE logo in top-left */}
-      <div className={`fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-colors duration-300 ${isHeaderDark ? 'text-black' : 'text-white'}`}>
+      <div className="fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-colors duration-300 text-black">
         <h1
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase font-normal pt-1 pointer-events-auto cursor-pointer animate-logo-reveal transition-all duration-500 ease-out hover:tracking-[0.1em] hover:text-[#e2b857] active:scale-95"
@@ -624,18 +627,7 @@ export default function Home() {
 
       <div className="relative z-10 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
         {/* Hero Section Container (Full Viewport Screen, retains its dark styling wrapper) */}
-        <div className="relative w-full aspect-[1536/900] min-h-[750px] md:min-h-[924px] flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
-          {/* Background Image */}
-          <div className="absolute inset-0 select-none pointer-events-none z-0">
-            <Image
-              src="/assets/background-image-1.png"
-              alt="Hero Background"
-              fill
-              priority
-              className="object-cover"
-            />
-          </div>
-
+        <div className="relative w-full aspect-[1536/900] min-h-[750px] md:min-h-[924px] flex flex-col justify-between overflow-hidden text-zinc-950 bg-white">
           {/* Header Container */}
           <div className="relative w-full pt-8 pb-4 px-4 md:px-8 max-w-[1800px] mx-auto flex flex-row justify-between items-start z-10">
             {/* Invisible Spacer logo to keep layout spacing balanced */}
@@ -645,13 +637,13 @@ export default function Home() {
 
             {/* Right Side: Bangalore & FM Player */}
             <div className="flex flex-col items-end pr-2 md:pr-4">
-              <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
+              <span className="text-zinc-950 text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
                 Bangalore, 29th July
               </span>
               {/* Inline lo-fi FM player */}
               <div
                 id="inline-player"
-                className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-400 opacity-100 pointer-events-auto pt-5"
+                className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-500 opacity-100 pointer-events-auto pt-5"
               >
                 {/* Animated Sound Wave bars */}
                 <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
@@ -665,7 +657,7 @@ export default function Home() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handlePrevSong}
-                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                    className="hover:text-black text-zinc-500 transition duration-200 border border-zinc-300 rounded p-1 bg-white cursor-pointer flex items-center justify-center"
                     aria-label="Previous Song"
                   >
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -674,13 +666,13 @@ export default function Home() {
                   </button>
                   <button
                     onClick={togglePlay}
-                    className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
+                    className="hover:text-black transition duration-200 uppercase font-mono text-[9px] border border-zinc-300 rounded px-1.5 py-0.5 bg-white cursor-pointer min-w-[40px] text-center"
                   >
                     {isPlaying ? 'Pause' : 'Play'}
                   </button>
                   <button
                     onClick={handleNextSong}
-                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                    className="hover:text-black text-zinc-500 transition duration-200 border border-zinc-300 rounded p-1 bg-white cursor-pointer flex items-center justify-center"
                     aria-label="Next Song"
                   >
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -700,19 +692,19 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-3 mb-5 select-none">
                 {/* Overlapping circular avatars */}
                 <div className="flex -space-x-2">
-                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_1.webp" alt="Team Member 1" fill className="object-cover" />
                   </div>
-                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_4.webp" alt="Team Member 2" fill className="object-cover" />
                   </div>
-                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_7.webp" alt="Team Member 3" fill className="object-cover" />
                   </div>
                 </div>
 
                 {/* Badge text in its own white box */}
-                <div className="bg-white px-3 py-1.5 sm:px-4 shadow-lg border border-black flex items-center justify-center max-w-full">
+                <div className="bg-white px-3 py-1.5 sm:px-4 border border-black flex items-center justify-center max-w-full">
                   <span className="text-[8px] min-[320px]:text-[9px] sm:text-[11px] uppercase tracking-widest font-instrument-sans font-semibold text-black whitespace-nowrap leading-none pt-[1px]">
                     A Sponsored Residency for Cracked People
                   </span>
@@ -721,10 +713,10 @@ export default function Home() {
 
               {/* Headline */}
               <h2 className="font-instrument-serif select-none mb-6 leading-[1.05] tracking-tight">
-                <span className="text-5xl sm:text-5xl md:text-[75px] font-light block text-[#ededed]">
-                  The <span className="font-instrument-serif italic text-[#ffc83b] pr-1 md:pr-2">Builders</span> Are
+                <span className="text-5xl sm:text-5xl md:text-[75px] font-light block text-zinc-900">
+                  The <span className="font-instrument-serif italic text-[#c8901a] pr-1 md:pr-2">Builders</span> Are
                 </span>
-                <span className="text-5xl sm:text-6xl md:text-[75px] font-instrument-serif block text-white tracking-tight">
+                <span className="text-5xl sm:text-6xl md:text-[75px] font-instrument-serif block text-zinc-950 tracking-tight">
                   Assembling
                 </span>
               </h2>
@@ -734,7 +726,7 @@ export default function Home() {
                 href="https://luma.com/zc8zrg9g"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center whitespace-nowrap"
+                className="bg-black text-white font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full hover:bg-zinc-800 active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center whitespace-nowrap"
               >
                 Apply Now
               </a>
