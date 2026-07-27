@@ -240,4 +240,43 @@
     /* Desktop top offset to show more of the card headers */
     top: calc(120px + var(--card-index) * 36px);
   }
+}
+
+/* Scroll Parallax Animations for margins */
+@keyframes parallax-left {
+  from {
+    transform: translateY(85px);
+  }
+  to {
+    transform: translateY(-85px);
+  }
+}
+
+@keyframes parallax-right {
+  from {
+    transform: translateY(120px);
+  }
+  to {
+    transform: translateY(-120px);
+  }
+}
+
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
+  .parallax-card-left {
+    animation: parallax-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+  .parallax-card-right {
+    animation: parallax-right linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-card-left,
+  .parallax-card-right {
+    animation: none;
+  }
 }

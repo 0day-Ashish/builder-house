@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import CurvedLoop from "@/components/CurvedLoop";
+import TerminalConsole from "@/components/TerminalConsole";
 
 const playlist = [
   {
@@ -312,7 +313,8 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
-  const [isHeaderDark, setIsHeaderDark] = useState(false);
+  // True once the floating nav has taken over, so the corner logo can step aside
+  const [isNavFloating, setIsNavFloating] = useState(false);
 
   const [logoText, setLogoText] = useState("BUILDER HOUSE");
 
@@ -411,33 +413,30 @@ export default function Home() {
     const scroll = lenis.scroll;
     const sticky = scroll > 120;
 
-    // Transition header logo color
-    const heroHeight = typeof window !== "undefined" ? (window.innerWidth < 640 ? 750 : window.innerHeight) : 800;
-    const isPastHero = scroll > (heroHeight - 64);
-    setIsHeaderDark((prev) => (prev !== isPastHero ? isPastHero : prev));
-
     const inlinePlayer = document.getElementById("inline-player");
     const floatingPlayer = document.getElementById("floating-player");
 
     if (inlinePlayer && floatingPlayer) {
-      const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
-      const maxScroll = typeof document !== "undefined" ? document.documentElement.scrollHeight - window.innerHeight : 0;
-      // Hide player when entering the footer reveal section on mobile (within 420px of bottom to account for bounce/overscroll)
-      const isNearBottom = isMobile && maxScroll > 0 && (maxScroll - scroll) < 420;
+      // The nav now docks to the top on every breakpoint, so it no longer
+      // collides with the mobile footer reveal that used to hide it.
+      const navVisible = sticky;
+      setIsNavFloating((prev) => (prev !== navVisible ? navVisible : prev));
 
-      if (sticky && !isNearBottom) {
+      if (navVisible) {
         inlinePlayer.style.opacity = "0";
         inlinePlayer.style.pointerEvents = "none";
 
         floatingPlayer.style.opacity = "1";
-        floatingPlayer.style.transform = "translateY(0)";
+        // Tailwind v4 centers via the `translate` property, so animate that
+        // (not `transform`) or the -50% X shift gets left uncompensated.
+        floatingPlayer.style.translate = "-50% 0";
         floatingPlayer.style.pointerEvents = "auto";
       } else {
         inlinePlayer.style.opacity = sticky ? "0" : "1";
         inlinePlayer.style.pointerEvents = sticky ? "none" : "auto";
 
         floatingPlayer.style.opacity = "0";
-        floatingPlayer.style.transform = isMobile ? "translateY(16px)" : "translateY(-16px)";
+        floatingPlayer.style.translate = "-50% -16px";
         floatingPlayer.style.pointerEvents = "none";
       }
     }
@@ -621,7 +620,7 @@ export default function Home() {
   return (
     <main className="relative text-[#1c1d1f] font-sans selection:bg-black selection:text-white bg-zinc-900">
       {/* Sticky BUILDER HOUSE logo in top-left */}
-      <div className={`fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-colors duration-300 ${isHeaderDark ? 'text-black' : 'text-white'}`}>
+      <div className={`fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-[color,opacity,transform] duration-300 text-black ${isNavFloating ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
         <h1
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase font-normal pt-1 pointer-events-auto cursor-pointer animate-logo-reveal transition-all duration-500 ease-out hover:tracking-[0.1em] hover:text-[#e2b857] active:scale-95"
@@ -632,16 +631,82 @@ export default function Home() {
 
       <div className="relative z-10 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
         {/* Hero Section Container (Full Viewport Screen, retains its dark styling wrapper) */}
-        <div className="relative w-full aspect-[1536/900] min-h-[750px] md:min-h-[924px] flex flex-col justify-between overflow-hidden text-white bg-zinc-950">
-          {/* Background Image */}
-          <div className="absolute inset-0 select-none pointer-events-none z-0">
-            <Image
-              src="/assets/background-image-1.png"
-              alt="Hero Background"
-              fill
-              priority
-              className="object-cover"
-            />
+        <div className="relative w-full aspect-[1536/900] min-h-[750px] md:min-h-[924px] flex flex-col justify-between overflow-hidden text-zinc-950 bg-white">
+          {/* Floating Polaroid Cards on the margins */}
+          <div className="absolute lg:left-[5%] xl:left-[8%] top-[10%] z-20 hidden lg:flex flex-col gap-4 select-none parallax-card-left">
+            {/* Heroblock 1 */}
+            <div className="w-[180px] sm:w-[220px] md:w-[250px] rotate-[-3deg] translate-x-10">
+              <div className="relative w-full aspect-square overflow-hidden">
+                <Image 
+                  src="/assets/heroimg1.png" 
+                  alt="Hero Block 1" 
+                  fill 
+                  className="object-cover pointer-events-none"
+                />
+              </div>
+            </div>
+
+            {/* Heroblock 2 */}
+            <div className="w-[170px] sm:w-[210px] md:w-[240px] rotate-[4deg]">
+              <div className="relative w-full aspect-square overflow-hidden">
+                <Image 
+                  src="/assets/herobg5.png" 
+                  alt="Hero Block 2" 
+                  fill 
+                  className="object-cover pointer-events-none"
+                />
+              </div>
+            </div>
+
+            {/* Heroblock 3 */}
+            <div className="w-[180px] sm:w-[220px] md:w-[250px] rotate-[-2deg] translate-x-10 -translate-y-8">
+              <div className="relative w-full aspect-square overflow-hidden">
+                <Image 
+                  src="/assets/heroimg6.png" 
+                  alt="Hero Block 3" 
+                  fill 
+                  className="object-cover pointer-events-none"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute lg:right-[5%] xl:right-[8%] top-[10%] z-20 hidden lg:flex flex-col gap-4 select-none parallax-card-right">
+            {/* Heroblock 1 */}
+            <div className="w-[180px] sm:w-[220px] md:w-[250px] rotate-[3deg] -translate-x-10">
+              <div className="relative w-full aspect-square overflow-hidden">
+                <Image 
+                  src="/assets/heroimg4.png" 
+                  alt="Hero Block 1" 
+                  fill 
+                  className="object-cover pointer-events-none"
+                />
+              </div>
+            </div>
+
+            {/* Heroblock 2 */}
+            <div className="w-[150px] sm:w-[190px] md:w-[220px] rotate-[-4deg]">
+              <div className="relative w-full aspect-square overflow-hidden">
+                <Image 
+                  src="/assets/heroimg2.png" 
+                  alt="Hero Block 2" 
+                  fill 
+                  className="object-cover pointer-events-none"
+                />
+              </div>
+            </div>
+
+            {/* Heroblock 3 */}
+            <div className="w-[200px] sm:w-[240px] md:w-[320px] rotate-[2deg] -translate-x-10">
+              <div className="relative w-full aspect-square overflow-hidden">
+                <Image 
+                  src="/assets/heroimg3.png" 
+                  alt="Hero Block 3" 
+                  fill 
+                  className="object-cover pointer-events-none"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Header Container */}
@@ -653,13 +718,13 @@ export default function Home() {
 
             {/* Right Side: Bangalore & FM Player */}
             <div className="flex flex-col items-end pr-2 md:pr-4">
-              <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
+              <span className="text-zinc-950 text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
                 Bangalore, 29th July
               </span>
               {/* Inline lo-fi FM player */}
               <div
                 id="inline-player"
-                className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-400 opacity-100 pointer-events-auto pt-5"
+                className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-500 opacity-100 pointer-events-auto pt-5"
               >
                 {/* Animated Sound Wave bars */}
                 <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
@@ -673,7 +738,7 @@ export default function Home() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handlePrevSong}
-                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                    className="hover:text-black text-zinc-500 transition duration-200 border border-zinc-300 rounded p-1 bg-white cursor-pointer flex items-center justify-center"
                     aria-label="Previous Song"
                   >
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -682,13 +747,13 @@ export default function Home() {
                   </button>
                   <button
                     onClick={togglePlay}
-                    className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
+                    className="hover:text-black transition duration-200 uppercase font-mono text-[9px] border border-zinc-300 rounded px-1.5 py-0.5 bg-white cursor-pointer min-w-[40px] text-center"
                   >
                     {isPlaying ? 'Pause' : 'Play'}
                   </button>
                   <button
                     onClick={handleNextSong}
-                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+                    className="hover:text-black text-zinc-500 transition duration-200 border border-zinc-300 rounded p-1 bg-white cursor-pointer flex items-center justify-center"
                     aria-label="Next Song"
                   >
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -701,26 +766,26 @@ export default function Home() {
           </div>
 
           {/* Centered Hero Section */}
-          <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pb-20 md:pb-80 text-center z-10">
+          <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pb-4 md:pb-16 text-center z-10">
             {/* Glass Card Box */}
             <div className=" px-6 py-6 md:px-10 md:py-8 lg:px-12 lg:py-9 max-w-[640px] w-full flex flex-col items-center">
               {/* Badge with Overlapping Avatars and Info Pill */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-3 mb-5 select-none">
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-3 mb-15 select-none">
                 {/* Overlapping circular avatars */}
                 <div className="flex -space-x-2">
-                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_1.webp" alt="Team Member 1" fill className="object-cover" />
                   </div>
-                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_4.webp" alt="Team Member 2" fill className="object-cover" />
                   </div>
-                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_7.webp" alt="Team Member 3" fill className="object-cover" />
                   </div>
                 </div>
 
                 {/* Badge text in its own white box */}
-                <div className="bg-white px-3 py-1.5 sm:px-4 shadow-lg border border-black flex items-center justify-center max-w-full">
+                <div className="bg-white px-3 py-1.5 sm:px-4 border border-black flex items-center justify-center max-w-full">
                   <span className="text-[8px] min-[320px]:text-[9px] sm:text-[11px] uppercase tracking-widest font-instrument-sans font-semibold text-black whitespace-nowrap leading-none pt-[1px]">
                     A Sponsored Residency for Cracked People
                   </span>
@@ -729,10 +794,10 @@ export default function Home() {
 
               {/* Headline */}
               <h2 className="font-instrument-serif select-none mb-6 leading-[1.05] tracking-tight">
-                <span className="text-5xl sm:text-5xl md:text-[75px] font-light block text-[#ededed]">
-                  The <span className="font-instrument-serif italic text-[#ffc83b] pr-1 md:pr-2">Builders</span> Are
+                <span className="text-5xl sm:text-5xl md:text-[75px] font-light block text-zinc-900">
+                  The <span className="font-instrument-serif italic text-[#c8901a] pr-1 md:pr-2">Builders</span> Are
                 </span>
-                <span className="text-5xl sm:text-6xl md:text-[75px] font-instrument-serif block text-white tracking-tight">
+                <span className="text-5xl sm:text-6xl md:text-[75px] font-instrument-serif block text-zinc-950 tracking-tight">
                   Assembling
                 </span>
               </h2>
@@ -742,10 +807,12 @@ export default function Home() {
                 href="https://luma.com/zc8zrg9g"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center whitespace-nowrap"
+                className="bg-black text-white font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full hover:bg-zinc-800 active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center whitespace-nowrap"
               >
                 Apply Now
               </a>
+
+              <TerminalConsole />
             </div>
           </div>
         </div>
@@ -1323,11 +1390,22 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Floating Sticky Music Player (Corner Pill) */}
+      {/* Floating Nav (Centered Pill: logo + music player) */}
       <div
         id="floating-player"
-        className="fixed bottom-6 sm:bottom-auto sm:top-12 right-4 md:right-8 z-50 p-2 md:p-2.5 px-4 bg-[#0d0d0f]/90 border border-zinc-800/80 rounded-full shadow-2xl text-white flex items-center gap-3 select-none transition-[transform,opacity] duration-300 opacity-0 translate-y-4 sm:-translate-y-4 pointer-events-none backdrop-blur-md"
+        className="fixed top-4 sm:top-6 left-1/2 z-50 w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2rem)] max-w-[860px] p-1.5 sm:p-2 md:p-2.5 px-3.5 sm:px-5 bg-transparent border-2 border-black rounded-full shadow-lg text-white flex items-center justify-between gap-2 sm:gap-3 select-none transition-[translate,opacity] duration-300 opacity-0 -translate-x-1/2 -translate-y-4 pointer-events-none backdrop-blur-md"
       >
+        {/* Logo (doubles as scroll-to-top) */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="font-coastersans uppercase leading-none text-[15px] sm:text-[18px] md:text-[22px] pt-0.5 text-black cursor-pointer transition-colors duration-200 hover:text-[#a2770c] whitespace-nowrap"
+          aria-label="Scroll to top"
+        >
+          Builder House
+        </button>
+
+        {/* Right cluster: waveform + controls */}
+        <div className="flex items-center gap-3">
         {/* Animated Sound Wave bars */}
         <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
           <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
@@ -1340,7 +1418,7 @@ export default function Home() {
         <div className="flex items-center gap-1.5">
           <button
             onClick={handlePrevSong}
-            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+            className="hover:text-black text-zinc-600 transition duration-200 border border-black/60 rounded p-1 bg-transparent cursor-pointer flex items-center justify-center"
             aria-label="Previous Song"
           >
             <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -1349,19 +1427,20 @@ export default function Home() {
           </button>
           <button
             onClick={togglePlay}
-            className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
+            className="text-black hover:bg-black hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-black/60 rounded px-1.5 py-0.5 bg-transparent cursor-pointer min-w-[40px] text-center"
           >
             {isPlaying ? 'Pause' : 'Play'}
           </button>
           <button
             onClick={handleNextSong}
-            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
+            className="hover:text-black text-zinc-600 transition duration-200 border border-black/60 rounded p-1 bg-transparent cursor-pointer flex items-center justify-center"
             aria-label="Next Song"
           >
             <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
+        </div>
         </div>
       </div>
 
