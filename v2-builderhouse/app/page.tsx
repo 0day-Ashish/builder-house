@@ -697,7 +697,7 @@ export default function Home() {
             </div>
 
             {/* Heroblock 3 */}
-            <div className="w-[200px] sm:w-[240px] md:w-[320px] rotate-[2deg] -translate-x-10">
+            <div className="w-[200px] sm:w-[240px] md:w-[320px] rotate-[2deg] -translate-x-10 translate-y-6">
               <div className="relative w-full aspect-square overflow-hidden">
                 <Image 
                   src="/assets/heroimg3.png" 
