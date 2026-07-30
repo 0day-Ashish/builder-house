@@ -4,7 +4,6 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import CurvedLoop from "@/components/CurvedLoop";
-import TerminalConsole from "@/components/TerminalConsole";
 
 const playlist = [
   {
@@ -620,7 +619,7 @@ export default function Home() {
   return (
     <main className="relative text-[#1c1d1f] font-sans selection:bg-black selection:text-white bg-zinc-900">
       {/* Sticky BUILDER HOUSE logo in top-left */}
-      <div className={`fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-[color,opacity,transform] duration-300 text-black ${isNavFloating ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
+      <div className={`fixed top-8 left-4 md:left-8 z-40 pointer-events-none select-none transition-[color,opacity,transform] duration-300 text-white ${isNavFloating ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
         <h1
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="text-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-coastersans leading-none uppercase font-normal pt-1 pointer-events-auto cursor-pointer animate-logo-reveal transition-all duration-500 ease-out hover:tracking-[0.1em] hover:text-[#e2b857] active:scale-95"
@@ -629,84 +628,20 @@ export default function Home() {
         </h1>
       </div>
 
-      <div className="relative z-10 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
+      <div className="relative z-10 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-[380px] md:mb-[400px]">
         {/* Hero Section Container (Full Viewport Screen, retains its dark styling wrapper) */}
-        <div className="relative w-full aspect-[1536/900] min-h-[750px] md:min-h-[924px] flex flex-col justify-between overflow-hidden text-zinc-950 bg-white">
-          {/* Floating Polaroid Cards on the margins */}
-          <div className="absolute lg:left-[5%] xl:left-[8%] top-[10%] z-20 hidden lg:flex flex-col gap-4 select-none parallax-card-left">
-            {/* Heroblock 1 */}
-            <div className="w-[180px] sm:w-[220px] md:w-[250px] rotate-[-3deg] translate-x-10">
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image 
-                  src="/assets/heroimg1.png" 
-                  alt="Hero Block 1" 
-                  fill 
-                  className="object-cover pointer-events-none"
-                />
-              </div>
-            </div>
-
-            {/* Heroblock 2 */}
-            <div className="w-[170px] sm:w-[210px] md:w-[240px] rotate-[4deg]">
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image 
-                  src="/assets/herobg5.png" 
-                  alt="Hero Block 2" 
-                  fill 
-                  className="object-cover pointer-events-none"
-                />
-              </div>
-            </div>
-
-            {/* Heroblock 3 */}
-            <div className="w-[180px] sm:w-[220px] md:w-[250px] rotate-[-2deg] translate-x-10 -translate-y-8">
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image 
-                  src="/assets/heroimg6.png" 
-                  alt="Hero Block 3" 
-                  fill 
-                  className="object-cover pointer-events-none"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute lg:right-[5%] xl:right-[8%] top-[10%] z-20 hidden lg:flex flex-col gap-4 select-none parallax-card-right">
-            {/* Heroblock 1 */}
-            <div className="w-[180px] sm:w-[220px] md:w-[250px] rotate-[3deg] -translate-x-10">
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image 
-                  src="/assets/heroimg4.png" 
-                  alt="Hero Block 1" 
-                  fill 
-                  className="object-cover pointer-events-none"
-                />
-              </div>
-            </div>
-
-            {/* Heroblock 2 */}
-            <div className="w-[150px] sm:w-[190px] md:w-[220px] rotate-[-4deg]">
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image 
-                  src="/assets/heroimg2.png" 
-                  alt="Hero Block 2" 
-                  fill 
-                  className="object-cover pointer-events-none"
-                />
-              </div>
-            </div>
-
-            {/* Heroblock 3 */}
-            <div className="w-[200px] sm:w-[240px] md:w-[320px] rotate-[2deg] -translate-x-10 translate-y-6">
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image 
-                  src="/assets/heroimg3.png" 
-                  alt="Hero Block 3" 
-                  fill 
-                  className="object-cover pointer-events-none"
-                />
-              </div>
-            </div>
+        <div className="relative w-full aspect-[1536/900] min-h-[750px] md:min-h-[924px] flex flex-col justify-between overflow-hidden text-white bg-black">
+          {/* Background Image */}
+          <div className="absolute inset-0 select-none pointer-events-none z-0">
+            <Image
+              src="/assets/herobg-2.avif"
+              alt="Hero Background"
+              fill
+              priority
+              className="object-cover"
+            />
+            {/* Black fade overlay at the bottom */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
           </div>
 
           {/* Header Container */}
@@ -718,13 +653,13 @@ export default function Home() {
 
             {/* Right Side: Bangalore & FM Player */}
             <div className="flex flex-col items-end pr-2 md:pr-4">
-              <span className="text-zinc-950 text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
+              <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
                 Bangalore, 29th July
               </span>
               {/* Inline lo-fi FM player */}
               <div
                 id="inline-player"
-                className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-500 opacity-100 pointer-events-auto pt-5"
+                className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-400 opacity-100 pointer-events-auto pt-5"
               >
                 {/* Animated Sound Wave bars */}
                 <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
@@ -738,7 +673,7 @@ export default function Home() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handlePrevSong}
-                    className="hover:text-black text-zinc-500 transition duration-200 border border-zinc-300 rounded p-1 bg-white cursor-pointer flex items-center justify-center"
+                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
                     aria-label="Previous Song"
                   >
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -747,13 +682,13 @@ export default function Home() {
                   </button>
                   <button
                     onClick={togglePlay}
-                    className="hover:text-black transition duration-200 uppercase font-mono text-[9px] border border-zinc-300 rounded px-1.5 py-0.5 bg-white cursor-pointer min-w-[40px] text-center"
+                    className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
                   >
                     {isPlaying ? 'Pause' : 'Play'}
                   </button>
                   <button
                     onClick={handleNextSong}
-                    className="hover:text-black text-zinc-500 transition duration-200 border border-zinc-300 rounded p-1 bg-white cursor-pointer flex items-center justify-center"
+                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
                     aria-label="Next Song"
                   >
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -768,18 +703,18 @@ export default function Home() {
           {/* Centered Hero Section */}
           <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-8 max-w-[1800px] mx-auto w-full pb-4 md:pb-16 text-center z-10">
             {/* Glass Card Box */}
-            <div className=" px-6 py-6 md:px-10 md:py-8 lg:px-12 lg:py-9 max-w-[640px] w-full flex flex-col items-center">
+            <div className=" px-6 py-6 md:px-10 md:py-8 lg:px-12 lg:py-9 max-w-[640px] w-full flex flex-col items-center -translate-y-16 md:-translate-y-28">
               {/* Badge with Overlapping Avatars and Info Pill */}
               <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-3 mb-15 select-none">
                 {/* Overlapping circular avatars */}
                 <div className="flex -space-x-2">
-                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_1.webp" alt="Team Member 1" fill className="object-cover" />
                   </div>
-                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_4.webp" alt="Team Member 2" fill className="object-cover" />
                   </div>
-                  <div className="relative w-10 h-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
+                  <div className="relative w-10 h-10 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-1.5 hover:z-10 hover:shadow-lg cursor-pointer">
                     <Image src="/assets/pile_7.webp" alt="Team Member 3" fill className="object-cover" />
                   </div>
                 </div>
@@ -794,10 +729,10 @@ export default function Home() {
 
               {/* Headline */}
               <h2 className="font-instrument-serif select-none mb-6 leading-[1.05] tracking-tight">
-                <span className="text-5xl sm:text-5xl md:text-[75px] font-light block text-zinc-900">
-                  The <span className="font-instrument-serif italic text-[#c8901a] pr-1 md:pr-2">Builders</span> Are
+                <span className="text-5xl sm:text-5xl md:text-[75px] font-light block text-[#ededed]">
+                  The <span className="font-instrument-serif italic text-[#ffc83b] pr-1 md:pr-2">Builders</span> Are
                 </span>
-                <span className="text-5xl sm:text-6xl md:text-[75px] font-instrument-serif block text-zinc-950 tracking-tight">
+                <span className="text-5xl sm:text-6xl md:text-[75px] font-instrument-serif block text-white tracking-tight">
                   Assembling
                 </span>
               </h2>
@@ -807,37 +742,35 @@ export default function Home() {
                 href="https://luma.com/zc8zrg9g"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-black text-white font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full hover:bg-zinc-800 active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center whitespace-nowrap"
+                className="bg-white text-black font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center whitespace-nowrap hover:bg-zinc-200"
               >
                 Apply Now
               </a>
-
-              <TerminalConsole />
             </div>
           </div>
         </div>
 
-        {/* About TokenSupply Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 py-24 md:py-32 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
+        {/* About TokenSupply Section (Dark Background) */}
+        <section className="w-full bg-black text-white py-24 md:py-32 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
           <div className="flex flex-col">
             {/* Main Grid: Left = Text, Right = Image */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
               {/* Left Column: Text Content */}
               <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-4 tracking-tight font-semibold">
                   About <span className="font-instrument-serif italic">TokenSupply</span>
                 </h2>
-                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.25] tracking-normal mb-6 font-normal">
+                <p className="text-zinc-300 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.25] tracking-normal mb-6 font-normal">
                  Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
                 </p>
-                <button className="bg-black text-white font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center">
+                <button className="bg-white text-black hover:bg-zinc-200 font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center">
                   Learn More
                 </button>
               </div>
 
               {/* Right Column: Image Section */}
               <div className="col-span-1 lg:col-span-6 w-full">
-                <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-200 shadow-2xl">
+                <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl">
                   <Image
                     src="/assets/tokensupply.png"
                     alt="About TokenSupply Developer working"
@@ -850,8 +783,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Subprocessor Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
+        {/* Subprocessor Section (Dark Background) */}
+        <section className="w-full bg-black text-white pb-36 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
           <div className="flex flex-col">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
               {/* Left Column: Subprocessors Logos Grid */}
@@ -860,13 +793,13 @@ export default function Home() {
                   {subprocessorLogos.map((logo, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-center p-5 bg-zinc-50 border border-zinc-200 backdrop-blur-md rounded-2xl h-24 shadow-sm relative overflow-hidden group cursor-pointer"
+                      className="flex items-center justify-center p-5 bg-zinc-900/50 border border-zinc-800 backdrop-blur-md rounded-2xl h-24 shadow-sm relative overflow-hidden group cursor-pointer"
                     >
                       {/* Grid overlay for texture */}
                       <div
                         className="absolute inset-0 opacity-[0.02] pointer-events-none"
                         style={{
-                          backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
+                          backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
                           backgroundSize: '15px 15px'
                         }}
                       />
@@ -874,10 +807,12 @@ export default function Home() {
                         <img
                           src={logo.path}
                           alt={`${logo.name} Logo`}
-                          className="max-w-full max-h-full object-contain filter brightness-95 opacity-95 pointer-events-none select-none"
+                          className={`max-w-full max-h-full object-contain filter opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none select-none ${
+                            ["Resend", "GitHub", "Sentry", "Dodo Payments", "Mintlify", "PostHog", "Stripe"].includes(logo.name) ? "invert brightness-200" : ""
+                          }`}
                         />
                       </div>
-                      <div className="absolute bottom-2.5 left-0 right-0 text-center text-[10px] font-mono uppercase tracking-wider text-zinc-500 opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none select-none">
+                      <div className="absolute bottom-2.5 left-0 right-0 text-center text-[10px] font-mono uppercase tracking-wider text-zinc-400 opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none select-none">
                         {logo.name}
                       </div>
                     </div>
@@ -887,10 +822,10 @@ export default function Home() {
 
               {/* Right Column: Title & Paragraph */}
               <div className="lg:col-span-4 flex flex-col items-start pl-0 lg:pl-8 pt-2">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl italic font-instrument-serif text-black font-semibold tracking-tight mb-4">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl italic font-instrument-serif text-white font-semibold tracking-tight mb-4">
                   TechStack
                 </h2>
-                <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] leading-[1.25] max-w-[380px]">
+                <p className="text-zinc-300 text-[18px] md:text-[22px] lg:text-[25px] leading-[1.25] max-w-[380px]">
                   Building TokenSupply with a great team of developers and designers. we’ve spent a lot of time designing the architecture so we can keep shipping new features without breaking things. if you’re into systems, take a look around.   
                 </p>
               </div>
@@ -898,39 +833,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Builder House Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-24 md:pt-26 z-10 relative">
+        {/* About Builder House Section (Dark Background) */}
+        <section className="w-full bg-black text-white pb-36 px-4 md:px-8 max-w-[1400px] mx-auto flex flex-col pt-24 md:pt-26 z-10 relative">
           {/* Main Grid: Left = Text & Stats, Right = Image */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
             {/* Left Column: Text & Stats */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-start pl-1">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-6 tracking-tight font-semibold">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-6 tracking-tight font-semibold">
                 About <span className="font-instrument-serif italic">BuilderHouse</span>
               </h2>
-              <p className="text-zinc-800 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.25] tracking-normal mb-10 font-normal">
+              <p className="text-zinc-300 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.25] tracking-normal mb-10 font-normal">
                 Builder House is a residency by the TokenSupply team for developers, designers, and engineers who are obsessed with building. We invite a small group of exceptional builders to spend a few weeks living and working alongside our core team, shipping the first versions of TokenSupply together.
               </p>
 
               {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-6 w-full">
                 <div>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black tracking-tight mb-1 font-semibold">3</div>
-                  <div className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-wider font-semibold">Cracked Minds</div>
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1 font-semibold">3</div>
+                  <div className="text-zinc-400 text-[10px] md:text-xs uppercase tracking-wider font-semibold">Cracked Minds</div>
                 </div>
                 <div>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black tracking-tight mb-1 font-semibold">45</div>
-                  <div className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight animate-pulse">Days of shipping</div>
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1 font-semibold">45</div>
+                  <div className="text-zinc-400 text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight animate-pulse">Days of shipping</div>
                 </div>
                 <div>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-black tracking-tight mb-1 font-semibold">v1</div>
-                  <div className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Launch target</div>
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-instrument-serif text-white tracking-tight mb-1 font-semibold">v1</div>
+                  <div className="text-zinc-400 text-[10px] md:text-xs uppercase tracking-wider font-semibold leading-tight">Launch target</div>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Image */}
             <div className="col-span-1 lg:col-span-6 w-full">
-              <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-200 shadow-2xl">
+              <div className="relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl">
                 <Image
                   src="/assets/builderhouse.gif"
                   alt="About Builder House Building Project"
@@ -943,14 +878,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* What happens in the Builder House Grid Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-24 flex flex-col max-w-[1400px] mx-auto px-4 md:px-8 z-10 relative reveal-on-scroll">
+        {/* What happens in the Builder House Grid Section (Dark Background) */}
+        <section className="w-full bg-black text-white pb-24 flex flex-col max-w-[1400px] mx-auto px-4 md:px-8 z-10 relative reveal-on-scroll">
           {/* 6-Box Grid Layout */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 w-full">
             {programDetails.map((activity, idx) => (
               <div    
                 key={idx}
-                className="relative overflow-hidden bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300/80 p-6 flex flex-col items-start justify-between min-h-[290px] rounded-2xl transition-all duration-300 shadow-sm group"
+                className="relative overflow-hidden bg-zinc-900/40 border border-zinc-800/80 hover:bg-zinc-900/60 hover:border-zinc-700/80 p-6 flex flex-col items-start justify-between min-h-[290px] rounded-2xl transition-all duration-300 shadow-sm group"
               >
                 {idx === 0 && (
                   <div className="absolute inset-0 select-none pointer-events-none">
@@ -1032,7 +967,7 @@ export default function Home() {
           </div>
 
           {/* Collaborative Callout */}
-          <div className="mt-12 w-full relative overflow-hidden rounded-2xl border border-zinc-200 min-h-[290px] flex items-center justify-center p-6 md:p-8">
+          <div className="mt-12 w-full relative overflow-hidden rounded-2xl border border-zinc-800 min-h-[290px] flex items-center justify-center p-6 md:p-8">
             <Image
               src="/assets/new-section.gif"
               alt="Collaboration Background"
@@ -1052,15 +987,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Roadmap Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
+        {/* Roadmap Section (Dark Background) */}
+        <section className="w-full bg-black text-white pb-36 px-4 md:px-8 max-w-[1400px] mx-auto z-10 relative reveal-on-scroll">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Sticky Header Column */}
             <div className="md:col-span-4 md:sticky md:top-[120px] flex flex-col items-start pl-1 self-start mb-10 md:mb-0">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-2 font-semibold tracking-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-2 font-semibold tracking-tight">
                 The <span className="font-instrument-serif italic">Road</span> to V1
               </h2>
-              <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] font-semibold font-instrument-sans max-w-[320px]">
+              <p className="text-zinc-400 text-[16px] md:text-[18px] leading-[1.45] font-semibold font-instrument-sans max-w-[320px]">
                 Six weeks. Seven workstreams. One shipped product.
               </p>
             </div>
@@ -1073,19 +1008,19 @@ export default function Home() {
                   style={{
                     ["--card-index" as any]: idx,
                   }}
-                  className="roadmap-card grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 backdrop-blur-sm rounded-2xl items-center transition-all duration-300 shadow-[0_-4px_20px_-2px_rgba(0,0,0,0.05),0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:shadow-[0_-8px_30px_rgba(0,0,0,0.08),0_10px_15px_-3px_rgba(0,0,0,0.08)] group"
+                  className="roadmap-card grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-zinc-900/40 border border-zinc-800/80 hover:bg-zinc-900/60 hover:border-zinc-700/80 backdrop-blur-sm rounded-2xl items-center transition-all duration-300 shadow-[0_-4px_20px_-2px_rgba(255,255,255,0.02),0_4px_6px_-1px_rgba(255,255,255,0.02)] hover:shadow-[0_-8px_30px_rgba(255,255,255,0.08),0_10px_15px_-3px_rgba(255,255,255,0.08)] group"
                 >
                   {/* Phase & Date */}
                   <div className="md:col-span-4 flex flex-col gap-1">
                     <span className="text-xs font-mono uppercase tracking-wider text-[#a2770c]">{phase.id}</span>
-                    <span className="text-black text-lg font-instrument-serif">{phase.date}</span>
+                    <span className="text-white text-lg font-instrument-serif">{phase.date}</span>
                   </div>
                   {/* Title & Body */}
                   <div className="md:col-span-6 flex flex-col gap-2">
-                    <h3 className="text-[18px] md:text-[25px] font-instrument-serif text-black font-semibold">
+                    <h3 className="text-[18px] md:text-[25px] font-instrument-serif text-white font-semibold">
                       {phase.title}
                     </h3>
-                    <p className="text-zinc-500 text-sm md:text-base leading-relaxed max-w-[500px]">
+                    <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-[500px]">
                       {phase.description}
                     </p>
                   </div>
@@ -1102,7 +1037,7 @@ export default function Home() {
                         />
                       </div>
                     ) : (
-                      <div className="w-16 h-16 rounded-xl border border-dashed border-zinc-300 bg-transparent flex items-center justify-center text-zinc-400 shadow-sm select-none">
+                      <div className="w-16 h-16 rounded-xl border border-dashed border-zinc-850 bg-transparent flex items-center justify-center text-zinc-400 shadow-sm select-none">
                         <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9" />
                         </svg>
@@ -1115,13 +1050,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Team Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-20 flex flex-col pt-14 md:pt-26 z-10 relative reveal-on-scroll">
+        {/* Team Section (Dark Background) */}
+        <section className="w-full bg-black text-white pb-20 flex flex-col pt-14 md:pt-26 z-10 relative reveal-on-scroll">
           <div className="w-full mb-16 max-w-[850px] mx-auto flex flex-col items-center text-center px-4">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-black mb-4 tracking-tight font-semibold">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-instrument-serif text-white mb-4 tracking-tight font-semibold">
               The <span className="font-instrument-serif italic">People</span> Building <span className="font-instrument-serif italic">TokenSupply</span>
             </h2>
-            <p className="text-zinc-500 text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px]">
+            <p className="text-zinc-400 text-[16px] md:text-[18px] leading-[1.45] tracking-tight max-w-[600px]">
               Developers, Designers and Builders working together to create software for digital goods sellers.
             </p>
           </div>
@@ -1137,9 +1072,9 @@ export default function Home() {
             {[...teamMembers, ...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
               <div
                 key={idx}
-                className="w-[280px] md:w-[320px] flex-shrink-0 bg-zinc-50 border-2 border-black rounded-2xl p-5 flex flex-col shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
+                className="w-[280px] md:w-[320px] flex-shrink-0 bg-zinc-900/40 border-2 border-zinc-800 rounded-2xl p-5 flex flex-col shadow-[4px_4px_0px_0px_rgba(255,255,255,0.15)] group hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.25)] active:translate-x-0 active:translate-y-0 active:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.15)] transition-all duration-200"
               >
-                <div className="relative w-full aspect-square overflow-hidden rounded-xl border-2 border-black mb-5 bg-zinc-200">
+                <div className="relative w-full aspect-square overflow-hidden rounded-xl border-2 border-zinc-800 mb-5 bg-zinc-800">
                   <Image
                     src={member.image}
                     alt={`${member.name} - ${member.role}`}
@@ -1150,10 +1085,10 @@ export default function Home() {
                 </div>
                 <div className="flex justify-between items-start w-full">
                   <div>
-                    <h3 className="text-[17px] md:text-[19px] font-semibold text-black tracking-tight mb-1">
+                    <h3 className="text-[17px] md:text-[19px] font-semibold text-white tracking-tight mb-1">
                       {member.name}
                     </h3>
-                    <p className="text-zinc-500 text-xs md:text-sm tracking-wide">
+                    <p className="text-zinc-400 text-xs md:text-sm tracking-wide">
                       {member.role}
                     </p>
                   </div>
@@ -1207,11 +1142,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAQ Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-36 px-4 md:px-8 max-w-[900px] mx-auto pt-24 md:pt-36 z-10 relative reveal-on-scroll">
+        {/* FAQ Section (Dark Background) */}
+        <section className="w-full bg-black text-white pb-36 px-4 md:px-8 max-w-[900px] mx-auto pt-24 md:pt-36 z-10 relative reveal-on-scroll">
           {/* FAQ Title */}
           <div className="flex items-center justify-center gap-3 md:gap-4 select-none mb-10">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-black tracking-tight text-center font-semibold leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-instrument-serif text-white tracking-tight text-center font-semibold leading-tight">
               Frequently Asked Questions
             </h2>
             <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
@@ -1231,23 +1166,23 @@ export default function Home() {
               return (
                 <div
                   key={idx}
-                  className="w-full bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden transition-all duration-300"
+                  className="w-full bg-zinc-900/40 border border-zinc-800/80 rounded-xl overflow-hidden transition-all duration-300"
                 >
                   <button
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                    className="w-full flex justify-between items-center px-6 py-5 text-left text-black hover:text-zinc-700 transition duration-200 cursor-pointer"
+                    className="w-full flex justify-between items-center px-6 py-5 text-left text-white hover:text-zinc-300 transition duration-200 cursor-pointer"
                   >
                     <span className="text-lg font-semibold font-instrument-sans pr-4">
                       {item.question}
                     </span>
-                    <span className={`text-xl font-light text-zinc-400 transition-transform duration-300 transform select-none ${isOpen ? "rotate-45 text-black" : ""}`}>
+                    <span className={`text-xl font-light text-zinc-500 transition-transform duration-300 transform select-none ${isOpen ? "rotate-45 text-white" : ""}`}>
                       +
                     </span>
                   </button>
                   <div
-                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-[300px] border-t border-zinc-200/55" : "max-h-0"}`}
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-[300px] border-t border-zinc-800/60" : "max-h-0"}`}
                   >
-                    <div className="px-6 py-4 text-xs md:text-sm text-zinc-500 leading-relaxed">
+                    <div className="px-6 py-4 text-xs md:text-sm text-zinc-400 leading-relaxed">
                       {item.answer}
                     </div>
                   </div>
@@ -1257,8 +1192,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pillars Section (White Background) */}
-        <section className="w-full bg-white text-zinc-950 pb-36 flex flex-col md:pt-36 z-10 relative reveal-on-scroll">
+        {/* Pillars Section (Dark Background) */}
+        <section className="w-full bg-black text-white pb-36 flex flex-col md:pt-36 z-10 relative reveal-on-scroll">
           <div className="w-full overflow-hidden">
             <CurvedLoop
               marqueeText="✦ LIVE ✦ BUILD ✦ NETWORK "
@@ -1266,20 +1201,20 @@ export default function Home() {
               curveAmount={150}
               direction="left"
               interactive
-              className="fill-zinc-950 font-instrument-serif font-bold"
+              className="fill-white font-instrument-serif font-bold"
               containerClassName="py-12 flex items-center justify-center w-full tracking-widest overflow-hidden"
             />
           </div>
 
           {/* Footer Subtext */}
-          <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-600 max-w-[1400px] mx-auto px-4 md:px-8 w-full">
-            Pick a pillar. <span className="font-instrument-serif text-black font-bold ml-0.5 text-lg">Step inside.</span>
+          <div className="text-center mt-12 text-[14px] md:text-[16px] text-zinc-400 max-w-[1400px] mx-auto px-4 md:px-8 w-full">
+            Pick a pillar. <span className="font-instrument-serif text-white font-bold ml-0.5 text-lg">Step inside.</span>
           </div>
         </section>
 
         {/* CTA Section (Retains original design details on white body grid) */}
         <section className="w-full px-4 md:px-8 max-w-[1400px] mx-auto mb-0 mt-12 z-10 relative reveal-on-scroll">
-          <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-zinc-200 px-8 py-30 md:px-12 md:py-38 flex flex-col items-center shadow-xl">
+          <div className="relative w-full rounded-3xl overflow-hidden bg-transparent border border-zinc-800 px-8 py-30 md:px-12 md:py-38 flex flex-col items-center shadow-xl">
             {/* Background Image overlay */}
             <div className="absolute inset-0 select-none pointer-events-none">
               <Image
@@ -1334,7 +1269,7 @@ export default function Home() {
         </section>
 
         {/* Spacer to create a gap below CTA card */}
-        <div className="h-24 w-full bg-white z-10 relative" />
+        <div className="h-24 w-full bg-black z-10 relative" />
         {/* Footer Sentinel for Scroll Reveal Trigger */}
         <div id="footer-sentinel" className="w-full h-1 pointer-events-none" />
       </div>
@@ -1344,7 +1279,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 select-none pointer-events-none z-0">
           <img
-            src="/assets/footerbackground.png"
+            src="/assets/herobg-2.avif"
             alt="Footer Background"
             className="w-full h-full object-cover pointer-events-none"
           />
@@ -1353,36 +1288,36 @@ export default function Home() {
         {/* Content Container */}
         <div className="relative w-full max-w-[1800px] mx-auto flex flex-col justify-end pt-12 pb-6 px-4 md:px-8 z-10 text-white">
           {/* Footer Top Links */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 w-full max-w-[700px] mx-auto text-center text-[13px] md:text-[15px] text-black mb-16">
-            <div className="flex flex-col items-center justify-center font-instrument-sans font-semibold text-black">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 w-full max-w-[700px] mx-auto text-center text-[13px] md:text-[15px] text-zinc-300 mb-16">
+            <div className="flex flex-col items-center justify-center font-instrument-sans font-semibold text-white">
               <span>©2026 TokenSupply</span>
             </div>
-            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-sans font-semibold text-black">
+            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-sans font-semibold text-white">
               <span>Have more queries?</span>
-              <a href="mailto:admint@tokensupply.io" className="hover:text-[#a2770c] transition duration-200 font-instrument-sans font-semibold text-black">
+              <a href="mailto:admint@tokensupply.io" className="hover:text-[#e2b857] transition duration-200 font-instrument-sans font-semibold text-white">
                 admin@tokensupply.io
               </a>
             </div>
-            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-sans font-semibold text-white animate-pulse-none">
-              <a href="https://www.instagram.com/tokensupplyhq" className="hover:text-[#a2770c] transition duration-200 text-black">Instagram</a>
-              <a href="#" className="hover:text-[#a2770c] transition duration-200 text-black">X (Twitter)</a>
-              <a href="#" className="hover:text-[#a2770c] transition duration-200 text-black">Youtube</a>
+            <div className="flex flex-col gap-0.5 items-center justify-center font-instrument-sans font-semibold text-zinc-300 animate-pulse-none">
+              <a href="https://www.instagram.com/tokensupplyhq" className="hover:text-[#e2b857] transition duration-200 text-zinc-300">Instagram</a>
+              <a href="#" className="hover:text-[#e2b857] transition duration-200 text-zinc-300">X (Twitter)</a>
+              <a href="#" className="hover:text-[#e2b857] transition duration-200 text-zinc-300">Youtube</a>
             </div>
           </div>
 
           {/* Giant Stamp */}
-          <h1 className="w-full text-center text-[5.9vw] sm:text-[4vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-black font-normal pb-4 pr-4 md:pr-6">
+          <h1 className="w-full text-center text-[5.9vw] sm:text-[4vw] font-coastersans leading-[0.8] whitespace-nowrap uppercase select-none text-white font-normal pb-4 pr-4 md:pr-6">
             {footerText}
           </h1>
 
           {/* Designed & Developed by Credit */}
-          <div className="w-full text-center text-[10px] md:text-[11px] text-black font-instrument-sans pb-4 select-none">
+          <div className="w-full text-center text-[10px] md:text-[11px] text-white font-instrument-sans pb-4 select-none">
             Designed and Developed by{" "}
             <a
               href="https://arddev.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black transition-colors duration-200 underline-offset-4"
+              className="text-white hover:text-[#e2b857] transition-colors duration-200 underline-offset-4 underline"
             >
               ard.dev
             </a>
@@ -1393,12 +1328,12 @@ export default function Home() {
       {/* Floating Nav (Centered Pill: logo + music player) */}
       <div
         id="floating-player"
-        className="fixed top-4 sm:top-6 left-1/2 z-50 w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2rem)] max-w-[860px] p-1.5 sm:p-2 md:p-2.5 px-3.5 sm:px-5 bg-transparent border-2 border-black rounded-full shadow-lg text-white flex items-center justify-between gap-2 sm:gap-3 select-none transition-[translate,opacity] duration-300 opacity-0 -translate-x-1/2 -translate-y-4 pointer-events-none backdrop-blur-md"
+        className="fixed top-4 sm:top-6 left-1/2 z-50 w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2rem)] max-w-[860px] p-1.5 sm:p-2 md:p-2.5 px-3.5 sm:px-5 bg-zinc-900/80 border-2 border-zinc-800 rounded-full shadow-lg text-white flex items-center justify-between gap-2 sm:gap-3 select-none transition-[translate,opacity] duration-300 opacity-0 -translate-x-1/2 -translate-y-4 pointer-events-none backdrop-blur-md"
       >
         {/* Logo (doubles as scroll-to-top) */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-coastersans uppercase leading-none text-[15px] sm:text-[18px] md:text-[22px] pt-0.5 text-black cursor-pointer transition-colors duration-200 hover:text-[#a2770c] whitespace-nowrap"
+          className="font-coastersans uppercase leading-none text-[15px] sm:text-[18px] md:text-[22px] pt-0.5 text-white cursor-pointer transition-colors duration-200 hover:text-[#a2770c] whitespace-nowrap"
           aria-label="Scroll to top"
         >
           Builder House
@@ -1418,7 +1353,7 @@ export default function Home() {
         <div className="flex items-center gap-1.5">
           <button
             onClick={handlePrevSong}
-            className="hover:text-black text-zinc-600 transition duration-200 border border-black/60 rounded p-1 bg-transparent cursor-pointer flex items-center justify-center"
+            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-transparent cursor-pointer flex items-center justify-center"
             aria-label="Previous Song"
           >
             <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -1427,13 +1362,13 @@ export default function Home() {
           </button>
           <button
             onClick={togglePlay}
-            className="text-black hover:bg-black hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-black/60 rounded px-1.5 py-0.5 bg-transparent cursor-pointer min-w-[40px] text-center"
+            className="text-white hover:bg-white hover:text-black transition duration-200 uppercase font-mono text-[9px] border border-zinc-800 rounded px-1.5 py-0.5 bg-transparent cursor-pointer min-w-[40px] text-center"
           >
             {isPlaying ? 'Pause' : 'Play'}
           </button>
           <button
             onClick={handleNextSong}
-            className="hover:text-black text-zinc-600 transition duration-200 border border-black/60 rounded p-1 bg-transparent cursor-pointer flex items-center justify-center"
+            className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-transparent cursor-pointer flex items-center justify-center"
             aria-label="Next Song"
           >
             <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
