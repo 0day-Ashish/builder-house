@@ -412,28 +412,21 @@ export default function Home() {
     const scroll = lenis.scroll;
     const sticky = scroll > 120;
 
-    const inlinePlayer = document.getElementById("inline-player");
     const floatingPlayer = document.getElementById("floating-player");
 
-    if (inlinePlayer && floatingPlayer) {
+    if (floatingPlayer) {
       // The nav now docks to the top on every breakpoint, so it no longer
       // collides with the mobile footer reveal that used to hide it.
       const navVisible = sticky;
       setIsNavFloating((prev) => (prev !== navVisible ? navVisible : prev));
 
       if (navVisible) {
-        inlinePlayer.style.opacity = "0";
-        inlinePlayer.style.pointerEvents = "none";
-
         floatingPlayer.style.opacity = "1";
         // Tailwind v4 centers via the `translate` property, so animate that
         // (not `transform`) or the -50% X shift gets left uncompensated.
         floatingPlayer.style.translate = "-50% 0";
         floatingPlayer.style.pointerEvents = "auto";
       } else {
-        inlinePlayer.style.opacity = sticky ? "0" : "1";
-        inlinePlayer.style.pointerEvents = sticky ? "none" : "auto";
-
         floatingPlayer.style.opacity = "0";
         floatingPlayer.style.translate = "-50% -16px";
         floatingPlayer.style.pointerEvents = "none";
@@ -469,6 +462,10 @@ export default function Home() {
             window.removeEventListener("click", startPlayOnInteraction);
             window.removeEventListener("touchstart", startPlayOnInteraction);
             window.removeEventListener("keydown", startPlayOnInteraction);
+            window.removeEventListener("mousedown", startPlayOnInteraction);
+            window.removeEventListener("pointerdown", startPlayOnInteraction);
+            window.removeEventListener("scroll", startPlayOnInteraction);
+            window.removeEventListener("wheel", startPlayOnInteraction);
           };
 
           cleanupListeners = cleanup;
@@ -476,6 +473,10 @@ export default function Home() {
           window.addEventListener("click", startPlayOnInteraction);
           window.addEventListener("touchstart", startPlayOnInteraction);
           window.addEventListener("keydown", startPlayOnInteraction);
+          window.addEventListener("mousedown", startPlayOnInteraction);
+          window.addEventListener("pointerdown", startPlayOnInteraction);
+          window.addEventListener("scroll", startPlayOnInteraction);
+          window.addEventListener("wheel", startPlayOnInteraction);
         });
     };
 
@@ -656,47 +657,6 @@ export default function Home() {
               <span className="text-white text-[17px] md:text-[25px] font-instrument-serif tracking-tighter leading-none mb-3 pt-2">
                 Bangalore, 29th July
               </span>
-              {/* Inline lo-fi FM player */}
-              <div
-                id="inline-player"
-                className="flex items-center gap-2.5 select-none transition-opacity duration-300 text-zinc-400 opacity-100 pointer-events-auto pt-5"
-              >
-                {/* Animated Sound Wave bars */}
-                <div className="flex items-end gap-[1.5px] h-3 w-4 pb-0.5">
-                  <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-1 h-3' : 'h-1'}`} />
-                  <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-2 h-3' : 'h-2.5'}`} />
-                  <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-3 h-3' : 'h-1.5'}`} />
-                  <span className={`w-[1.5px] bg-[#e2b857] rounded-full transition-all duration-300 ${isPlaying ? 'animate-sound-bar-4 h-3' : 'h-2'}`} />
-                </div>
-
-                {/* Playlist Skip & Play Controls */}
-                <div className="flex items-center gap-1.5">
-                  <button
-                    onClick={handlePrevSong}
-                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
-                    aria-label="Previous Song"
-                  >
-                    <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={togglePlay}
-                    className="hover:text-white transition duration-200 uppercase font-mono text-[9px] border border-zinc-850 rounded px-1.5 py-0.5 bg-[#0a0a0c] cursor-pointer min-w-[40px] text-center"
-                  >
-                    {isPlaying ? 'Pause' : 'Play'}
-                  </button>
-                  <button
-                    onClick={handleNextSong}
-                    className="hover:text-white text-zinc-400 transition duration-200 border border-zinc-800 rounded p-1 bg-[#0a0a0c] cursor-pointer flex items-center justify-center"
-                    aria-label="Next Song"
-                  >
-                    <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -763,9 +723,14 @@ export default function Home() {
                 <p className="text-zinc-300 text-[18px] md:text-[22px] lg:text-[25px] font-instrument-sans leading-[1.25] tracking-normal mb-6 font-normal">
                  Token Supply is a unified platform that helps businesses selling digital products such as game keys, gift cards, and software licenses manage their entire operation from one dashboard. Connect multiple marketplaces, automate digital product fulfillment, track inventory and orders in real time, and eliminate manual workflows.
                 </p>
-                <button className="bg-white text-black hover:bg-zinc-200 font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center">
+                <a
+                  href="https://tokensupply.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-black hover:bg-zinc-200 font-instrument-sans font-bold text-[13px] md:text-[12px] px-8 py-3.5 rounded-full active:scale-105 transition duration-200 cursor-pointer uppercase flex items-center justify-center w-fit"
+                >
                   Learn More
-                </button>
+                </a>
               </div>
 
               {/* Right Column: Image Section */}
@@ -1006,8 +971,8 @@ export default function Home() {
                 <div
                   key={idx}
                   style={{
-                    ["--card-index" as any]: idx,
-                  }}
+                    "--card-index": idx,
+                  } as React.CSSProperties}
                   className="roadmap-card grid grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-8 bg-zinc-900/40 border border-zinc-800/80 hover:bg-zinc-900/60 hover:border-zinc-700/80 backdrop-blur-sm rounded-2xl items-center transition-all duration-300 shadow-[0_-4px_20px_-2px_rgba(255,255,255,0.02),0_4px_6px_-1px_rgba(255,255,255,0.02)] hover:shadow-[0_-8px_30px_rgba(255,255,255,0.08),0_10px_15px_-3px_rgba(255,255,255,0.08)] group"
                 >
                   {/* Phase & Date */}
@@ -1240,7 +1205,7 @@ export default function Home() {
                   Ready to ship?
                 </h2>
                 <p className="text-white text-sm md:text-base max-w-[450px] font-normal">
-                  Let's build the incredible together, with TokenSupply
+                  {"Let's build the incredible together, with TokenSupply"}
                 </p>
               </div>
 
@@ -1333,7 +1298,7 @@ export default function Home() {
         {/* Logo (doubles as scroll-to-top) */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-coastersans uppercase leading-none text-[15px] sm:text-[18px] md:text-[22px] pt-0.5 text-white cursor-pointer transition-colors duration-200 hover:text-[#a2770c] whitespace-nowrap"
+          className="ml-2 sm:ml-4 font-coastersans uppercase leading-none text-[15px] sm:text-[18px] md:text-[22px] pt-0.5 text-white cursor-pointer transition-colors duration-200 hover:text-[#a2770c] whitespace-nowrap"
           aria-label="Scroll to top"
         >
           Builder House
@@ -1384,6 +1349,8 @@ export default function Home() {
         ref={audioRef}
         src={playlist[currentSongIndex].src}
         onEnded={handleNextSong}
+        autoPlay
+        playsInline
       />
     </main>
   );
